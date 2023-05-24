@@ -1,0 +1,18 @@
+.custom-card{
+    margin-bottom: 10px;
+    /*        background-color: gray;*/
+}
+.custom-card-title{
+    background-color: #F1F1F1;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-weight: bold;
+}
+.custom-card-item{
+    margin-left: 0px;
+    margin-right: 0px
+}
+.custom-information{
+    font-weight: bold;
+
+}
