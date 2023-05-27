@@ -55,7 +55,16 @@ CREATE TABLE Flight
 	EndTime time,
 	Departure nVARCHAR(20),
 	Destination nVARCHAR(20),
-	Gate int
+	Gate int,
+	Seats int
+)
+
+CREATE TABLE TicketType 
+(
+	TicketType_ID varchar(20) not null primary key,
+	TicketType_Name VARCHAR(50),
+	Seat_Begin varchar(20),
+	Seat_End varchar(20)
 )
 
 CREATE TABLE Ticket 
@@ -64,10 +73,12 @@ CREATE TABLE Ticket
 	Order_ID varchar(20),
 	Promotion_ID varchar(20),
 	Flight_ID varchar(20),
-	Selects varchar(20)
+	Selects varchar(20),
+	TicketType_ID varchar(20),
 	constraint fk_tblTicket foreign key (Order_ID) references OrderTicket(Order_ID),
 	constraint fk_tblTicket1 foreign key (Promotion_ID) references Promotion(Promotion_ID),
 	constraint fk_tblTicket2 foreign key (Flight_ID) references Flight(Flight_ID),
+	constraint fk_tblTicket3 foreign key (TicketType_ID) references TicketType(TicketType_ID)
 )
 
 Create table Passenger
@@ -86,14 +97,6 @@ Create table Passenger
 	constraint pk_tblPassenger primary key (Passenger_ID, Ticket_ID),
 	constraint fk_tblPassenger1 foreign key (UserID) references Users(UserID),
 	constraint fk_tblPassenger2 foreign key (Ticket_ID) references Ticket(Ticket_ID)
-)
-
-CREATE TABLE TicketType 
-(
-	TicketType_ID varchar(20) not null primary key,
-	TicketType_Name VARCHAR(50),
-	Ticket_ID varchar(20)
-	constraint fk_tblTicketType foreign key (Ticket_ID) references Ticket(Ticket_ID)
 )
 
 CREATE TABLE Price 
@@ -119,16 +122,17 @@ values('1','admin@123','12345',null, null, null, null, null, null, null,'admin')
 ('497807','lentdde160294@fpt.edu.vn','123456','Nguyen Tran Duc Le','F', '2002-09-29', '0913545213', 'Hue', 'Vietnam', '6752083105', 'cus');
 
 Insert into Flight 
-values ('DM1' , '2023-05-25' , '2023-05-29' , '10:00' , '16:00' , N'Đà Nẵng' , N'Hồ Chí Minh', 3),
-('DM2',	'2023-05-29',	'2023-06-03',	'07:00:00',	'19:00:00',	'Hà Nội',	'Đà Nẵng',	6),
-('DM3',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	'Đà Nẵng',	'Hồ Chí Minh',	5),
-('DM4',	'2023-07-02',	'2023-07-07',	'14:00:00',	'17:00:00',	'Hà Nội',	'Đà Nẵng',	1),
-('DM5',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	'Đà Nẵng',	'Hồ Chí Minh',	9),
-('DM6',	'2023-05-29',	'2023-06-03',	'15:00:00',	'18:00:00',	'Hà Nội',	'Đà Nẵng',	3),
-('DM7',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	'Đà Nẵng',	'Hồ Chí Minh',	8),
-('DM8',	'2023-05-25',	'2023-05-31',	'12:00:00',	'15:30:00',	'Đà Nẵng',	'Hà Nội',	9),
-('DM9',	'2023-05-25',	'2023-05-31',	'01:00:00',	'04:30:00',	'Đà Nẵng',	'Hà Nội',	2),
-('DM10','2023-05-25',	'2023-05-31',	'21:30:00',	'23:00:00',	'Đà Nẵng',	'Hà Nội',	2)
+values ('DM1' , '2023-05-25' , '2023-05-29' , '10:00' , '16:00' , N'Đà Nẵng' , N'Hồ Chí Minh', 3, 100),
+('DM2',	'2023-05-29',	'2023-06-03',	'07:00:00',	'19:00:00',	'Hà Nội',	'Đà Nẵng',	6, 100),
+('DM3',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	'Đà Nẵng',	'Hồ Chí Minh',	5, 100),
+('DM4',	'2023-07-02',	'2023-07-07',	'14:00:00',	'17:00:00',	'Hà Nội',	'Đà Nẵng',	1, 100),
+('DM5',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	'Đà Nẵng',	'Hồ Chí Minh',	9, 100),
+('DM6',	'2023-05-29',	'2023-06-03',	'15:00:00',	'18:00:00',	'Hà Nội',	'Đà Nẵng',	3, 100),
+('DM7',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	'Đà Nẵng',	'Hồ Chí Minh',	8, 100),
+('DM8',	'2023-05-25',	'2023-05-31',	'12:00:00',	'15:30:00',	'Đà Nẵng',	'Hà Nội',	9, 100),
+('DM9',	'2023-05-25',	'2023-05-31',	'01:00:00',	'04:30:00',	'Đà Nẵng',	'Hà Nội',	2, 100),
+('DM10','2023-05-25',	'2023-05-31',	'21:30:00',	'23:00:00',	'Đà Nẵng',	'Hà Nội',	2, 100)
+
 
 select UserID, Email, PassWord , Role
                     from Users
