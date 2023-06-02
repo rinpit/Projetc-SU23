@@ -137,3 +137,17 @@ values ('DM1' , '2023-05-25' , '2023-05-29' , '10:00' , '16:00' , N'Đà Nẵng'
 select UserID, Email, PassWord , Role
                     from Users
                     where Email = 'admin@123' and PassWord = '123456'
+
+-- Chạy thêm từ chỗ này là được --
+create table Luggage (
+	Luggage_ID varchar(20) primary key,
+	Luggage float,
+	Price float
+)
+
+ALTER TABLE Ticket
+ADD Luggage_ID varchar(20);
+
+ALTER TABLE Ticket
+ADD CONSTRAINT FK_Luggage
+FOREIGN KEY (Luggage_ID) REFERENCES Luggage(Luggage_ID);
