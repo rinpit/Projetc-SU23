@@ -126,6 +126,16 @@ values ('DM1' , '2023-05-25' , '2023-05-29' , '10:00' , '16:00' , N'Đà Nẵng'
 ('DM9',	'2023-05-25',	'2023-05-31',	'01:00:00',	'04:30:00',	N'Đà Nẵng',	N'Hà Nội',	2, 100),
 ('DM10','2023-05-25',	'2023-05-31',	'21:30:00',	'23:00:00',	N'Đà Nẵng',	N'Hà Nội',	2, 100)
 
+insert into TicketType (TicketType_ID, TicketType_Name,Seat_Begin,Seat_End) 
+values
+('TT1', 'Economic', 'A1', 'A20'),
+('TT2', 'Business', 'B1', 'B20')
+
+insert into Price(Price_ID, TicketType_ID,Unit_Price,StartDate,EndDate) 
+values
+('PR1', 'TT1', 500000, '2023-05-25', '2023-07-25'),
+('PR2', 'TT2', 1000000, '2023-05-25', '2023-07-25')
+
 
 select UserID, Email, PassWord , Role
                     from Users
