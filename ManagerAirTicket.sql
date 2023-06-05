@@ -47,6 +47,12 @@ Create table OrderTicket
 	constraint fk_tblPromotion foreign key (Promotion_ID) references Promotion(Promotion_ID),
 )
 
+CREATE TABLE Distance (
+	Distance_ID varchar(20) primary key,
+	Distance float,
+	Price float
+)
+
 CREATE TABLE Flight
 (
 	Flight_ID varchar(20) not null primary key,
@@ -57,7 +63,9 @@ CREATE TABLE Flight
 	Departure nVARCHAR(20),
 	Destination nVARCHAR(20),
 	Gate int,
-	Seats int
+	Seats int,
+	Distance_ID varchar(20),
+	constraint fk_tblDistance foreign key (Distance_ID) references Distance(Distance_ID)
 )
 
 CREATE TABLE TicketType 
