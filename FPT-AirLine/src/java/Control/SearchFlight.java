@@ -22,7 +22,6 @@ public class SearchFlight extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Format format = new Format();
 
-//        round-trip or one-way
         String selectFlight = request.getParameter("flight");
 
         String sdeparture = request.getParameter("departure");
@@ -35,25 +34,33 @@ public class SearchFlight extends HttpServlet {
         String sbaby = request.getParameter("baby");
 
         HttpSession session = request.getSession();
+        //Xóa session cũ khi gọi đến servlet
+        session.invalidate();
+        //Tạo session mới
+        session = request.getSession(true);
+
         session.setAttribute("FlightType", selectFlight);
         session.setAttribute("Departure", sdeparture);
         session.setAttribute("Destination", sdestination);
         session.setAttribute("StartDate", format.formatDate(sstartDate));
-        if(sendDate != null){
-            session.setAttribute("EndDate", format.formatDate(sendDate));
-        }
+
         session.setAttribute("adult", sadult);
         session.setAttribute("kid", skid);
         session.setAttribute("baby", sbaby);
 
         FlightDao flightDao = new FlightDao();
-        List<Flight> flights = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
+        List<Flight> flightsOne = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
+        request.setAttribute("listFlightOne", flightsOne);
+
+        if(sendDate != null){
+            session.setAttribute("EndDate", format.formatDate(sendDate));
+            List<Flight> flightsRound = flightDao.getListFlight(sendDate, sdestination, sdeparture);
+            request.setAttribute("listFlightRound", flightsRound);
+        }
+
         TicketDao ticketDao = new TicketDao();
         List<Ticket> tickets = ticketDao.getTickets();
-
-        request.setAttribute("listFlight", flights);
         request.setAttribute("listTicket", tickets);
-
         request.getRequestDispatcher("select-flights.jsp").forward(request, response);
     }
 
