@@ -87,13 +87,7 @@ Create table Passenger
 	Ticket_ID varchar(20) not null,
 	UserID varchar(20),
 	Passenger_Name nvarchar(50),
-	Gender char (1) check (Gender in ('F', 'M')),
 	Birthday date,
-	Phone varchar(20),
-	Address nvarchar(20),
-	Nationality nvarchar(20),
-	CCCD varchar(20),
-	Seat int
 	constraint pk_tblPassenger primary key (Passenger_ID, Ticket_ID),
 	constraint fk_tblPassenger1 foreign key (UserID) references Users(UserID),
 	constraint fk_tblPassenger2 foreign key (Ticket_ID) references Ticket(Ticket_ID)

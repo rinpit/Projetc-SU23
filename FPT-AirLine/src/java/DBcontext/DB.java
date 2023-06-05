@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class DB {
     public static Connection makeConnection() throws ClassNotFoundException {
         try {
-            String url = "jdbc:sqlserver://localhost:1433;" + "databaseName=ManagerAirTicket;encrypt=false";
+            String url = "jdbc:sqlserver://localhost:1433;" + "databaseName=ManagerTicket;encrypt=false";
             String username = "sa";
-            String password = "1234";
+            String password = "sa";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             System.out.println("Connected");
             return DriverManager.getConnection(url, username, password);
