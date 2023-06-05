@@ -27,6 +27,15 @@ Create table Bill
 	constraint fk_tblBill foreign key (UserID) references Users(UserID)
 )
 
+Create table Promotion
+(
+    Promotion_ID varchar(20) not null primary key,
+	Description varchar(50),
+	StartDate Datetime,
+	EndDate Datetime,
+	Amount Float
+)
+
 Create table OrderTicket 
 (
 	Order_ID varchar(20) not null primary key,
@@ -35,15 +44,7 @@ Create table OrderTicket
 	Promotion_ID varchar(20),
 	Tax float
 	constraint fk_tblOrderTicket foreign key (UserID) references Users(UserID),
-)
-
-Create table Promotion
-(
-    Promotion_ID varchar(20) not null primary key,
-	Description varchar(50),
-	StartDate Datetime,
-	EndDate Datetime,
-	Amount Float
+	constraint fk_tblPromotion foreign key (Promotion_ID) references Promotion(Promotion_ID),
 )
 
 CREATE TABLE Flight
@@ -71,12 +72,10 @@ CREATE TABLE Ticket
 (
     Ticket_ID varchar(20) not null primary key,
 	Order_ID varchar(20),
-	Promotion_ID varchar(20),
 	Flight_ID varchar(20),
 	Selects varchar(20),
 	TicketType_ID varchar(20),
 	constraint fk_tblTicket foreign key (Order_ID) references OrderTicket(Order_ID),
-	constraint fk_tblTicket1 foreign key (Promotion_ID) references Promotion(Promotion_ID),
 	constraint fk_tblTicket2 foreign key (Flight_ID) references Flight(Flight_ID),
 	constraint fk_tblTicket3 foreign key (TicketType_ID) references TicketType(TicketType_ID)
 )
