@@ -1,36 +1,41 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Model;
 
-import Controller.DBContext;
-import Controller.Format;
-
+import Control.Format;
+import DBcontext.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ *
+ * @author admin
+ */
 public class DistanceDAO {
     private List<Distance> distanceList = new ArrayList<>();
-
+    
     Connection connection;
     PreparedStatement statement;
     ResultSet resultSet;
 
     public DistanceDAO() {
         try {
-            connection = DBContext.getConnection();
+            connection = DB.makeConnection();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-
+    
     public List<Distance> getDistances(String startDate, String departure, String destination) {
         Format format = new Format();
         String query = "SELECT *\n" +
                 "FROM Flight as f, Distance\n" +
-                "WHERE f.Distance_ID = Distance.Distance_ID " +
+                "WHERE f.Distance_ID = Distance.Distance_ID " + 
                 "and f.StartDate = ? and f.Departure = ? and f.Destination = ?";
         try {
             statement = connection.prepareStatement(query);
@@ -49,5 +54,4 @@ public class DistanceDAO {
         }
         return distanceList;
     }
-
 }

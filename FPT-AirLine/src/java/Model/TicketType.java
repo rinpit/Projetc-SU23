@@ -4,7 +4,8 @@ public class TicketType {
     private String ticketTypeId;
     private String ticketType;
     private String ticketPrice;
-    private String ticketSum;
+    private String ticketSumAdult;
+    private String ticketSumKid;
 
     public TicketType() {
     }
@@ -46,12 +47,20 @@ public class TicketType {
         this.ticketPrice = ticketPrice;
     }
 
-    public String getTicketSum() {
-        return ticketSum;
+    public String getTicketSumAdult() {
+        return ticketSumAdult;
     }
 
-    public void setTicketSum(String ticketSum) {
-        this.ticketSum = ticketSum;
+    public void setTicketSumAdult(String ticketSumAdult) {
+        this.ticketSumAdult = ticketSumAdult;
+    }
+
+    public String getTicketSumKid() {
+        return ticketSumKid;
+    }
+
+    public void setTicketSumKid(String ticketSumKid) {
+        this.ticketSumKid = ticketSumKid;
     }
 
     @Override

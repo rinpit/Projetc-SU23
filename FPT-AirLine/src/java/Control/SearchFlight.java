@@ -1,6 +1,7 @@
-package Controller;
+package Control;
 
 import Model.*;
+import Model.FlightDAO;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -68,16 +69,16 @@ public class SearchFlight extends HttpServlet {
             float priceKid = Float.parseFloat(skid);
             float newPrice =  tickPrice + distances.get(0).getDistancePrice();
 //            Tính Tổng tiền vé
-            float sumAdult = priceAdult * newPrice;
-            float sumKid = priceKid * newPrice;
+            float sumAdult = Float.parseFloat("1.1") * priceAdult * newPrice;
+            float sumKid = Float.parseFloat("1.1") * priceKid * newPrice;
 //            Format tiền vé
             String Price = String.valueOf(newPrice);
             String PriceAdult = String.valueOf(sumAdult);
             String PriceKid = String.valueOf(sumKid);
 
             ticketType.setTicketPrice(format.formatPrice(Price));
-            ticketType.setTicketSum(format.formatPrice(PriceAdult));
-            System.out.println(ticketType.getTicketSum());
+            ticketType.setTicketSumAdult(format.formatPrice(PriceAdult));
+            ticketType.setTicketSumKid(format.formatPrice(PriceKid));
         }
         request.setAttribute("listTicket", ticketTypes);
 

@@ -104,15 +104,15 @@
 
                                         <tr>
                                             <td>Người lớn</td>
-                                            <td>${adult}</td>
+                                            <td class="numA">${adult}</td>
                                             <td><input class="price" type="text"
                                                        value="${listTicket.get(0).ticketPrice} VND"
                                                        style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                        disabled>
                                             </td>
-                                            <td></td>
-                                            <td><input class="price" type="text"
-                                                       value="${listTicket.get(0).ticketSum}VND"
+                                            <td>10%</td>
+                                            <td><input class="totalAdult" type="text"
+                                                       value="${listTicket.get(0).ticketSumAdult}VND"
                                                        style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                        disabled>
                                             </td>
@@ -122,13 +122,18 @@
                                         <c:if test="${kid > 0}">
                                             <tr>
                                                 <td>Trẻ em</td>
-                                                <td>${kid}</td>
+                                                <td class="numK">${kid}</td>
                                                 <td><input class="price" type="text"
                                                            value="${listTicket.get(0).ticketPrice} VND"
                                                            style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                            disabled></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>10%</td>
+                                                <td>
+                                                    <input class="totalKid" type="text"
+                                                       value="${listTicket.get(0).ticketSumKid}VND"
+                                                       style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
+                                                       disabled>
+                                                </td>
                                             </tr>
                                         </c:if>
                                         </tbody>
@@ -223,14 +228,17 @@
                                         <tbody>
                                         <tr>
                                             <td>Người lớn</td>
-                                            <td>${adult}</td>
+                                            <td class="numA">${adult}</td>
                                             <td><input class="price" type="text"
                                                        value="${listTicket.get(0).ticketPrice} VND"
                                                        style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                        disabled>
                                             </td>
                                             <td></td>
-                                            <td>
+                                            <td><input class="totalAdult" type="text"
+                                                       value="${listTicket.get(0).ticketSumAdult}VND"
+                                                       style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
+                                                       disabled>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -238,13 +246,18 @@
                                         <c:if test="${kid > 0}">
                                             <tr>
                                                 <td>Trẻ em</td>
-                                                <td>${kid}</td>
+                                                <td class="numK">${kid}</td>
                                                 <td><input class="price" type="text"
                                                            value="${listTicket.get(0).ticketPrice} VND"
                                                            style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                            disabled></td>
                                                 <td></td>
-                                                <td></td>
+                                                <td>
+                                                    <input class="totalKid" type="text"
+                                                       value="${listTicket.get(0).ticketSumKid}VND"
+                                                       style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
+                                                       disabled>
+                                                </td>
                                             </tr>
                                         </c:if>
                                         </tbody>

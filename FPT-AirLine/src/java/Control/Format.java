@@ -1,4 +1,4 @@
-package Controller;
+package Control;
 
 import java.sql.Time;
 import java.text.DateFormat;

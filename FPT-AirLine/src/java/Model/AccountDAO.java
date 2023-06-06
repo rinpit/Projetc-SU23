@@ -65,7 +65,7 @@ public class AccountDAO {
 
     public Account checkExist(String email) {
         ResultSet resultSet;
-        String q = "select * from Account\n"
+        String q = "select * from Users\n"
                 + "where [Email] = ?\n";
         try {
             PreparedStatement statement = connection.prepareStatement(q);
@@ -82,9 +82,4 @@ public class AccountDAO {
         return null;
     }
     
-    
-    public static void main(String[] args) {
-        AccountDAO ac = new AccountDAO();
-        System.out.println(ac.getAccount("admin@123", "123456"));
-    }
 }

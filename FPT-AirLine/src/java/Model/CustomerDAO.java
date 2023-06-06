@@ -26,17 +26,16 @@ public class CustomerDAO extends AccountDAO{
         }
     }
     
-    public void createCustomer(String email, String password, String role, String phone, String fullName) throws SQLException {
+    public void createCustomer(String email, String password, String role, String fullName) throws SQLException {
         String id = randomString();
-        String stmt = "insert into Users values" + " (?,?,?,?,'','',?,'','','',?)";
+        String stmt = "insert into Users values" + " (?,?,?,?,'','','','','','',?)";
 
         PreparedStatement ps = connection.prepareStatement(stmt);
         ps.setString(1, id);
         ps.setString(2, email);
         ps.setString(3, password);
         ps.setNString(4, fullName);
-        ps.setString(5, phone);
-        ps.setString(6, role);
+        ps.setString(5, role);
         ps.executeUpdate();
     }
 }
