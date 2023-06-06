@@ -154,3 +154,11 @@ ADD Luggage_ID varchar(20);
 ALTER TABLE Ticket
 ADD CONSTRAINT FK_Luggage
 FOREIGN KEY (Luggage_ID) REFERENCES Luggage(Luggage_ID);
+
+drop table Bill
+
+ALTER TABLE OrderTicket
+ADD TotalAmount float;
+
+ALTER TABLE Ticket
+DROP COLUMN Selects
