@@ -364,7 +364,7 @@
 
 
                         <c:forEach var="list" begin="1" end="2"><!-- trẻ em -->
-                            <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: : 150px; ";">
+                            <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px;">
                                 <tr>      
                                     <td colspan="1">
                                         <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Trẻ em ${list}</b>
@@ -386,7 +386,7 @@
                         </c:forEach>
 
                         <c:forEach var="list" begin="1" end="2"> <!-- trẻ sơ sinh -->
-                            <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: : 150px; background: #ffffff";">
+                            <table width="100%" cellpadding="0" cellspacing="0" style="padding-top:150px; background: #ffffff";">
                                 <tr>      
                                     <td colspan="1">
                                         <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Trẻ sơ sinh ${list}</b>
@@ -457,7 +457,7 @@
                                     <td colspan="5" style="color: #f44d06;font-size: 18px;font-weight: bold;">Chi tiết giá vé lượt đi</td>
                                 </tr>
                                 <tr>
-                                    <td><span>1 Người lớn</span></td>
+                                    <td><span>${adult} Người lớn</span></td>
                                     <td><b>X</b></td>
                                     <td style="text-align: right;">
                                         <b class="color-red">

@@ -1,45 +1,74 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Model;
 
+/**
+ *
+ * @author admin
+ */
 public class Ticket {
-    private String ticketId;
-    private String ticketType;
-    private String ticketPrice;
-
-    public Ticket(String ticketType, String ticketPrice) {
-        this.ticketType = ticketType;
-        this.ticketPrice = ticketPrice;
+    private String ticketID;
+    private String orderID;
+    private String flightID;
+    private String ticketTypeID;
+    private String luggageID;
+    
+    public Ticket() {
     }
 
-    public String getTicketId() {
-        return ticketId;
+    public Ticket(String ticketID, String orderID, String flightID, String ticketTypeID, String luggageID) {
+        this.ticketID = ticketID;
+        this.orderID = orderID;
+        this.flightID = flightID;
+        this.ticketTypeID = ticketTypeID;
+        this.luggageID = luggageID;
     }
 
-    public void setTicketId(String ticketId) {
-        this.ticketId = ticketId;
+    public String getTicketID() {
+        return ticketID;
     }
 
-    public String getTicketType() {
-        return ticketType;
+    public void setTicketID(String ticketID) {
+        this.ticketID = ticketID;
     }
 
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
+    public String getOrderID() {
+        return orderID;
     }
 
-    public String getTicketPrice() {
-        return ticketPrice;
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
     }
 
-    public void setTicketPrice(String ticketPrice) {
-        this.ticketPrice = ticketPrice;
+    public String getFlightID() {
+        return flightID;
+    }
+
+    public void setFlightID(String flightID) {
+        this.flightID = flightID;
+    }
+
+    public String getTicketTypeID() {
+        return ticketTypeID;
+    }
+
+    public void setTicketTypeID(String ticketTypeID) {
+        this.ticketTypeID = ticketTypeID;
+    }
+
+    public String getLuggageID() {
+        return luggageID;
+    }
+
+    public void setLuggageID(String luggageID) {
+        this.luggageID = luggageID;
     }
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "ticketId='" + ticketId + '\'' +
-                ", ticketType='" + ticketType + '\'' +
-                ", ticketPrice='" + ticketPrice + '\'' +
-                '}';
+        return "Ticket{" + "ticketID=" + ticketID + ", orderID=" + orderID + ", flightID=" + flightID + ", ticketTypeID=" + ticketTypeID + ", luggageID=" + luggageID + '}';
     }
+    
 }

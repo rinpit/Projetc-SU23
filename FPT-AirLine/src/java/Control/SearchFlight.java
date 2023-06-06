@@ -1,14 +1,17 @@
-package Controller;
+package Control;
 
+import Model.Distance;
+import Model.DistanceDAO;
 import Model.Flight;
 import Model.FlightDao;
-import Model.Ticket;
-import Model.TicketDao;
+import Model.TicketType;
+import Model.TicketTypeDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "SearchFlight", value = "/SearchFlight")
@@ -22,6 +25,7 @@ public class SearchFlight extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Format format = new Format();
 
+//        round-trip or one-way
         String selectFlight = request.getParameter("flight");
 
         String sdeparture = request.getParameter("departure");
@@ -34,33 +38,31 @@ public class SearchFlight extends HttpServlet {
         String sbaby = request.getParameter("baby");
 
         HttpSession session = request.getSession();
-        //Xóa session cũ khi gọi đến servlet
-        session.invalidate();
-        //Tạo session mới
-        session = request.getSession(true);
-
         session.setAttribute("FlightType", selectFlight);
         session.setAttribute("Departure", sdeparture);
         session.setAttribute("Destination", sdestination);
         session.setAttribute("StartDate", format.formatDate(sstartDate));
-
+        if(sendDate != null){
+            session.setAttribute("EndDate", format.formatDate(sendDate));
+        }
         session.setAttribute("adult", sadult);
         session.setAttribute("kid", skid);
         session.setAttribute("baby", sbaby);
 
         FlightDao flightDao = new FlightDao();
-        List<Flight> flightsOne = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
-        request.setAttribute("listFlightOne", flightsOne);
-
-        if(sendDate != null){
-            session.setAttribute("EndDate", format.formatDate(sendDate));
-            List<Flight> flightsRound = flightDao.getListFlight(sendDate, sdestination, sdeparture);
-            request.setAttribute("listFlightRound", flightsRound);
+        List<Flight> flights = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
+        TicketTypeDao ticketDao = new TicketTypeDao();
+        List<TicketType> ticketTypes = ticketDao.getTickets();
+        DistanceDAO distanceDAO = new DistanceDAO();
+        List<Distance> distances = distanceDAO.getDistances(sstartDate, sdeparture, sdestination);
+        for (TicketType ticketType : ticketTypes) {
+            float newPrice = ticketType.getTicketPrice() + distances.get(0).getDistancePrice();
+            ticketType.setTicketPrice(newPrice);
         }
 
-        TicketDao ticketDao = new TicketDao();
-        List<Ticket> tickets = ticketDao.getTickets();
-        request.setAttribute("listTicket", tickets);
+        request.setAttribute("listFlight", flights);
+        request.setAttribute("listTicket", ticketTypes);
+
         request.getRequestDispatcher("select-flights.jsp").forward(request, response);
     }
 
