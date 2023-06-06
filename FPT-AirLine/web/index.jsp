@@ -16,8 +16,8 @@
     <link href="access/Styles/jquery-ui-1.8.7.all.css" rel="stylesheet" type="text/css"/>
     <link href=access/Styles/SearchView.css rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="access/Scripts/jquery-1.7.1.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" type="text/css"/>
 </head>
+
 
 <body>
 <div id="header">
@@ -52,16 +52,14 @@
     <form class="form-flight" action="SearchFlight" method="post">
         <div class="container">
             <div class="MainColumn">
-                <script src="access/Scripts/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
-                <script type="text/javascript" src="access/Scripts/jquery/ui.datepicker.lunar.min.js"></script>
-                <script type="text/javascript" src='access/Scripts/SearchForm.js'></script>
+                <script src="access/Scripts/jquery-ui.js" type="text/javascript"></script>
                 <div class="SearchBox">
                     <h2 align="center">Đặt Vé Máy Bay</h2>
                     <div class="contentSearchBox">
                         <table width="100%">
                             <div align="center">
-                                <input name="flight" type="radio" value="1" onclick="undisable()" checked> Khu hoi
-                                <input name="flight" type="radio" value="2" onclick="disable()"> Mot Chieu
+                                <input name="flight" type="radio" value="1" onclick="undisable()" checked> Khứ hồi
+                                <input name="flight" type="radio" value="2" onclick="disable()"> Một chiều
                             </div>
                             <tr>
                                 <td colspan="2">
@@ -93,10 +91,10 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <span class="text">Start Date</span>
+                                    <span class="text">Ngày đi</span>
                                 </td>
                                 <td colspan="2">
-                                    <span>End Date</span>
+                                    <span>Ngày về</span>
                                 </td>
                             </tr>
                             <tr>
@@ -111,7 +109,7 @@
                                 <td width="33%">
                                     <label>
                                         <input name="endDate" id="datepicker2" width="276"
-                                               placeholder="YYYY-MM-DD" required/>
+                                               placeholder="YYYY-MM-DD"required/>
                                     </label>
                                 </td>
                             </tr>
@@ -119,19 +117,19 @@
                         <table width="100%" style="margin-top:10px;">
                             <tr>
                                 <td width="36%">
-                                    Adult
+                                    Người lớn
                                     <br/>
-                                    <span>(&gt;12 years old)</span>
+                                    <span>(&gt;12 tuổi)</span>
                                 </td>
                                 <td width="32%" va>
-                                    Kid
+                                    Trẻ em
                                     <br/>
-                                    <span>(2-11 years old)</span>
+                                    <span>(2-11 tuổi)</span>
                                 </td>
                                 <td width="32%">
-                                    Baby
+                                    Em bé
                                     <br/>
-                                    <span>(&lt;2 years old)</span>
+                                    <span>(&lt;2 tuổi)</span>
                                 </td>
                             </tr>
                             <tr>

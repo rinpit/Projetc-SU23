@@ -1,14 +1,12 @@
 package Controller;
 
-import Model.Flight;
-import Model.FlightDao;
-import Model.Ticket;
-import Model.TicketDao;
+import Model.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "SearchFlight", value = "/SearchFlight")
@@ -48,7 +46,7 @@ public class SearchFlight extends HttpServlet {
         session.setAttribute("kid", skid);
         session.setAttribute("baby", sbaby);
 
-        FlightDao flightDao = new FlightDao();
+        FlightDAO flightDao = new FlightDAO();
         List<Flight> flightsOne = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
         request.setAttribute("listFlightOne", flightsOne);
 
@@ -57,11 +55,35 @@ public class SearchFlight extends HttpServlet {
             List<Flight> flightsRound = flightDao.getListFlight(sendDate, sdestination, sdeparture);
             request.setAttribute("listFlightRound", flightsRound);
         }
+        TicketTypeDAO ticketDao = new TicketTypeDAO();
+        List<TicketType> ticketTypes = ticketDao.getTickets();
 
-        TicketDao ticketDao = new TicketDao();
-        List<Ticket> tickets = ticketDao.getTickets();
-        request.setAttribute("listTicket", tickets);
+        DistanceDAO distanceDAO = new DistanceDAO();
+        List<Distance> distances = distanceDAO.getDistances(sstartDate, sdeparture, sdestination);
+        List<TicketType> types = new ArrayList<>();
+
+        for (TicketType ticketType : ticketTypes) {
+            float tickPrice =Float.parseFloat(ticketType.getTicketPrice());
+            float priceAdult = Float.parseFloat(sadult);
+            float priceKid = Float.parseFloat(skid);
+            float newPrice =  tickPrice + distances.get(0).getDistancePrice();
+//            Tính Tổng tiền vé
+            float sumAdult = priceAdult * newPrice;
+            float sumKid = priceKid * newPrice;
+//            Format tiền vé
+            String Price = String.valueOf(newPrice);
+            String PriceAdult = String.valueOf(sumAdult);
+            String PriceKid = String.valueOf(sumKid);
+
+            ticketType.setTicketPrice(format.formatPrice(Price));
+            ticketType.setTicketSum(format.formatPrice(PriceAdult));
+            System.out.println(ticketType.getTicketSum());
+        }
+        request.setAttribute("listTicket", ticketTypes);
+
         request.getRequestDispatcher("select-flights.jsp").forward(request, response);
+
+
     }
 
 

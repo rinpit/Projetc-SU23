@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightDao {
+public class FlightDAO {
     Connection connection;
     PreparedStatement statement;
     ResultSet resultSet;
@@ -33,6 +33,8 @@ public class FlightDao {
 //                        , format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7));
 //                flights.add(flight);
 //            }
+
+
             //Only for IntelliJ
             while (resultSet.next()) {
                 Flight flight = new Flight(resultSet.getString(1), format.addTwoDays(format.formatDate(resultSet.getString(2))),
@@ -40,6 +42,8 @@ public class FlightDao {
                         , format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7));
                 flights.add(flight);
             }
+
+
             return flights;
         } catch (Exception e) {
             e.printStackTrace();

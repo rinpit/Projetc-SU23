@@ -8,18 +8,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-    <script type="text/javascript" src="access/jquery/jquery-3.6.0.min.js"></script>
 
     <!-- Search-Form -->
     <link href=access/Styles/reset-css.css rel="stylesheet" type="text/css"/>
     <link href="access/Styles/jquery-ui-1.8.7.all.css" rel="stylesheet" type="text/css"/>
     <link href=access/Styles/SearchView.css rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="access/Scripts/jquery-1.7.1.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" type="text/css"/>
+
 
     <title>Select Flight</title>
 </head>
-
 <body>
 <div class="container justify-content-around">
     <div class="row">
@@ -33,7 +30,7 @@
                     <br>
                     <a class="text-primary">Bay ngày: ${StartDate}</a>
                 </div>
-                <div class="col-sm-5 text-white" style="background-color: orange;">
+                <div class="col-sm-6 text-white" style="background-color: orange;">
                     <div><a>Bước 1: Chọn chuyến bay chiều đi</a></div>
                     <div><a>Bước 2: Chọn chuyến bay chiều về</a></div>
                     <div><a>Bước 3: Bấm vào nút Tiếp tục</a></div>
@@ -53,12 +50,11 @@
                         </thead>
                         <tbody>
                         <%--Bắt đầu tạo chuyến đi--%>
-
                         <c:forEach items="${listFlightOne}" var="p">
                         <tr class="table-info">
                             <td><a>${p.flightId}</a></td>
                             <td><strong>${p.startTime} - ${p.endTime} </strong></td>
-                            <td><input class="price" type="text" value="500,000 VND"
+                            <td><input class="price" type="text" value="${listTicket.get(0).ticketPrice} VND"
                                        style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                        disabled></td>
                             <td><a data-toggle="collapse" data-parent="#accordion" href="#${p.flightId}">Xem chi
@@ -105,15 +101,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                         <tr>
                                             <td>Người lớn</td>
                                             <td>${adult}</td>
-                                            <td><input class="price" type="text" value="500,000 VND"
+                                            <td><input class="price" type="text"
+                                                       value="${listTicket.get(0).ticketPrice} VND"
                                                        style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                        disabled>
                                             </td>
                                             <td></td>
-                                            <td></td>
+                                            <td><input class="price" type="text"
+                                                       value="${listTicket.get(0).ticketSum}VND"
+                                                       style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
+                                                       disabled>
+                                            </td>
                                         </tr>
                                         </tbody>
                                         <tbody>
@@ -121,7 +123,8 @@
                                             <tr>
                                                 <td>Trẻ em</td>
                                                 <td>${kid}</td>
-                                                <td><input class="price" type="text" value="500,000 VND"
+                                                <td><input class="price" type="text"
+                                                           value="${listTicket.get(0).ticketPrice} VND"
                                                            style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                            disabled></td>
                                                 <td></td>
@@ -150,119 +153,121 @@
             </div>
             <%-- ==================================================KHỨ HỒI=================================--%>
             <c:if test="${EndDate != null}">
-                <a class="text-danger">${Destination} đi ${Departure}</a>
-                <br>
-                <a class="text-primary">Bay ngày: ${EndDate}</a>
-                <div class="panel panel-default">
-                    <table class="search-result" style="width: 100%;">
-                        <div id="accordion1">
-                            <thead>
-                            <tr class="table-danger">
-                                <th scope="col">Mã chuyến bay &nbsp</th>
-                                <th scope="col">Thời gian</th>
-                                <th scope="col">Giá vé</th>
-                                <th scope="col">Thông tin chi tiết &nbsp</th>
-                                <th scope="col">Chọn chuyến</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <%--Bắt đầu tạo chuyến về--%>
-                            <c:forEach items="${listFlightRound}" var="l">
-                            <tr class="table-info">
-                                <td><a>${l.flightId}</a></td>
-                                <td><strong>${l.startTime} - ${l.endTime} </strong></td>
-                                <td><input class="price" type="text" value="500,000 VND"
-                                           style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
-                                           disabled></td>
-                                <td><a data-toggle="collapse" data-parent="#accordion1" href="#${l.flightId}">Xem chi
-                                    tiết
-                                    <i class="bi bi-plus-square"></i></a>
-                                </td>
-                                <td><input type="radio" name="choose-flight-round-trip"><label></label>Chọn</td>
-                            </tr>
-                            <tr class="table-success">
-                                <td colspan="12" class="hiddenRow">
-                                    <div class="accordion-body collapse" id="${l.flightId}">
-                                        <table class="table table-striped">
-                                            <thead>
+            <a class="text-danger">${Destination} đi ${Departure}</a>
+            <br>
+            <a class="text-primary">Bay ngày: ${EndDate}</a>
+            <div class="panel panel-default">
+                <table class="search-result" style="width: 100%;">
+                    <div id="accordion1">
+                        <thead>
+                        <tr class="table-danger">
+                            <th scope="col">Mã chuyến bay &nbsp</th>
+                            <th scope="col">Thời gian</th>
+                            <th scope="col">Giá vé</th>
+                            <th scope="col">Thông tin chi tiết &nbsp</th>
+                            <th scope="col">Chọn chuyến</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <%--Bắt đầu tạo chuyến về--%>
+                        <c:forEach items="${listFlightRound}" var="l">
+                        <tr class="table-info">
+                            <td><a>${l.flightId}</a></td>
+                            <td><strong>${l.startTime} - ${l.endTime} </strong></td>
+                            <td><input class="price" type="text" value="${listTicket.get(0).ticketPrice} VND"
+                                       style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
+                                       disabled></td>
+                            <td><a data-toggle="collapse" data-parent="#accordion1" href="#${l.flightId}">Xem chi
+                                tiết
+                                <i class="bi bi-plus-square"></i></a>
+                            </td>
+                            <td><input type="radio" name="choose-flight-round-trip"><label></label>Chọn</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td colspan="12" class="hiddenRow">
+                                <div class="accordion-body collapse" id="${l.flightId}">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Điểm đi</th>
+                                            <th>Điểm đến</th>
+                                            <th>Thời gian đi</th>
+                                            <th>Thời gian đến</th>
+                                            <th>Loại vé</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>${l.departure}</td>
+                                            <td>${l.destination}</td>
+                                            <td>${l.startTime},${l.startDate}</td>
+                                            <td>${l.endTime},${l.endDate}</td>
+                                            <td><select
+                                                    style="background-color: rgb(65, 225, 225); border-radius: 50px; "
+                                                    onchange="getValue(this)">
+                                                <c:forEach items="${listTicket}" var="f">
+                                                    <option value="${f.ticketPrice} VND">${f.ticketType}</option>
+                                                </c:forEach>
+                                            </select></td>
+                                        </tr>
+                                        </tbody>
+                                        <thead>
+                                        <tr>
+                                            <th>Hành khách</th>
+                                            <th>Số lượng vé</th>
+                                            <th>Giá mỗi vé</th>
+                                            <th>VAT</th>
+                                            <th>Tổng giá</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Người lớn</td>
+                                            <td>${adult}</td>
+                                            <td><input class="price" type="text"
+                                                       value="${listTicket.get(0).ticketPrice} VND"
+                                                       style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
+                                                       disabled>
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tbody>
+                                        <c:if test="${kid > 0}">
                                             <tr>
-                                                <th>Điểm đi</th>
-                                                <th>Điểm đến</th>
-                                                <th>Thời gian đi</th>
-                                                <th>Thời gian đến</th>
-                                                <th>Loại vé</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>${l.departure}</td>
-                                                <td>${l.destination}</td>
-                                                <td>${l.startTime},${l.startDate}</td>
-                                                <td>${l.endTime},${l.endDate}</td>
-                                                <td><select
-                                                        style="background-color: rgb(65, 225, 225); border-radius: 50px; "
-                                                        onchange="getValue(this)">
-                                                    <c:forEach items="${listTicket}" var="f">
-                                                        <option value="${f.ticketPrice} VND">${f.ticketType}</option>
-                                                    </c:forEach>
-                                                </select></td>
-                                            </tr>
-                                            </tbody>
-                                            <thead>
-                                            <tr>
-                                                <th>Hành khách</th>
-                                                <th>Số lượng vé</th>
-                                                <th>Giá mỗi vé</th>
-                                                <th>VAT</th>
-                                                <th>Tổng giá</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>Người lớn</td>
-                                                <td>${adult}</td>
-                                                <td><input class="price" type="text" value="500,000 VND"
+                                                <td>Trẻ em</td>
+                                                <td>${kid}</td>
+                                                <td><input class="price" type="text"
+                                                           value="${listTicket.get(0).ticketPrice} VND"
                                                            style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
-                                                           disabled>
-                                                </td>
+                                                           disabled></td>
                                                 <td></td>
                                                 <td></td>
                                             </tr>
-                                            </tbody>
-                                            <tbody>
-                                            <c:if test="${kid > 0}">
-                                                <tr>
-                                                    <td>Trẻ em</td>
-                                                    <td>${kid}</td>
-                                                    <td><input class="price" type="text" value="500,000 VND"
-                                                               style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
-                                                               disabled></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </c:if>
-                                            </tbody>
-                                            <tbody>
-                                            <c:if test="${baby > 0}">
-                                                <tr>
-                                                    <td>Trẻ sơ sinh</td>
-                                                    <td>${baby}</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </c:if>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </td>
-                                </c:forEach>
-                                    <%--Kết thúc chuyến về--%>
-                        </div>
-                    </table>
-                </div>
-            </c:if>
-
+                                        </c:if>
+                                        </tbody>
+                                        <tbody>
+                                        <c:if test="${baby > 0}">
+                                            <tr>
+                                                <td>Trẻ sơ sinh</td>
+                                                <td>${baby}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </c:if>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            </c:forEach>
+                            </c:if>
+                            <%--Kết thúc chuyến về--%>
+                    </div>
+                </table>
+            </div>
             <div class="submit-flight float-right">
                 <button href="#" type="button" class="btn btn-primary">Submit</button>
             </div>
@@ -280,31 +285,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script>
-    function myFunction(e) {
-        document.getElementById("${p.flightId}").value = e.target.value
-    }
-
-    var date = $('#datepicker1').datepicker({dateFormat: 'yy-mm-dd'}).val();
-    var date = $('#datepicker2').datepicker({dateFormat: 'yy-mm-dd'}).val();
-
-    function getValue(selectObject) {
-        var someValue = selectObject.value;
-        var inputs = document.getElementsByClassName("price");
-
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value = someValue;
-        }
-    }
-
-    function undisable() {
-        document.getElementById("datepicker2").disabled = false;
-    }
-
-    function resetDate() {
-        document.getElementById("datepicker2").reset();
-    }
-
-</script>
-<script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+<script src="access/js/select-flights.js"></script>
 </html>
