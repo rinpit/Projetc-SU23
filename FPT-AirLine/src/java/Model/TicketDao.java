@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.DBContext;
+import DBcontext.DB;
 import Controller.Format;
 
 import java.sql.Connection;
@@ -24,7 +24,7 @@ public class TicketDao {
                 "INNER JOIN Price\n" +
                 "ON TicketType.TicketType_ID = Price.TicketType_ID;";
         try {
-            connection = new DBContext().getConnection();
+            connection = new DB().makeConnection();
             statement = connection.prepareStatement(query);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {

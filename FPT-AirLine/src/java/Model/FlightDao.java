@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.DBContext;
+import DBcontext.DB;
 import Controller.Format;
 
 import java.sql.Connection;
@@ -21,25 +21,25 @@ public class FlightDao {
         Format format = new Format();
         String query = "select * from Flight where StartDate = ? and Departure = ? and Destination = ?";
         try {
-            connection = new DBContext().getConnection();
+            connection = new DB().makeConnection();
             statement = connection.prepareStatement(query);
             statement.setString(1, date);
             statement.setString(2, departure);
             statement.setString(3, destination);
             resultSet = statement.executeQuery();
-//            while (resultSet.next()) {
-//                Flight flight = new Flight(resultSet.getString(1), format.formatDate(resultSet.getString(2)),
-//                        format.formatDate(resultSet.getString(3)), format.formatTime(resultSet.getString(4))
-//                        , format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7));
-//                flights.add(flight);
-//            }
-            //Only for IntelliJ
             while (resultSet.next()) {
-                Flight flight = new Flight(resultSet.getString(1), format.addTwoDays(format.formatDate(resultSet.getString(2))),
-                        format.addTwoDays(format.formatDate(resultSet.getString(3))), format.formatTime(resultSet.getString(4))
+                Flight flight = new Flight(resultSet.getString(1), format.formatDate(resultSet.getString(2)),
+                        format.formatDate(resultSet.getString(3)), format.formatTime(resultSet.getString(4))
                         , format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7));
                 flights.add(flight);
             }
+            //Only for IntelliJ
+//            while (resultSet.next()) {
+//                Flight flight = new Flight(resultSet.getString(1), format.addTwoDays(format.formatDate(resultSet.getString(2))),
+//                        format.addTwoDays(format.formatDate(resultSet.getString(3))), format.formatTime(resultSet.getString(4))
+//                        , format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7));
+//                flights.add(flight);
+//            }
             return flights;
         } catch (Exception e) {
             e.printStackTrace();

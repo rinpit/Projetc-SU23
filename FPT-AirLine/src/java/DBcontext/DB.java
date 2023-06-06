@@ -25,12 +25,12 @@ public class DB {
         }
     }
 
-    public static void main(String[] args) {
-        FlightDao flightDao = new FlightDao();
-        //ArrayList<Flight> flights = new ArrayList<>();
-        ArrayList<Flight> flights = (ArrayList<Flight>) flightDao.getListFlightRoundTrip("2023-05-24", "2023-05-25", "Da Nang", "Ho Chi Minh");
-        for (Flight flight : flights) {
-            System.out.println(flight);
-        }
-    }
+//    public static void main(String[] args) {
+//        FlightDao flightDao = new FlightDao();
+//        //ArrayList<Flight> flights = new ArrayList<>();
+//        ArrayList<Flight> flights = (ArrayList<Flight>) flightDao.getListFlightRoundTrip("2023-05-24", "2023-05-25", "Da Nang", "Ho Chi Minh");
+//        for (Flight flight : flights) {
+//            System.out.println(flight);
+//        }
+//    }
 }
