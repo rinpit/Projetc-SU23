@@ -1,7 +1,7 @@
 package Model;
 
 import DBcontext.DB;
-import Controller.Format;
+import Control.Format;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,21 +9,21 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightDao {
+public class FlightDAO {
     Connection connection;
     PreparedStatement statement;
     ResultSet resultSet;
 
     List<Flight> flights;
 
-    public List<Flight> getListFlight(String date, String departure, String destination) {
+    public List<Flight> getListFlight(String startDate, String departure, String destination) {
         flights = new ArrayList<>();
         Format format = new Format();
         String query = "select * from Flight where StartDate = ? and Departure = ? and Destination = ?";
         try {
             connection = new DB().makeConnection();
             statement = connection.prepareStatement(query);
-            statement.setString(1, date);
+            statement.setString(1, startDate);
             statement.setString(2, departure);
             statement.setString(3, destination);
             resultSet = statement.executeQuery();

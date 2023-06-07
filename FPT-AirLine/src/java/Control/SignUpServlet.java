@@ -29,20 +29,19 @@ public class SignUpServlet extends HttpServlet {
         CustomerDAO cusDao = new CustomerDAO();
         String fullName = request.getParameter("fullName");
         String password = request.getParameter("pass");
-        String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         Account acc = cusDao.checkExist(email);
         if (acc == null) {
-            System.out.println("User is null");
             try {
-                cusDao.createCustomer(email, password,"Customer", phone, fullName);
+                cusDao.createCustomer(email, password,"Customer", fullName);
+                request.setAttribute("mess1", "Success");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
                 requestDispatcher.forward(request, response);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         } else {
-            request.setAttribute("mess1", "Account already exists");
+            request.setAttribute("mess1", "Exist");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }

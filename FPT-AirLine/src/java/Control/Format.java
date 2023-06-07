@@ -1,4 +1,4 @@
-package Controller;
+package Control;
 
 import java.sql.Time;
 import java.text.DateFormat;
@@ -35,18 +35,18 @@ public class Format {
     }
 
 // Only for IntelliJ
-//    public String addTwoDays(String sdate) {
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//        Calendar cal = Calendar.getInstance();
-//        try {
-//            cal.setTime(sdf.parse(sdate));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        cal.add(Calendar.DAY_OF_MONTH, 2);
-//        String dateAfter = sdf.format(cal.getTime());
-//        return dateAfter;
-//    }
+    public String addTwoDays(String sdate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        try {
+            cal.setTime(sdf.parse(sdate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        cal.add(Calendar.DAY_OF_MONTH, 2);
+        String dateAfter = sdf.format(cal.getTime());
+        return dateAfter;
+    }
 
     public String formatPrice(String price) {
         String c = ",";
