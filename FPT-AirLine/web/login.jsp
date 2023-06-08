@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    <%@include file="header.jsp" %>
+<%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +15,7 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="./access/css/login.css"/>
     </head>
-    
+
 
     <body>
         <p class="tip">Click on button in image container</p>
@@ -38,7 +38,7 @@
                         <label for="check" class="remember">Ghi nhớ đăng nhập</label>
                     </div>
                     <label>
-<!--                        <a class="forgot-pass" href="forgot.jsp">Quên mật khẩu?</a>-->
+                        <!--                        <a class="forgot-pass" href="forgot.jsp">Quên mật khẩu?</a>-->
                         <p class="text-danger">${mess}</p>
                     </label>
                     <button type="submit" class="submit">Đăng nhập</button>
@@ -81,11 +81,8 @@
                             <span>Nhập lại mật khẩu</span>
                             <input id="password_confirmation" type="password" name="password_confirmation"/>
                             <span class="form-message"></span>
-                            
+
                         </label>
-                        <lable>
-                            <p class="text-danger">${mess1}</p>
-                        </lable>
                         <button type="submit" class="submit">Đăng ký</button>
                     </div>
                 </form>
@@ -94,7 +91,18 @@
         <script src="./access/js/login.js"></script>
         <script src="./access/js/validator.js"></script>
         <script>
-            // Mong muốn của chúng ta
+            //Alert
+            function displayErrorMessage(mess) {
+                if (mess === "Exist") {
+                    alert("Tài khoản đã tồn tại");
+                } else if (mess === "Success") {
+                    alert("Đăng ký tài khoản thành công");
+                }
+            }
+            
+            displayErrorMessage("${mess1}")
+            
+            // Validate
             Validator({
                 form: '#register-form',
                 formGroupSelector: '.form-group',

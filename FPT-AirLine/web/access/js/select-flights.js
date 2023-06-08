@@ -6,31 +6,36 @@ var date = $('#datepicker1').datepicker({dateFormat: 'yy-mm-dd'}).val();
 var date = $('#datepicker2').datepicker({dateFormat: 'yy-mm-dd'}).val();
 
 function getValue(selectObject) {
+    var selectedIndex = selectObject.selectedIndex;
+    var selectedOption = selectObject.options[selectedIndex];
+    var selectedClass = selectedOption.className;
+    var typePrice = selectedClass.substring(0, 9).split(",").join('');
     var numA = document.getElementsByClassName("numA");
     var numK = document.getElementsByClassName("numK");
     var numberAdult = numA[0].innerText;
-    var numberKid = numK[0].innerText;
-    var someValue = selectObject.value;
-    var typePrice = someValue.substring(0,9).split(",").join('');
-    var totalAdult = 1.1 * numberAdult * typePrice;
-    var totalKid = 1.1 * numberKid * typePrice;
-    var totalAdultS = parseInt(totalAdult, 10).toLocaleString() + " VND";
-    var totalKidS = parseInt(totalKid, 10).toLocaleString() + " VND";
-    var inputs = document.getElementsByClassName("price");
-    var totalA = document.getElementsByClassName("totalAdult");
-    var totalK = document.getElementsByClassName("totalKid");
-
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].value = someValue;
+    if (numK.length > 0) {
+        var numberKid = numK[0].innerText;
+        var totalKid = 1.1 * numberKid * typePrice;
+        var totalKidS = parseInt(totalKid, 10).toLocaleString() + " VND";
+        var totalK = document.getElementsByClassName("totalKid");
+        for (let i = 0; i < totalK.length; i++) {
+            totalK[i].value = totalKidS;
+        }
     }
     
+    var totalAdult = 1.1 * numberAdult * typePrice;
+    var totalAdultS = parseInt(totalAdult, 10).toLocaleString() + " VND";
+    var inputs = document.getElementsByClassName("price");
+    var totalA = document.getElementsByClassName("totalAdult");
+
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = selectedClass;
+    }
+
     for (let i = 0; i < totalA.length; i++) {
         totalA[i].value = totalAdultS;
     }
-    
-    for (let i = 0; i < totalK.length; i++) {
-        totalK[i].value = totalKidS;
-    }
+
 }
 
 function undisable() {

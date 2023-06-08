@@ -42,8 +42,9 @@ public class LoginServlet extends HttpServlet {
         ArrayList<Account> accounts = dao.getAccount(email, password);
         if (!accounts.isEmpty()) {
             String userID = accounts.get(0).getAccID();
-            HttpSession session = request.getSession();
-            session.setAttribute("userID", userID);
+            HttpSession sessionFlight = request.getSession();
+            HttpSession sessionUser = request.getSession();
+            sessionUser.setAttribute("userID", userID);
             if (remember != null) {
                 Cookie e = new Cookie("emailC", email);
                 e.setMaxAge(60 * 15);

@@ -12,6 +12,7 @@ import java.util.List;
 
 @WebServlet(name = "SearchFlight", value = "/SearchFlight")
 public class SearchFlight extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -33,11 +34,13 @@ public class SearchFlight extends HttpServlet {
         String sbaby = request.getParameter("baby");
 
         HttpSession session = request.getSession();
+        String userIDSession = (String) session.getAttribute("userID");
         //Xóa session cũ khi gọi đến servlet
         session.invalidate();
         //Tạo session mới
         session = request.getSession(true);
-
+        
+        session.setAttribute("userID", userIDSession);
         session.setAttribute("FlightType", selectFlight);
         session.setAttribute("Departure", sdeparture);
         session.setAttribute("Destination", sdestination);
@@ -51,7 +54,7 @@ public class SearchFlight extends HttpServlet {
         List<Flight> flightsOne = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
         request.setAttribute("listFlightOne", flightsOne);
 
-        if(sendDate != null){
+        if (sendDate != null) {
             session.setAttribute("EndDate", format.formatDate(sendDate));
             List<Flight> flightsRound = flightDao.getListFlight(sendDate, sdestination, sdeparture);
             request.setAttribute("listFlightRound", flightsRound);
@@ -61,31 +64,29 @@ public class SearchFlight extends HttpServlet {
 
         DistanceDAO distanceDAO = new DistanceDAO();
         List<Distance> distances = distanceDAO.getDistances(sstartDate, sdeparture, sdestination);
-        List<TicketType> types = new ArrayList<>();
-
-        for (TicketType ticketType : ticketTypes) {
-            float tickPrice =Float.parseFloat(ticketType.getTicketPrice());
-            float priceAdult = Float.parseFloat(sadult);
-            float priceKid = Float.parseFloat(skid);
-            float newPrice =  tickPrice + distances.get(0).getDistancePrice();
+        if (distances != null) {
+            for (TicketType ticketType : ticketTypes) {
+                float tickPrice = Float.parseFloat(ticketType.getTicketPrice());
+                float priceAdult = Float.parseFloat(sadult);
+                float priceKid = Float.parseFloat(skid);
+                float newPrice = tickPrice + distances.get(0).getDistancePrice();
 //            Tính Tổng tiền vé
-            float sumAdult = Float.parseFloat("1.1") * priceAdult * newPrice;
-            float sumKid = Float.parseFloat("1.1") * priceKid * newPrice;
+                float sumAdult = Float.parseFloat("1.1") * priceAdult * newPrice;
+                float sumKid = Float.parseFloat("1.1") * priceKid * newPrice;
 //            Format tiền vé
-            String Price = String.valueOf(newPrice);
-            String PriceAdult = String.valueOf(sumAdult);
-            String PriceKid = String.valueOf(sumKid);
+                String Price = String.valueOf(newPrice);
+                String PriceAdult = String.valueOf(sumAdult);
+                String PriceKid = String.valueOf(sumKid);
 
-            ticketType.setTicketPrice(format.formatPrice(Price));
-            ticketType.setTicketSumAdult(format.formatPrice(PriceAdult));
-            ticketType.setTicketSumKid(format.formatPrice(PriceKid));
+                ticketType.setTicketPrice(format.formatPrice(Price));
+                ticketType.setTicketSumAdult(format.formatPrice(PriceAdult));
+                ticketType.setTicketSumKid(format.formatPrice(PriceKid));
+            }
         }
         request.setAttribute("listTicket", ticketTypes);
 
         request.getRequestDispatcher("select-flights.jsp").forward(request, response);
 
-
     }
-
 
 }

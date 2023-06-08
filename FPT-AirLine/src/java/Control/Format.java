@@ -28,7 +28,6 @@ public class Format {
         return stdate;
     }
 
-
     public String formatTime(String stime) {
         String time = stime.substring(0, 5);
         return time;
@@ -50,11 +49,14 @@ public class Format {
 
     public String formatPrice(String price) {
         String c = ",";
-        price = price.substring(0, price.length() - 2);
-        if(price.length() == 6){
-            price = price.substring(0, 3) + c + price.substring(3, price.length());
-        }else {
-            price = price.charAt(0) + c + price.substring(1, 4) + c + price.substring(4, price.length());
+        int l = price.length();
+        if (l >= 4) {
+            price = price.substring(0, price.length() - 2);
+            if (price.length() == 6) {
+                price = price.substring(0, 3) + c + price.substring(3, price.length());
+            } else {
+                price = price.charAt(0) + c + price.substring(1, 4) + c + price.substring(4, price.length());
+            }
         }
         return price;
     }

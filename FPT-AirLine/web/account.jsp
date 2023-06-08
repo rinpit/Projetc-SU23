@@ -25,7 +25,7 @@
                                         <div class="col-12 col-lg-9 title"> Tài khoản của tôi</div>
                                     </div>
                                 </a></div>
-                            <div class="col-6 col-lg-12"><a href="http://localhost:9999/FPT-AirLine/PersonalServlet">
+                            <div class="col-6 col-lg-12"><a href="PersonalServlet">
                                     <div class="row">
                                         <div class="col-12 col-lg-3"><i class="fas fa-id-badge"></i></div>
                                         <div class="col-12 col-lg-9 title"> Thông tin cá nhân</div>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="row custom-card-item">
                             <div class="col-4"></div>
-                            <div class="col-8 custom-information"><a href="http://localhost:9999/FPT-AirLine/UpdatePasswordServlet"><i class="fas fa-edit fa-fw"></i><span class="title"> Đổi mã pin</span></a></div>
+                            <div class="col-8 custom-information"><a href="UpdatePasswordServlet"><i class="fas fa-edit fa-fw"></i><span class="title"> Đổi mã pin</span></a></div>
                         </div>
                     </div>
                 </div>
