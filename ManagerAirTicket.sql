@@ -152,6 +152,16 @@ values
 ('PR1', 'TT1', 500000, '2023-05-25', '2023-07-25'),
 ('PR2', 'TT2', 1000000, '2023-05-25', '2023-07-25')
 
+--Thêm hành lý
+alter table Luggage
+alter column Luggage varchar(50)
+
+INSERT INTO Luggage 
+values ('L0', '0 Kg', 0),
+('L2', '20 Kg', 200000),
+('L3', '30 Kg', 300000),
+('L4', '40 Kg', 400000),
+('L5', '50 Kg', 500000)
 
 select UserID, Email, PassWord , Role
                     from Users
