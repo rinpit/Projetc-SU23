@@ -98,6 +98,7 @@ Create table Passenger
 	UserID varchar(20),
 	Passenger_Name nvarchar(50),
 	Birthday date,
+	CCCD varchar(20),
 	constraint pk_tblPassenger primary key (Passenger_ID, Ticket_ID),
 	constraint fk_tblPassenger1 foreign key (UserID) references Users(UserID),
 	constraint fk_tblPassenger2 foreign key (Ticket_ID) references Ticket(Ticket_ID)
