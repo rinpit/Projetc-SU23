@@ -259,32 +259,28 @@
                                             </td>
                                             <td>
                                                 <!-- người lớn -->
-                                                <c:forEach var="list" begin="1" end="2"> 
+                                                <c:forEach var="list" begin="1" end="${adult}"> 
                                                     <p>
                                                         <span>hành khách thứ ${list}</span>
-                                                        <select>
-                                                            <option value="0">Không mang hành lý</option>
-                                                            <option value="200000">Thêm 20Kg hành lý (200,000 VND)</option>
-                                                            <option value="300000">Thêm 30Kg hành lý (300,000 VND)</option>
-                                                            <option value="400000">Thêm 40Kg hành lý (400,000 VND)</option>
-                                                            <option value="500000">Thêm 50Kg hành lý (500,000 VND)</option>
-                                                            <option value="600000">Thêm 60Kg hành lý (600,000 VND)</option>
-                                                            <option value="700000">Thêm 70Kg hành lý (700,000 VND)</option>
+                                                        <select name="luggageGoA<c:out value="${list}"/>" class="luggageGo" onchange="AddLuggage('luggageGo', 'infoticketGO'); CaculateTotalPrice('infoticketGO', 'infoticketBack')">
+                                                            <option data="0" value="L0">Không mang hành lý</option>
+                                                            <option data="200000" value="L2">Thêm 20Kg hành lý (200,000 VND)</option>
+                                                            <option data="300000" value="L3">Thêm 30Kg hành lý (300,000 VND)</option>
+                                                            <option data="400000" value="L4">Thêm 40Kg hành lý (400,000 VND)</option>
+                                                            <option data="500000" value="L5">Thêm 50Kg hành lý (500,000 VND)</option>
                                                         </select>
                                                     </p>
                                                 </c:forEach>
                                                 <!-- trẻ em -->
-                                                <c:forEach var="list" begin="1" end="2"> 
+                                                <c:forEach var="list" begin="1" end="${kid}"> 
                                                     <p>
                                                         <span style="margin-right: 35px">trẻ em thứ ${list}</span>
-                                                        <select>
-                                                            <option value="0">Không mang hành lý</option>
-                                                            <option value="200000">Thêm 20Kg hành lý (200,000 VND)</option>
-                                                            <option value="300000">Thêm 30Kg hành lý (300,000 VND)</option>
-                                                            <option value="400000">Thêm 40Kg hành lý (400,000 VND)</option>
-                                                            <option value="500000">Thêm 50Kg hành lý (500,000 VND)</option>
-                                                            <option value="600000">Thêm 60Kg hành lý (600,000 VND)</option>
-                                                            <option value="700000">Thêm 70Kg hành lý (700,000 VND)</option>
+                                                        <select name="luggageGoK<c:out value="${list}"/>" class="luggageGo" onchange="AddLuggage('luggageGo', 'infoticketGO'); CaculateTotalPrice('infoticketGO', 'infoticketBack')">
+                                                            <option data="0" value="L0">Không mang hành lý</option>
+                                                            <option data="200000" value="L2">Thêm 20Kg hành lý (200,000 VND)</option>
+                                                            <option data="300000" value="L3">Thêm 30Kg hành lý (300,000 VND)</option>
+                                                            <option data="400000" value="L4">Thêm 40Kg hành lý (400,000 VND)</option>
+                                                            <option data="500000" value="L5">Thêm 50Kg hành lý (500,000 VND)</option>
                                                         </select>
                                                     </p>
                                                 </c:forEach>
@@ -302,14 +298,12 @@
                                                 <c:forEach var="list" begin="1" end="${adult}"> 
                                                     <p>
                                                         <span>hành khách thứ ${list}</span>
-                                                        <select class="luggageA">
-                                                            <option value="0">Không mang hành lý</option>
-                                                            <option value="200000">Thêm 20Kg hành lý (0 VND)</option>
-                                                            <option value="300000">Thêm 30Kg hành lý (300,000 VND)</option>
-                                                            <option value="400000">Thêm 40Kg hành lý (400,000 VND)</option>
-                                                            <option value="500000">Thêm 50Kg hành lý (500,000 VND)</option>
-                                                            <option value="600000">Thêm 60Kg hành lý (600,000 VND)</option>
-                                                            <option value="700000">Thêm 70Kg hành lý (700,000 VND)</option>
+                                                        <select name="luggageBackA<c:out value="${list}"/>" class="luggageBack" onchange="AddLuggage('luggageBack', 'infoticketBack'); CaculateTotalPrice('infoticketGO', 'infoticketBack')">
+                                                            <option data="0" value="L0">Không mang hành lý</option>
+                                                            <option data="200000" value="L2">Thêm 20Kg hành lý (200,000 VND)</option>
+                                                            <option data="300000" value="L3">Thêm 30Kg hành lý (300,000 VND)</option>
+                                                            <option data="400000" value="L4">Thêm 40Kg hành lý (400,000 VND)</option>
+                                                            <option data="500000" value="L5">Thêm 50Kg hành lý (500,000 VND)</option>
                                                         </select>
                                                     </p>
                                                 </c:forEach>
@@ -317,14 +311,12 @@
                                                 <c:forEach var="list" begin="1" end="${kid}"> 
                                                     <p>
                                                         <span style="margin-right: 35px">trẻ em thứ ${list}</span>
-                                                        <select class="luggageK">
-                                                            <option value="0">Không mang hành lý</option>
-                                                            <option value="200000">Thêm 20Kg hành lý (200,000 VND)</option>
-                                                            <option value="300000">Thêm 30Kg hành lý (300,000 VND)</option>
-                                                            <option value="400000">Thêm 40Kg hành lý (400,000 VND)</option>
-                                                            <option value="500000">Thêm 50Kg hành lý (500,000 VND)</option>
-                                                            <option value="600000">Thêm 60Kg hành lý (600,000 VND)</option>
-                                                            <option value="700000">Thêm 70Kg hành lý (700,000 VND)</option>
+                                                        <select name="luggageBackK<c:out value="${list}"/>" class="luggageBack" onchange="AddLuggage('luggageBack', 'infoticketBack'); CaculateTotalPrice('infoticketGO', 'infoticketBack')">
+                                                            <option data="0" value="L0">Không mang hành lý</option>
+                                                            <option data="200000" value="L2">Thêm 20Kg hành lý (200,000 VND)</option>
+                                                            <option data="300000" value="L3">Thêm 30Kg hành lý (300,000 VND)</option>
+                                                            <option data="400000" value="L4">Thêm 40Kg hành lý (400,000 VND)</option>
+                                                            <option data="500000" value="L5">Thêm 50Kg hành lý (500,000 VND)</option>
                                                         </select>
                                                     </p>
                                                 </c:forEach>
@@ -334,136 +326,126 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="heading-h3">
+                                <h3>
+                                    <span>Thông tin hành khách</span>
+                                </h3>
+                            </div>
+                            <c:forEach var="list" begin="1" end="${adult}"><!-- người lớn -->
+                                <c:set var="aNum" value="${list}"/>
+                                <table width="100%" cellpadding="0" cellspacing="0" style="padding: 15px; background: #ffffff";">
+                                    <tr>      
+                                        <td colspan="1">
+                                            <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Người lớn ${list}</b>
+                                        </td>
+                                        <td colspan="2">
+                                            <p><input type="text" style="width: 270px" name="nameAdult<c:out value="${aNum}"/>"></p>
+                                        </td>
 
-                            <<form action="orderServlet" method="post">
-                                <div class="heading-h3">
-                                    <h3>
-                                        <span>Thông tin hành khách</span>
-                                    </h3>
-                                </div>
-                                <c:forEach var="list" begin="1" end="2"><!-- người lớn -->
-                                    <table width="100%" cellpadding="0" cellspacing="0" style="padding: 15px; background: #ffffff";">
-                                        <tr>      
-                                            <td colspan="1">
-                                                <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Người lớn ${list}</b>
-                                            </td>
-                                            <td colspan="2">
-                                                <p><input type="text" style="width: 270px" name="name${list}"></p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td colspan="1">
-                                                <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
-                                            </td>
-                                            <td>
-                                                <input type="date" name="txtDate" id="txtDate" min="1900-01-01" style="margin-bottom: 10px"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </c:forEach>
-
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">
+                                            <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
+                                        </td>
+                                        <td>
+                                            <input type="date" name="txtDateA<c:out value="${aNum}"/>" id="txtDate" min="1900-01-01" style="margin-bottom: 10px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </c:forEach>
 
 
-                                <c:forEach var="list" begin="1" end="2"><!-- trẻ em -->
-                                    <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px; ";">
-                                        <tr>      
-                                            <td colspan="1">
-                                                <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Trẻ em ${list}</b>
-                                            </td>
-                                            <td colspan="2">
-                                                <p><input type="text" style="width: 270px;"></p>
-                                            </td>
 
-                                        </tr>
-                                        <tr>
-                                            <td colspan="1">
-                                                <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
-                                            </td>
-                                            <td>
-                                                <input type="date" name="txtDate" id="txtDate" min="1900-01-01" style="margin-bottom: 10px"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </c:forEach>
+                            <c:forEach var="list" begin="1" end="${kid}"><!-- trẻ em -->
+                                <c:set var="kNum" value="${list}"/>
+                                <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px; ";">
+                                    <tr>      
+                                        <td colspan="1">
+                                            <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Trẻ em ${list}</b>
+                                        </td>
+                                        <td colspan="2">
+                                            <p><input name="nameKid<c:out value="${kNum}"/>" id="fullname" type="text" style="width: 270px;"></p>
+                                        </td>
 
-                                <c:forEach var="list" begin="1" end="2"> <!-- trẻ sơ sinh -->
-                                    <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px; background: #ffffff";">
-                                        <tr>      
-                                            <td colspan="1">
-                                                <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Trẻ sơ sinh ${list}</b>
-                                            </td>
-                                            <td colspan="2">
-                                                <p><input type="text" style="width: 270px;"></p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td colspan="1">
-                                                <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
-                                            </td>
-                                            <td>
-                                                <input type="date" name="txtDate" id="txtDate" min="2020-01-01" style="margin-bottom: 10px"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </c:forEach>
-                                <div class="submit-flight float-right">
-                                    <button  type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-
-
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">
+                                            <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
+                                        </td>
+                                        <td>
+                                            <input type="date" name="txtDateK<c:out value="${kNum}"/>" id="txtDate" min="1900-01-01" style="margin-bottom: 10px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </c:forEach>
+                            <div class="submit-flight float-right">
+                                <button  type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-3 p-0">
+                    <div class="col-4 p-0">
                         <div class="price-details">
                             <h3 class="price-details-title">Chi tiết giá</h3>
-                            <table class="price-details-list">
-                                <table class="infoticket" width="100%" cellpadding="0" cellspacing="0">
-                                    <tbody>
+                            <table style="margin-bottom: 10px" id="infoticketGO" width="100%" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" style="color: #f44d06;font-size: 18px;font-weight: bold;">Chi tiết giá vé lượt đi</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="sAdult">${adult} Người lớn</span></td>
+                                        <td><b>X</b></td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red typePriceA">
+                                                ${ticketTypePrice}
+                                            </b>
+                                        </td>
+                                        <td style="padding:0px;">=</td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red totalPriceA">
+                                            </b>
+                                        </td>
+                                    </tr>
+                                    <c:if test="${kid > 0}">
                                         <tr>
-                                            <td colspan="5" style="color: #f44d06;font-size: 18px;font-weight: bold;">Chi tiết giá vé lượt đi</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="sAdult">${adult} Người lớn</span></td>
+                                            <td><span class="sKid">${kid} trẻ em</span></td>
                                             <td><b>X</b></td>
                                             <td style="text-align: right;">
-                                                <b class="color-red typePriceA">
+                                                <b class="color-red typePriceK">
                                                     ${ticketTypePrice}
                                                 </b>
                                             </td>
                                             <td style="padding:0px;">=</td>
                                             <td style="text-align: right;">
-                                                <b class="color-red totalPriceA">
+                                                <b class="color-red totalPriceK">
                                                 </b>
                                             </td>
                                         </tr>
-                                        <c:if test="${kid > 0}">
-                                            <tr>
-                                                <td><span class="sKid">${kid} trẻ em</span></td>
-                                                <td><b>X</b></td>
-                                                <td style="text-align: right;">
-                                                    <b class="color-red typePriceK">
-                                                        ${ticketTypePrice}
-                                                    </b>
-                                                </td>
-                                                <td style="padding:0px;">=</td>
-                                                <td style="text-align: right;">
-                                                    <b class="color-red totalPriceK">
-                                                    </b>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                        <!-- thue phi-->
-                                        <tr class="border-airline">
-                                            <td colspan="5"></td>
-                                        </tr>
+                                    </c:if>
+                                    <!-- thue phi-->
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="font-weight:bold">Thuế và phí</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>${adult} Người lớn</span></td>
+                                        <td><b>X</b></td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red">
+                                                10%
+                                            </b>
+                                        </td>
+                                        <td style="padding:0px;">=</td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red tiketTotalA">
+                                                ${ticketTotalAGo}
+                                            </b>
+                                        </td>
+                                    </tr>
+                                    <c:if test="${kid > 0}">
                                         <tr>
-                                            <td colspan="5" style="font-weight:bold">Thuế và phí</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>${adult} Người lớn</span></td>
+                                            <td><span>${kid} trẻ em</span></td>
                                             <td><b>X</b></td>
                                             <td style="text-align: right;">
                                                 <b class="color-red">
@@ -472,54 +454,150 @@
                                             </td>
                                             <td style="padding:0px;">=</td>
                                             <td style="text-align: right;">
-                                                <b class="color-red tiketTotalA">
-                                                    ${ticketTotalAGo}
+                                                <b class="color-red tiketTotalK">
+                                                    ${ticketTotalKGo}
                                                 </b>
                                             </td>
                                         </tr>
-                                        <c:if test="${kid > 0}">
-                                            <tr>
-                                                <td><span>${kid} trẻ em</span></td>
-                                                <td><b>X</b></td>
-                                                <td style="text-align: right;">
-                                                    <b class="color-red">
-                                                        10%
-                                                    </b>
-                                                </td>
-                                                <td style="padding:0px;">=</td>
-                                                <td style="text-align: right;">
-                                                    <b class="color-red tiketTotalK">
-                                                        ${ticketTotalKGo}
-                                                    </b>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                        <tr class="border-airline">
-                                            <td colspan="5"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span style="font-weight:bold">Hành Lý</span></td>
-                                            <td colspan="4" id="valuehanhlyld"><span> <b class="color-red">
-                                                        </b>
-                                                </span></td>
-                                        </tr>
-                                        <tr class="border-airline">
-                                            <td colspan="5"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span style="font-weight:bold">Tổng giá</span></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="font-weight:bold; text-align:right"><span>
-                                                    <b class="color-red">
-                                                        <input type="text" name="totalAmount" id="totalld" readonly style="max-width: 100px;">
-                                                    </b></span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    </c:if>
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight:bold">Hành Lý</span></td>
+                                        <td colspan="4"><span> 
+                                                <b class="color-red float-right valuehanhlyld" >0,0 VND
+                                                </b>
+                                            </span></td>
+                                    </tr>
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight:bold">Tổng giá</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="font-weight:bold; text-align:right"><span>
+                                                <b class="color-red">
+                                                    <input type="text" name="totalAmountGo" class="finalTotal" readonly style="max-width: 100px;">
+                                                </b></span></td>
+                                    </tr>
+                                </tbody>
                             </table>
-
+                            <table style="border-top: 2px solid #F44D06" id="infoticketBack" width="100%" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" style="color: #f44d06;font-size: 18px;font-weight: bold;">Chi tiết giá vé lượt về</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="sAdult">${adult} Người lớn</span></td>
+                                        <td><b>X</b></td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red typePriceA">
+                                                ${ticketTypePrice}
+                                            </b>
+                                        </td>
+                                        <td style="padding:0px;">=</td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red totalPriceA">
+                                            </b>
+                                        </td>
+                                    </tr>
+                                    <c:if test="${kid > 0}">
+                                        <tr>
+                                            <td><span class="sKid">${kid} trẻ em</span></td>
+                                            <td><b>X</b></td>
+                                            <td style="text-align: right;">
+                                                <b class="color-red typePriceK">
+                                                    ${ticketTypePrice}
+                                                </b>
+                                            </td>
+                                            <td style="padding:0px;">=</td>
+                                            <td style="text-align: right;">
+                                                <b class="color-red totalPriceK">
+                                                </b>
+                                            </td>
+                                        </tr>
+                                    </c:if>
+                                    <!-- thue phi-->
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="font-weight:bold">Thuế và phí</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>${adult} Người lớn</span></td>
+                                        <td><b>X</b></td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red">
+                                                10%
+                                            </b>
+                                        </td>
+                                        <td style="padding:0px;">=</td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red tiketTotalA">
+                                                ${ticketTotalABack}
+                                            </b>
+                                        </td>
+                                    </tr>
+                                    <c:if test="${kid > 0}">
+                                        <tr>
+                                            <td><span>${kid} trẻ em</span></td>
+                                            <td><b>X</b></td>
+                                            <td style="text-align: right;">
+                                                <b class="color-red">
+                                                    10%
+                                                </b>
+                                            </td>
+                                            <td style="padding:0px;">=</td>
+                                            <td style="text-align: right;">
+                                                <b class="color-red tiketTotalK">
+                                                    ${ticketTotalKBack}
+                                                </b>
+                                            </td>
+                                        </tr>
+                                    </c:if>
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight:bold">Hành Lý</span></td>
+                                        <td colspan="4"><span> 
+                                                <b class="color-red float-right valuehanhlyld">0,0 VND
+                                                </b>
+                                            </span></td>
+                                    </tr>
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight:bold">Tổng giá</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="font-weight:bold; text-align:right"><span>
+                                                <b class="color-red">
+                                                    <input type="text" name="totalAmountBack" class="finalTotal" readonly style="max-width: 100px;">
+                                                </b></span></td>
+                                    </tr>
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight:bold;color:#ec003d;font-size:18px">Tổng tiền</span></td>
+                                        <td></td><td></td><td></td>
+                                        <td style="font-weight:bold;text-align:right">
+                                            <span>
+                                                <b class="color-red"> 
+                                                    <input type="text" name="total" id="total" readonly style="max-width: 100px;">
+                                                </b>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -536,5 +614,10 @@
             }
         </script>
         <script src="./access/js/orderDetails.js"></script>
+        <script>
+            CaculatePrice("infoticketGO");
+            CaculatePrice("infoticketBack");
+            CaculateTotalPrice("infoticketGO", "infoticketBack");
+        </script>
     </body>
 </html>

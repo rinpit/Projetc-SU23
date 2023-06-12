@@ -214,7 +214,7 @@
                                                                                 style="background-color: rgb(65, 225, 225); border-radius: 50px; "
                                                                                 onchange="getValue(this)">
                                                                                 <c:forEach items="${listTicket}" var="f">
-                                                                                    <option value="${f.ticketPrice} VND">${f.ticketType}</option>
+                                                                                    <option class="${f.ticketPrice} VND" value="${f.ticketTypeId}">${f.ticketType}</option>
                                                                                 </c:forEach>
                                                                             </select></td>
                                                                     </tr>
@@ -228,17 +228,18 @@
                                                                         <th>Tổng giá</th>
                                                                     </tr>
                                                                 </thead>
+                                                                <c:set var="flightBack" value="${l.flightId}"></c:set>
                                                                 <tbody>
                                                                     <tr>
                                                                         <td>Người lớn</td>
                                                                         <td class="numA">${adult}</td>
-                                                                        <td><input class="price" type="text" name="typePriceA<c:out value="${ticketTypePrice}"/>"
+                                                                        <td><input class="price" type="text" name="typePriceA<c:out value="${flightBack}"/>"
                                                                                    value="${listTicket.get(0).ticketPrice} VND"
                                                                                    style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                                                    readonly>
                                                                         </td>
                                                                         <td></td>
-                                                                        <td><input class="totalAdult" type="text" name="totalPriceA<c:out value="${ticketTypePrice}"/>"
+                                                                        <td><input class="totalAdult" type="text" name="totalPriceA<c:out value="${flightBack}"/>"
                                                                                    value="${listTicket.get(0).ticketSumAdult}VND"
                                                                                    style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                                                    readonly>
@@ -250,13 +251,13 @@
                                                                         <tr>
                                                                             <td>Trẻ em</td>
                                                                             <td class="numK">${kid}</td>
-                                                                            <td><input class="price" type="text" name="typePriceK<c:out value="${ticketTypePrice}"/>"
+                                                                            <td><input class="price" type="text" name="typePriceK<c:out value="${flightBack}"/>"
                                                                                        value="${listTicket.get(0).ticketPrice} VND"
                                                                                        style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                                                        readonly></td>
                                                                             <td></td>
                                                                             <td>
-                                                                                <input class="totalKid" type="text" name="totalPriceK<c:out value="${ticketTypePrice}"/>"
+                                                                                <input class="totalKid" type="text" name="totalPriceK<c:out value="${flightBack}"/>"
                                                                                        value="${listTicket.get(0).ticketSumKid}VND"
                                                                                        style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                                                        readonly>

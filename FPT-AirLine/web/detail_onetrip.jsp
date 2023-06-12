@@ -167,14 +167,12 @@
                                                 <c:forEach var="list" begin="1" end="${adult}"> 
                                                     <p>
                                                         <span>hành khách thứ ${list}</span>
-                                                        <select>
-                                                            <option value="0">Không mang hành lý</option>
-                                                            <option value="200000">Thêm 20Kg hành lý (200,000 VND)</option>
-                                                            <option value="300000">Thêm 30Kg hành lý (300,000 VND)</option>
-                                                            <option value="400000">Thêm 40Kg hành lý (400,000 VND)</option>
-                                                            <option value="500000">Thêm 50Kg hành lý (500,000 VND)</option>
-                                                            <option value="600000">Thêm 60Kg hành lý (600,000 VND)</option>
-                                                            <option value="700000">Thêm 70Kg hành lý (700,000 VND)</option>
+                                                        <select name="luggageGoA<c:out value=" ${list}"/>" class="luggageGo" onchange="AddLuggage('luggageGo', 'infoticketGO')">
+                                                            <option data="0" value="L0">Không mang hành lý</option>
+                                                            <option data="200000" value="L0">Thêm 20Kg hành lý (200,000 VND)</option>
+                                                            <option data="300000" value="L0">Thêm 30Kg hành lý (300,000 VND)</option>
+                                                            <option data="400000" value="L0">Thêm 40Kg hành lý (400,000 VND)</option>
+                                                            <option data="500000" value="L0">Thêm 50Kg hành lý (500,000 VND)</option>
                                                         </select>
                                                     </p>
                                                 </c:forEach>
@@ -182,14 +180,12 @@
                                                 <c:forEach var="list" begin="1" end="${kid}"> 
                                                     <p>
                                                         <span style="margin-right: 35px">trẻ em thứ ${list}</span>
-                                                        <select>
-                                                            <option value="0">Không mang hành lý</option>
-                                                            <option value="200000">Thêm 20Kg hành lý (200,000 VND)</option>
-                                                            <option value="300000">Thêm 30Kg hành lý (300,000 VND)</option>
-                                                            <option value="400000">Thêm 40Kg hành lý (400,000 VND)</option>
-                                                            <option value="500000">Thêm 50Kg hành lý (500,000 VND)</option>
-                                                            <option value="600000">Thêm 60Kg hành lý (600,000 VND)</option>
-                                                            <option value="700000">Thêm 70Kg hành lý (700,000 VND)</option>
+                                                        <select name="luggageGoK<c:out value=" ${list}"/>" class="luggageGo" onchange="AddLuggage('luggageGo', 'infoticketGO')">
+                                                            <option data="0" value="L0">Không mang hành lý</option>
+                                                            <option data="200000" value="L0">Thêm 20Kg hành lý (200,000 VND)</option>
+                                                            <option data="300000" value="L0">Thêm 30Kg hành lý (300,000 VND)</option>
+                                                            <option data="400000" value="L0">Thêm 40Kg hành lý (400,000 VND)</option>
+                                                            <option data="500000" value="L0">Thêm 50Kg hành lý (500,000 VND)</option>
                                                         </select>
                                                     </p>
                                                 </c:forEach>
@@ -201,91 +197,66 @@
                                 </table>
                             </div>
 
-                            <form action="orderServlet" method="post">
-                                <div class="heading-h3">
-                                    <h3>
-                                        <span>Thông tin hành khách</span>
-                                    </h3>
-                                </div>
-                                <c:forEach var="list" begin="1" end="${adult}"><!-- người lớn -->
-                                    <table width="100%" cellpadding="0" cellspacing="0" style="padding: 15px; background: #ffffff";">
-                                        <tr>      
-                                            <td colspan="1">
-                                                <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Người lớn ${list}</b>
-                                            </td>
-                                            <td colspan="2">
-                                                <c:set var="aNum" value="${list}"/>
-                                                <p><input id="fullname" type="text" style="width: 270px" name="nameAdult<c:out value="${aNum}"/>"></p>
-                                            </td>
+                            <div class="heading-h3">
+                                <h3>
+                                    <span>Thông tin hành khách</span>
+                                </h3>
+                            </div>
+                            <c:forEach var="list" begin="1" end="${adult}"><!-- người lớn -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="padding: 15px; background: #ffffff";">
+                                    <tr>      
+                                        <td colspan="1">
+                                            <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Người lớn ${list}</b>
+                                        </td>
+                                        <td colspan="2">
+                                            <c:set var="aNum" value="${list}"/>
+                                            <p><input id="fullname" type="text" style="width: 270px" name="nameAdult<c:out value="${aNum}"/>"></p>
+                                        </td>
 
-                                        </tr>
-                                        <tr>
-                                            <td colspan="1">
-                                                <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
-                                            </td>
-                                            <td>
-                                                <input type="date" name="txtDateA<c:out value="${aNum}"/>" id="txtDate" min="1900-01-01" style="margin-bottom: 10px"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </c:forEach>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">
+                                            <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
+                                        </td>
+                                        <td>
+                                            <input type="date" name="txtDateA<c:out value="${aNum}"/>" id="txtDate" min="1900-01-01" style="margin-bottom: 10px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </c:forEach>
 
-                                <c:forEach var="list" begin="1" end="${kid}"><!-- trẻ em -->
-                                    <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px; ";">
-                                        <tr>      
-                                            <td colspan="1">
-                                                <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Trẻ em ${list}</b>
-                                            </td>
-                                            <td colspan="2">
-                                                <c:set var="kNum" value="${list}"/>
-                                                <p><input name="nameKid<c:out value="${kNum}"/>" id="fullname" type="text" style="width: 270px;"></p>
-                                            </td>
+                            <c:forEach var="list" begin="1" end="${kid}"><!-- trẻ em -->
+                                <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px; ";">
+                                    <tr>      
+                                        <td colspan="1">
+                                            <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Trẻ em ${list}</b>
+                                        </td>
+                                        <td colspan="2">
+                                            <c:set var="kNum" value="${list}"/>
+                                            <p><input name="nameKid<c:out value="${kNum}"/>" id="fullname" type="text" style="width: 270px;"></p>
+                                        </td>
 
-                                        </tr>
-                                        <tr>
-                                            <td colspan="1">
-                                                <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
-                                            </td>
-                                            <td>
-                                                <input type="date" name="txtDateK<c:out value="${kNum}"/>" id="txtDate" min="1900-01-01" style="margin-bottom: 10px"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </c:forEach>
-
-                                <c:forEach var="list" begin="1" end="${baby}"> <!-- trẻ sơ sinh -->
-                                    <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px; background: #ffffff";">
-                                        <tr>      
-                                            <td colspan="1">
-                                                <b style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Trẻ sơ sinh ${list}</b>
-                                            </td>
-                                            <td colspan="2">
-                                                <p><input name="fullname" id="fullname" type="text" style="width: 270px;"></p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td colspan="1">
-                                                <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
-                                            </td>
-                                            <td>
-                                                <input type="date" name="txtDate" id="txtDate" min="2020-01-01" style="margin-bottom: 10px"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </c:forEach>
-                                <div class="submit-flight float-right">
-                                    <button  type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-
+                                    </tr>
+                                    <tr>
+                                        <td colspan="1">
+                                            <span style="font-size: 14px;  width: 140px;  display: block; margin-left: 20px;">Ngày sinh</span>
+                                        </td>
+                                        <td>
+                                            <input type="date" name="txtDateK<c:out value="${kNum}"/>" id="txtDate" min="1900-01-01" style="margin-bottom: 10px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </c:forEach>
+                            <div class="submit-flight float-right">
+                                <button  type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
                     </div>
                     <div class="col-3 p-0">
                         <div class="price-details">
                             <h3 class="price-details-title">Chi tiết giá</h3>
                             <table class="price-details-list">
-                                <table class="infoticket" width="100%" cellpadding="0" cellspacing="0">
+                                <table id="infoticketGO" width="100%" cellpadding="0" cellspacing="0">
                                     <tbody>
                                         <tr>
                                             <td colspan="5" style="color: #f44d06;font-size: 18px;font-weight: bold;">Chi tiết giá vé lượt đi</td>
@@ -364,7 +335,8 @@
                                         </tr>
                                         <tr>
                                             <td><span style="font-weight:bold">Hành Lý</span></td>
-                                            <td colspan="4" id="valuehanhlyld"><span> <b class="color-red">
+                                            <td colspan="4"><span> 
+                                                    <b class="color-red float-right valuehanhlyld">0,0 VND
                                                     </b>
                                                 </span></td>
                                         </tr>
@@ -378,13 +350,11 @@
                                             <td></td>
                                             <td style="font-weight:bold; text-align:right"><span>
                                                     <b class="color-red">
-                                                        <input type="text" name="totalAmount" id="totalld" readonly style="max-width: 100px;">
+                                                        <input type="text" name="totalAmountGo" class="finalTotal" readonly style="max-width: 100px;">
                                                     </b></span></td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </table>
-
                         </div>
                     </div>
                 </div>
@@ -423,5 +393,8 @@
             })
         </script>
         <script src="./access/js/orderDetails.js"></script>
+        <script>
+            CaculatePrice("infoticketGO");
+        </script>
     </body>
 </html>
