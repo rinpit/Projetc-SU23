@@ -69,7 +69,8 @@ public class SearchFlight extends HttpServlet {
                 float tickPrice = Float.parseFloat(ticketType.getTicketPrice());
                 float priceAdult = Float.parseFloat(sadult);
                 float priceKid = Float.parseFloat(skid);
-                float newPrice = tickPrice + distances.get(0).getDistancePrice();
+                float distancePrice = distances.get(0).getDistancePrice();
+                float newPrice = tickPrice + distancePrice;
 //            Tính Tổng tiền vé
                 float sumAdult = Float.parseFloat("1.1") * priceAdult * newPrice;
                 float sumKid = Float.parseFloat("1.1") * priceKid * newPrice;

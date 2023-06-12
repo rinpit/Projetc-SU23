@@ -18,7 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class SelectFlightServlet extends HttpServlet {
 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -49,7 +48,6 @@ public class SelectFlightServlet extends HttpServlet {
         session.setAttribute("ticketType", ticketType);
         String flightType = (String) session.getAttribute("FlightType");
         String idGo = request.getParameter("flightId");
-        String idBack = request.getParameter("flightIdRound");
         String ticketTypePriceGo = request.getParameter("typePriceA" + idGo);
         ticketTypePriceGo = ticketTypePriceGo.substring(0, 9);
         String ticketTotalAGo = request.getParameter("totalPriceA" + idGo);
@@ -62,6 +60,17 @@ public class SelectFlightServlet extends HttpServlet {
         session.setAttribute("ticketTotalAGo", ticketTotalAGo);
         session.setAttribute("flightId", idGo);
         if (flightType.equals("1")) {
+            String idBack = request.getParameter("flightIdRound");
+            String ticketTypePriceBack = request.getParameter("typePriceA" + idBack);
+            ticketTypePriceBack = ticketTypePriceBack.substring(0, 9);
+            String ticketTotalABack = request.getParameter("totalPriceA" + idBack);
+            session.setAttribute("ticketTypePriceBack", ticketTypePriceBack);
+            session.setAttribute("ticketTotalABack", ticketTotalABack);
+            session.setAttribute("flightIdBack", idBack);
+            if (numKid != null) {
+                String ticketTotalKBack = request.getParameter("totalPriceK" + idBack);
+                session.setAttribute("ticketTotalKBack", ticketTotalKBack);
+            }
             request.getRequestDispatcher("detail_roundtrip.jsp").forward(request, response);
         } else if (flightType.equals("2")) {
             request.getRequestDispatcher("detail_onetrip.jsp").forward(request, response);
