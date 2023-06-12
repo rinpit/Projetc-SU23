@@ -167,12 +167,12 @@
                                                 <c:forEach var="list" begin="1" end="${adult}"> 
                                                     <p>
                                                         <span>hành khách thứ ${list}</span>
-                                                        <select name="luggageGoA<c:out value=" ${list}"/>" class="luggageGo" onchange="AddLuggage('luggageGo', 'infoticketGO')">
+                                                        <select name="luggageGoA<c:out value="${list}"/>" class="luggageGo" onchange="AddLuggage('luggageGo', 'infoticketGO')">
                                                             <option data="0" value="L0">Không mang hành lý</option>
-                                                            <option data="200000" value="L0">Thêm 20Kg hành lý (200,000 VND)</option>
-                                                            <option data="300000" value="L0">Thêm 30Kg hành lý (300,000 VND)</option>
-                                                            <option data="400000" value="L0">Thêm 40Kg hành lý (400,000 VND)</option>
-                                                            <option data="500000" value="L0">Thêm 50Kg hành lý (500,000 VND)</option>
+                                                            <option data="200000" value="L2">Thêm 20Kg hành lý (200,000 VND)</option>
+                                                            <option data="300000" value="L3">Thêm 30Kg hành lý (300,000 VND)</option>
+                                                            <option data="400000" value="L4">Thêm 40Kg hành lý (400,000 VND)</option>
+                                                            <option data="500000" value="L5">Thêm 50Kg hành lý (500,000 VND)</option>
                                                         </select>
                                                     </p>
                                                 </c:forEach>
@@ -180,12 +180,12 @@
                                                 <c:forEach var="list" begin="1" end="${kid}"> 
                                                     <p>
                                                         <span style="margin-right: 35px">trẻ em thứ ${list}</span>
-                                                        <select name="luggageGoK<c:out value=" ${list}"/>" class="luggageGo" onchange="AddLuggage('luggageGo', 'infoticketGO')">
+                                                        <select name="luggageGoK<c:out value="${list}"/>" class="luggageGo" onchange="AddLuggage('luggageGo', 'infoticketGO')">
                                                             <option data="0" value="L0">Không mang hành lý</option>
-                                                            <option data="200000" value="L0">Thêm 20Kg hành lý (200,000 VND)</option>
-                                                            <option data="300000" value="L0">Thêm 30Kg hành lý (300,000 VND)</option>
-                                                            <option data="400000" value="L0">Thêm 40Kg hành lý (400,000 VND)</option>
-                                                            <option data="500000" value="L0">Thêm 50Kg hành lý (500,000 VND)</option>
+                                                            <option data="200000" value="L2">Thêm 20Kg hành lý (200,000 VND)</option>
+                                                            <option data="300000" value="L3">Thêm 30Kg hành lý (300,000 VND)</option>
+                                                            <option data="400000" value="L4">Thêm 40Kg hành lý (400,000 VND)</option>
+                                                            <option data="500000" value="L5">Thêm 50Kg hành lý (500,000 VND)</option>
                                                         </select>
                                                     </p>
                                                 </c:forEach>
