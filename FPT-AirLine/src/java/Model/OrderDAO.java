@@ -24,7 +24,7 @@ public class OrderDAO {
     }
     
     public void createOrder(String orderID,String userID, String date, String tax, String totalAmount) throws SQLException {
-        String stmt = "insert into OrderTicket values" + " (?,?,?,?,?,?)";
+        String stmt = "insert into OrderTicket values" + " (?,?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(stmt);
         ps.setString(1, orderID);
         ps.setString(2, userID);
@@ -32,6 +32,7 @@ public class OrderDAO {
         ps.setNull(4, java.sql.Types.INTEGER);
         ps.setString(5, tax);
         ps.setString(6, totalAmount);
+        ps.setString(7, "false");
         ps.executeUpdate();
     }
 }

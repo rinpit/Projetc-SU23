@@ -191,3 +191,7 @@ ADD TotalAmount float;
 
 ALTER TABLE Ticket
 DROP COLUMN Selects
+
+
+ALTER TABLE OrderTicket
+ADD isComfirmed varchar(20);
