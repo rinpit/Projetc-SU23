@@ -19,7 +19,7 @@ Role varchar(20)
 Create table Promotion
 (
     Promotion_ID varchar(20) not null primary key,
-	Description varchar(50),
+	Description nvarchar(50),
 	StartDate Datetime,
 	EndDate Datetime,
 	Amount Float
