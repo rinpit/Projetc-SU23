@@ -16,17 +16,6 @@ CCCD varchar(20),
 Role varchar(20)
 )
 
-Create table Bill 
-(
-	Bill_ID varchar(20) not null,
-	UserID varchar(20) not null,
-	Date datetime, 
-	CustomerName NVarchar(50),
-	TotalAmount float
-	constraint pk_tblBill primary key (Bill_ID , UserID),
-	constraint fk_tblBill foreign key (UserID) references Users(UserID)
-)
-
 Create table Promotion
 (
     Promotion_ID varchar(20) not null primary key,
@@ -42,7 +31,9 @@ Create table OrderTicket
 	UserID varchar(20) not null,
 	Date datetime,
 	Promotion_ID varchar(20),
-	Tax float
+	Tax float,
+	TotalAmount varchar(50),
+	isComfirmed varchar(20)
 	constraint fk_tblOrderTicket foreign key (UserID) references Users(UserID),
 	constraint fk_tblPromotion foreign key (Promotion_ID) references Promotion(Promotion_ID),
 )
@@ -77,30 +68,34 @@ CREATE TABLE TicketType
 	Seat_End varchar(20)
 )
 
+create table Luggage (
+	Luggage_ID varchar(20) primary key,
+	Luggage varchar(50),
+	Price float
+)
+
 CREATE TABLE Ticket 
 (
     Ticket_ID varchar(20) not null primary key,
 	Order_ID varchar(20),
 	Flight_ID varchar(20),
-	Selects varchar(20),
 	TicketType_ID varchar(20),
-	Seats int,
-	CCCD varchar(20)
+	Luggage_ID varchar(20),
+	Seats varchar(20),
 	constraint fk_tblTicket foreign key (Order_ID) references OrderTicket(Order_ID),
 	constraint fk_tblTicket2 foreign key (Flight_ID) references Flight(Flight_ID),
-	constraint fk_tblTicket3 foreign key (TicketType_ID) references TicketType(TicketType_ID)
+	constraint fk_tblTicket3 foreign key (TicketType_ID) references TicketType(TicketType_ID),
+	CONSTRAINT FK_Luggage FOREIGN KEY (Luggage_ID) REFERENCES Luggage(Luggage_ID)
 )
 
 Create table Passenger
 (
 	Passenger_ID varchar(20) not null,
 	Ticket_ID varchar(20) not null,
-	UserID varchar(20),
 	Passenger_Name nvarchar(50),
 	Birthday date,
 	CCCD varchar(20),
 	constraint pk_tblPassenger primary key (Passenger_ID, Ticket_ID),
-	constraint fk_tblPassenger1 foreign key (UserID) references Users(UserID),
 	constraint fk_tblPassenger2 foreign key (Ticket_ID) references Ticket(Ticket_ID)
 )
 
@@ -153,45 +148,9 @@ values
 ('PR1', 'TT1', 500000, '2023-05-25', '2023-07-25'),
 ('PR2', 'TT2', 1000000, '2023-05-25', '2023-07-25')
 
---Thêm hành lý
-alter table Luggage
-alter column Luggage varchar(50)
-
 INSERT INTO Luggage 
 values ('L0', '0 Kg', 0),
 ('L2', '20 Kg', 200000),
 ('L3', '30 Kg', 300000),
 ('L4', '40 Kg', 400000),
 ('L5', '50 Kg', 500000)
-
-select UserID, Email, PassWord , Role
-                    from Users
-                    where Email = 'admin@123' and PassWord = '123456'
-
--- Chạy thêm từ chỗ này là được --
-create table Luggage (
-	Luggage_ID varchar(20) primary key,
-	Luggage float,
-	Price float
-)
-
-ALTER TABLE Ticket
-ADD Luggage_ID varchar(20);
-
-ALTER TABLE Ticket
-ADD CONSTRAINT FK_Luggage
-FOREIGN KEY (Luggage_ID) REFERENCES Luggage(Luggage_ID);
-
-
---Chạy thêm từ chỗ này nữa
-drop table Bill
-
-ALTER TABLE OrderTicket
-ADD TotalAmount float;
-
-ALTER TABLE Ticket
-DROP COLUMN Selects
-
-
-ALTER TABLE OrderTicket
-ADD isComfirmed varchar(20);

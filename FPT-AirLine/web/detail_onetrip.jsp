@@ -264,7 +264,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-3 p-0">
+                    <div class="col-4 p-0">
                         <div class="price-details">
                             <h3 class="price-details-title">Chi tiết giá</h3>
                             <table class="price-details-list">

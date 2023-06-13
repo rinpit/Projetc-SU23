@@ -57,7 +57,7 @@ public class orderServlet extends HttpServlet {
         String orderID = accdao.randomString();
         Date currentDate = new Date();
         // Định dạng chuỗi mong muốn
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         // Chuyển đổi thành chuỗi
         String currentDateTimeString = dateFormat.format(currentDate);
         try {

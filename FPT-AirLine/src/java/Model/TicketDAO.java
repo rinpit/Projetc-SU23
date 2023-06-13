@@ -34,7 +34,7 @@ public class TicketDAO {
     }
 
     public void createTicket(String ticketID, String orderID, String flightID, String ticketTypeID, String luggageID, String seat) throws SQLException {
-        String stmt = "insert into Ticket values" + " (?,?,?,?,?,?,?)";
+        String stmt = "insert into Ticket values" + " (?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(stmt);
         ps.setString(1, ticketID);
         ps.setString(2, orderID);
@@ -42,7 +42,6 @@ public class TicketDAO {
         ps.setString(4, ticketTypeID);
         ps.setString(5, luggageID);
         ps.setString(6, seat);
-        ps.setNull(7, java.sql.Types.INTEGER);
         ps.executeUpdate();
     }
 
