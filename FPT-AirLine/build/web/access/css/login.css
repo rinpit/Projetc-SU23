@@ -255,3 +255,8 @@ input {
     margin:  0px 10px;
     width: auto;
 }
+
+.text-danger {
+    text-align: center;
+    padding-top: 10px;
+}

@@ -69,11 +69,12 @@ public class orderServlet extends HttpServlet {
                     String passFullName = request.getParameter("nameAdult" + i);
                     String birthDay = request.getParameter("txtDateA" + i);
                     String ticketID = accdao.randomString();
+                    String cccd = request.getParameter("cccd" + i);
                     String seat = ticketdao.createSeats(ticketType, flightIDBack);
                     luggageA = request.getParameter("luggageBackA" + i);
                     try {
                         ticketdao.createTicket(ticketID, orderID, flightIDBack, ticketType, luggageA, seat);
-                        passdao.createPassenger(passengerID, ticketID, passFullName, birthDay);
+                        passdao.createPassengerCCCD(passengerID, ticketID, passFullName, birthDay, cccd);
                     } catch (SQLException ex) {
                         System.out.println(ex);
                     }
@@ -105,11 +106,12 @@ public class orderServlet extends HttpServlet {
             String passFullName = request.getParameter("nameAdult" + i);
             String birthDay = request.getParameter("txtDateA" + i);
             String ticketID = accdao.randomString();
+            String cccd = request.getParameter("cccd" + i);
             String seat = ticketdao.createSeats(ticketType, flightIDBack);
             luggageA = request.getParameter("luggageGoA" + i);
             try {
                 ticketdao.createTicket(ticketID, orderID, flightID, ticketType, luggageA, seat);
-                passdao.createPassenger(passengerID, ticketID, passFullName, birthDay);
+                passdao.createPassengerCCCD(passengerID, ticketID, passFullName, birthDay, cccd);
             } catch (SQLException ex) {
                 System.out.println(ex);
             }

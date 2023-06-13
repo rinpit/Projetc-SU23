@@ -3,7 +3,7 @@ body{
     background-image: url('https://www.vietjetair.com/static/media/bay_vao_tuong_lai_bg_mb.e310d427.png');
     /*background-repeat: no-repeat;*/
     background-size: 100%;
-    
+
 }
 
 .heading-h3{
@@ -62,4 +62,11 @@ select {
 
 .border-airline {
     border-bottom: 2px solid #f44d06;
+}
+.count{
+    color: #F44D06; 
+    font-weight: bold; 
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 2px;
 }
