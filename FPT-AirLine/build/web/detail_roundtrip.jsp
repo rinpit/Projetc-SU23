@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>chọn vé</title>
-        <link rel="stylesheet" href="access/css/orderDetail.css"/>
+        <link rel="stylesheet" href="./access/css/orderDetail.css"/>
         <link rel="stylesheet" href="access/css/submit.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>

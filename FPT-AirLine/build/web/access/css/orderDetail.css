@@ -49,8 +49,8 @@ select {
     background-color: #f44d06;
 }
 
-.infoticket tr td,
-.returnticket tr td {
+#infoticketGO tr td,
+#infoticketBack tr td {
     font-size: 12px;
     padding: 6px 7px;
     color: #000;

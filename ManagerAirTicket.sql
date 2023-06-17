@@ -20,8 +20,8 @@ Create table Promotion
 (
     Promotion_ID varchar(20) not null primary key,
 	Description nvarchar(50),
-	StartDate Datetime,
-	EndDate Datetime,
+	StartDate date,
+	EndDate date,
 	Amount Float
 )
 
@@ -154,3 +154,6 @@ values ('L0', '0 Kg', 0),
 ('L3', '30 Kg', 300000),
 ('L4', '40 Kg', 400000),
 ('L5', '50 Kg', 500000)
+
+insert into Promotion
+values('1234','sale', '2023-07-30', '2023-07-31', '70000')

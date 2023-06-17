@@ -33,7 +33,7 @@ public class SignUpServlet extends HttpServlet {
         Account acc = cusDao.checkExist(email);
         if (acc == null) {
             try {
-                cusDao.createCustomer(email, password,"Customer", fullName);
+                cusDao.createCustomer(email, password,"cus", fullName);
                 request.setAttribute("mess1", "Success");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
                 requestDispatcher.forward(request, response);
