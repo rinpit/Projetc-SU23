@@ -157,3 +157,5 @@ values ('L0', '0 Kg', 0),
 
 insert into Promotion
 values('1234','sale', '2023-07-30', '2023-07-31', '70000')
+insert into Users
+values ('884237','antvde160123@fpt.edu.vn','123456','Nguyen Quang Khoa','M', '2002-03-16', '0913545432', 'Quang Binh', 'Vietnam', '6590768954','employee')
