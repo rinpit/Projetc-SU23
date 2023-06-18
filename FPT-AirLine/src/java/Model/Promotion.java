@@ -4,31 +4,34 @@
  */
 package Model;
 
+import java.util.Date;
 
 /**
  *
  * @author Dell
  */
 public class Promotion {
-    private String promotion_id, description  ,StartDate, EndDate, price;
 
-    public Promotion() {
-    }
+    private String promotionID;
+    private String description;
+    private Date startDate;
+    private Date endDate;
+    private float amount;
 
-    public Promotion(String promotion_id, String description, String StartDate, String EndDate, String price) {
-        this.promotion_id = promotion_id;
+    public Promotion(String promotionID, String description, Date startDate, Date endDate, float amount) {
+        this.promotionID = promotionID;
         this.description = description;
-        this.StartDate = StartDate;
-        this.EndDate = EndDate;
-        this.price = price;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.amount = amount;
     }
 
-    public String getPromotion_id() {
-        return promotion_id;
+    public String getPromotionID() {
+        return promotionID;
     }
 
-    public void setPromotion_id(String promotion_id) {
-        this.promotion_id = promotion_id;
+    public void setPromotionID(String promotionID) {
+        this.promotionID = promotionID;
     }
 
     public String getDescription() {
@@ -39,30 +42,28 @@ public class Promotion {
         this.description = description;
     }
 
-    public String getStartDate() {
-        return StartDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStartDate(String StartDate) {
-        this.StartDate = StartDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEndDate() {
-        return EndDate;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEndDate(String EndDate) {
-        this.EndDate = EndDate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public String getPrice() {
-        return price;
+    public float getAmount() {
+        return amount;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setAmount(float amount) {
+        this.amount = amount;
     }
 
-   
-    
 }

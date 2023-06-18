@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class PromotionDAO {
     Connection connection;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    public ArrayList<Promotion> result = new ArrayList<>();
+    List<Promotion> list ;
 
     public PromotionDAO() {
         try {
@@ -42,16 +43,25 @@ public class PromotionDAO {
         ps.executeUpdate();
     }
     
-    public ArrayList<Promotion> getPromotion() {
-        String query = "select * from Promotion";
-        try {
-            ps = connection.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                result.add(new Promotion(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5)));
-            }
-        } catch (Exception e) {
+    public List<Promotion> getPromotion() {
+    List<Promotion> list = new ArrayList<>();
+    String query = "SELECT * FROM Promotion";
+    try {
+        ps = connection.prepareStatement(query);
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            String promotionID = rs.getString("Promotion_ID");
+            String description = rs.getString("Description");
+            Date startDate = rs.getDate("StartDate");
+            Date endDate = rs.getDate("EndDate");
+            float amount = rs.getFloat("Amount");
+            
+            list.add(new Promotion(promotionID, description, startDate, endDate, amount));
         }
-        return result;
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
+    return list;
+}
+
 }
