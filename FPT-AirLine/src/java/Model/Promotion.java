@@ -4,34 +4,31 @@
  */
 package Model;
 
-import java.util.Date;
 
 /**
  *
  * @author Dell
  */
 public class Promotion {
+    private String promotion_id, description  ,StartDate, EndDate, price;
 
-    private String promotionID;
-    private String description;
-    private Date startDate;
-    private Date endDate;
-    private float amount;
+    public Promotion() {
+    }
 
-    public Promotion(String promotionID, String description, Date startDate, Date endDate, float amount) {
-        this.promotionID = promotionID;
+    public Promotion(String promotion_id, String description, String StartDate, String EndDate, String price) {
+        this.promotion_id = promotion_id;
         this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.amount = amount;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.price = price;
     }
 
-    public String getPromotionID() {
-        return promotionID;
+    public String getPromotion_id() {
+        return promotion_id;
     }
 
-    public void setPromotionID(String promotionID) {
-        this.promotionID = promotionID;
+    public void setPromotion_id(String promotion_id) {
+        this.promotion_id = promotion_id;
     }
 
     public String getDescription() {
@@ -42,28 +39,30 @@ public class Promotion {
         this.description = description;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        return StartDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String StartDate) {
+        this.StartDate = StartDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public String getEndDate() {
+        return EndDate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEndDate(String EndDate) {
+        this.EndDate = EndDate;
     }
 
-    public float getAmount() {
-        return amount;
+    public String getPrice() {
+        return price;
     }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
+   
+    
 }

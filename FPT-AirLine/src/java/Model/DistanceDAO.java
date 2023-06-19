@@ -17,8 +17,9 @@ import java.util.List;
  * @author admin
  */
 public class DistanceDAO {
+
     private List<Distance> distanceList = new ArrayList<>();
-    
+
     Connection connection;
     PreparedStatement statement;
     ResultSet resultSet;
@@ -30,13 +31,13 @@ public class DistanceDAO {
             throw new RuntimeException(e);
         }
     }
-    
+
     public List<Distance> getDistances(String startDate, String departure, String destination) {
         Format format = new Format();
-        String query = "SELECT *\n" +
-                "FROM Flight as f, Distance\n" +
-                "WHERE f.Distance_ID = Distance.Distance_ID " + 
-                "and f.StartDate = ? and f.Departure = ? and f.Destination = ?";
+        String query = "SELECT *\n"
+                + "FROM Flight as f, Distance\n"
+                + "WHERE f.Distance_ID = Distance.Distance_ID "
+                + "and f.StartDate = ? and f.Departure = ? and f.Destination = ?";
         try {
             statement = connection.prepareStatement(query);
             statement.setString(1, startDate);
@@ -44,15 +45,27 @@ public class DistanceDAO {
             statement.setString(3, destination);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Distance distance = new Distance(resultSet.getString(12),resultSet.getString(13),resultSet.getFloat(14),
+                Distance distance = new Distance(resultSet.getString(12), resultSet.getString(13), resultSet.getFloat(14),
                         resultSet.getString(1), format.formatDate(resultSet.getString(2)),
-                        format.formatDate(resultSet.getString(3)), format.formatTime(resultSet.getString(4))
-                        , format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7));
+                        format.formatDate(resultSet.getString(3)), format.formatTime(resultSet.getString(4)),
+                         format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7), resultSet.getInt(9),
+                        resultSet.getInt(10));
                 distanceList.add(distance);
             }
-        }catch (Exception e) {
+            //Only for Minh
+//            while (resultSet.next()) {
+//                Distance distance = new Distance(resultSet.getString(12), resultSet.getString(13), resultSet.getFloat(14),
+//                        resultSet.getString(1), format.addTwoDays(format.formatDate(resultSet.getString(2))),
+//                        format.addTwoDays(format.formatDate(resultSet.getString(3))), format.formatTime(resultSet.getString(4)),
+//                        format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7), resultSet.getInt(9),
+//                        resultSet.getInt(10));
+//                distanceList.add(distance);
+//            }
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return distanceList;
     }
+    
 }

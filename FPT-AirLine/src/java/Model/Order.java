@@ -13,12 +13,12 @@ public class Order {
     private String date;
     private String promotionID;
     private float tax;
-    private float totalAmount;
+    private String totalAmount;
 
     public Order() {
     }
 
-    public Order(String orderID, String date, String promotionID, float tax, float totalAmount) {
+    public Order(String orderID, String date, String promotionID, float tax, String totalAmount) {
         this.orderID = orderID;
         this.date = date;
         this.promotionID = promotionID;
@@ -26,7 +26,7 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
-    public Order(String orderID, String date, float tax, float totalAmount) {
+    public Order(String orderID, String date, float tax, String totalAmount) {
         this.orderID = orderID;
         this.date = date;
         this.tax = tax;
@@ -65,11 +65,11 @@ public class Order {
         this.tax = tax;
     }
 
-    public float getTotalAmount() {
+    public String getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(float totalAmount) {
+    public void setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
     }
 

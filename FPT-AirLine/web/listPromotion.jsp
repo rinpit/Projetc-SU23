@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +18,7 @@
         <meta name="description"
               content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
         <meta name="robots" content="noindex,nofollow">
-        <title>Danh sách mã giảm giá</title>
+        <title>Ample Admin Lite Template by WrapPixel</title>
         <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
@@ -231,29 +231,25 @@
                 <!-- ============================================================== -->
                 <!-- Container fluid  -->
                 <!-- ============================================================== -->
-                
                 <div class="container-fluid">
                     <div class="container">
                         <div class="table">
                             <div class="table-header">
-                                <div class="header__item"><a id="wins" class="filter__link filter__link--number">Mã code</a></div>
-                                <div class="header__item"><a id="draws" class="filter__link filter__link--number">Mô tả</a></div>
-                                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Ngày bắt đầu</a></div>
-                                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Ngày kết thúc</a></div>
-                                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Giá</a></div>
-
+                                <div class="header__item"><a id="name" class="filter__link">ID</a></div>
+                                <div class="header__item"><a id="wins" class="filter__link filter__link--number">Tên loại vé</a></div>
+                                <div class="header__item"><a id="draws" class="filter__link filter__link--number">Giá</a></div>
+                                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Cập nhật giá</a></div>
                             </div>
-                            <c:forEach items="${listPromotion}" var="lp">
+                            <c:forEach items="${listTicketType}" var="l">
                                 <div class="table-content">	
                                     <div class="table-row">		
-                                        <div class="table-data">${lp.promotionID}</div>
-                                        <div class="table-data">${lp.description}</div>
-                                        <div class="table-data">${lp.startDate}</div>
-                                        <div class="table-data">${lp.endDate}</div>
-                                        <div class="table-data">${lp.amount}</div>
+                                        <div class="table-data">${l.promotion_id}</div>
+                                        <div class="table-data">${l.description}</div>
+                                        <div class="table-data">${l.StartDate   } VND</div>
+                                        <div class="table-data"><a href="updateTicketType?id=${l.ticketTypeId}&type=${l.ticketType}">Cập nhật </a></div>
                                     </div>
                                 </div>
-                            </c:forEach>    
+                            </c:forEach>
                         </div>
                     </div>
                 </div>

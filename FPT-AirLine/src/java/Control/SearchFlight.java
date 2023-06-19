@@ -5,9 +5,7 @@ import Model.FlightDAO;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "SearchFlight", value = "/SearchFlight")
@@ -39,7 +37,7 @@ public class SearchFlight extends HttpServlet {
         session.invalidate();
         //Tạo session mới
         session = request.getSession(true);
-        
+
         session.setAttribute("userID", userIDSession);
         session.setAttribute("FlightType", selectFlight);
         session.setAttribute("Departure", sdeparture);
@@ -53,12 +51,20 @@ public class SearchFlight extends HttpServlet {
         FlightDAO flightDao = new FlightDAO();
         List<Flight> flightsOne = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
         request.setAttribute("listFlightOne", flightsOne);
-
+        for (Flight flightOne : flightsOne) {
+            session.setAttribute("seatBusiOne", flightOne.getSeatB());
+            session.setAttribute("seatEcoOne", flightOne.getSeatC());
+        }
         if (sendDate != null) {
             session.setAttribute("EndDate", format.formatDate(sendDate));
             List<Flight> flightsRound = flightDao.getListFlight(sendDate, sdestination, sdeparture);
             request.setAttribute("listFlightRound", flightsRound);
+            for (Flight flightRound : flightsRound) {
+                session.setAttribute("seatBusiRound", flightRound.getSeatB());
+                session.setAttribute("seatEcoRound", flightRound.getSeatC());
+            }
         }
+
         TicketTypeDAO ticketDao = new TicketTypeDAO();
         List<TicketType> ticketTypes = ticketDao.getTickets();
 

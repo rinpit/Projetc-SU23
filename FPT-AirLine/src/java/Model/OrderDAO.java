@@ -7,13 +7,16 @@ package Model;
 import DBcontext.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDAO {
-    private ArrayList<Order> orders = new ArrayList<Order>();
+
     Connection connection;
+    ResultSet resultSet;
+    List<Order> orders;
 
     public OrderDAO() {
         try {
@@ -22,8 +25,8 @@ public class OrderDAO {
             throw new RuntimeException(e);
         }
     }
-    
-    public void createOrder(String orderID,String userID, String date, String tax, String totalAmount) throws SQLException {
+
+    public void createOrder(String orderID, String userID, String date, String tax, String totalAmount) throws SQLException {
         String stmt = "insert into OrderTicket values" + " (?,?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(stmt);
         ps.setString(1, orderID);
@@ -35,4 +38,31 @@ public class OrderDAO {
         ps.setString(7, "false");
         ps.executeUpdate();
     }
+
+    public List<Order> getListOrder(String userID) throws SQLException {
+        orders = new ArrayList<>();
+        String query = "Select * from OrderTicket where UserID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, userID);
+            resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Order order = new Order(resultSet.getString(1), resultSet.getString(3),
+                        resultSet.getString(4), resultSet.getFloat(5), resultSet.getString(6));
+                orders.add(order);
+            }
+            return orders;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+//    public static void main(String[] args) throws SQLException {
+//        OrderDAO orderDAO = new OrderDAO();
+//        List<Order> orders = orderDAO.getListOrder("221608");
+//        for (Order order : orders) {
+//            System.out.println(order);
+//        }
+//    }
 }

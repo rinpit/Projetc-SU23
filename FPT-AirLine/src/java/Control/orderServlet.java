@@ -5,13 +5,12 @@
 package Control;
 
 import Model.AccountDAO;
+import Model.Flight;
+import Model.FlightDAO;
 import Model.OrderDAO;
 import Model.PassengerDAO;
 import Model.TicketDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDate;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -131,6 +130,22 @@ public class orderServlet extends HttpServlet {
                 Logger.getLogger(orderServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        //Trừ ghế trong chuyến bay
+        FlightDAO flightDAO = new FlightDAO();
+        int seatBusiOne = (int) session.getAttribute("seatBusiOne");
+        int seatEcoOne = (int) session.getAttribute("seatEcoOne");
+        int sumPassenger = numAdult + numKid;
+        try {
+            flightDAO.updateSeatFlight(seatBusiOne - sumPassenger, seatEcoOne - sumPassenger, flightID, ticketType);
+            if (flightIDBack != null) {
+                int seatBusiRound = (int) session.getAttribute("seatBusiRound");
+                int seatEcoRound = (int) session.getAttribute("seatEcoRound");
+                flightDAO.updateSeatFlight(seatBusiRound - sumPassenger, seatEcoRound - sumPassenger, flightIDBack, ticketType);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(orderServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         request.getRequestDispatcher("payment.jsp").forward(request, response);
     }
 

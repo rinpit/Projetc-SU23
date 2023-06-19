@@ -11,8 +11,8 @@ public class DB {
     public static Connection makeConnection() throws ClassNotFoundException {
         try {
             String url = "jdbc:sqlserver://localhost:1433;" + "databaseName=ManagerTicket;encrypt=false";
-            String username = "sa";
-            String password = "sa";
+            String username = "sa123";
+            String password = "123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             System.out.println("Connected");
             return DriverManager.getConnection(url, username, password);
@@ -20,5 +20,9 @@ public class DB {
             e.getMessage();
             return null;
         }
+    }
+    public static void main(String[] args) throws ClassNotFoundException {
+        Connection connection = DB.makeConnection();
+       
     }
 }
