@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="Model.Promotion" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,7 +27,7 @@
         <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
         <!-- Custom CSS -->
-        <link href="cssHome/style.min.css" rel="stylesheet">
+        <link href="css/style.min.css" rel="stylesheet">
         <link rel="stylesheet" href="access/css/updateTicketTypePrice.css"/>
     </head>
     <body>
@@ -148,10 +149,10 @@
                             </li>
                             <% } %>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="listUser.jsp"
                                    aria-expanded="false">
                                     <i class="fa fa-table" aria-hidden="true"></i>
-                                    <span class="hide-menu">Basic Table</span>
+                                    <span class="hide-menu">Danh sách người dùng</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
@@ -241,12 +242,11 @@
                                 <div class="header__item"><a id="losses" class="filter__link filter__link--number">Ngày bắt đầu</a></div>
                                 <div class="header__item"><a id="losses" class="filter__link filter__link--number">Ngày kết thúc</a></div>
                                 <div class="header__item"><a id="losses" class="filter__link filter__link--number">Giá</a></div>
-
                             </div>
-                            <c:forEach items="${listPromotion}" var="lp">
+                            <c:forEach var="lp" items="${listPromotion}">
                                 <div class="table-content">	
                                     <div class="table-row">		
-                                        <div class="table-data">${lp.promotionID}</div>
+                                        <div class="table-data">${lp.id}</div>
                                         <div class="table-data">${lp.description}</div>
                                         <div class="table-data">${lp.startDate}</div>
                                         <div class="table-data">${lp.endDate}</div>

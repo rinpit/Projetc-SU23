@@ -366,8 +366,6 @@
                                 </table>
                             </c:forEach>
 
-
-
                             <c:forEach var="list" begin="1" end="${kid}"><!-- trẻ em -->
                                 <c:set var="kNum" value="${list}"/>
                                 <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px; ";">
@@ -390,6 +388,23 @@
                                     </tr>
                                 </table>
                             </c:forEach>
+                            <div class="thong-tin-khuyen-mai">
+                                <div class="heading-h3">
+                                    <h3>
+                                        <span>Thông tin khuyến mãi</span>
+                                    </h3>
+                                </div>
+                                <table width="100%" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td colspan="1">
+                                            <span style="font-size: 14px;  width: 140px;  display: block; margin:0 0 10px 20px;font-weight: 700;">Mã giảm giá</span>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="promotions" style="margin-bottom: 10px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                             <div class="submit-flight float-right">
                                 <button  type="submit" class="bubbly-button">Submit</button>
                             </div>
@@ -630,6 +645,12 @@
             CaculatePrice("infoticketGO");
             CaculatePrice("infoticketBack");
             CaculateTotalPrice("infoticketGO", "infoticketBack");
+            function AlertPromotion(parameters) {
+                if (parameters) {
+                    alert("Promotion is not valid");
+                }
+            }
+            AlertPromotion("${promotionInvalid}")
         </script>
         <script>
             function checkInputLength(event) {

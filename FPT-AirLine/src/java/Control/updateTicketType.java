@@ -2,13 +2,15 @@
 
 package Control;
 
-import Model.updateTicketTypeDAO;
+import Model.TicketTypeDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,8 +42,12 @@ public class updateTicketType extends HttpServlet {
         HttpSession session = request.getSession();
         String id = (String) session.getAttribute("sId");
         String sPrice = request.getParameter("price");
-        updateTicketTypeDAO ticketTypeDAO = new updateTicketTypeDAO();
-        ticketTypeDAO.updateTicketTypePrice(id, sPrice);
+        TicketTypeDAO ticketTypeDAO = new TicketTypeDAO();
+        try {
+            ticketTypeDAO.updateTicketTypePrice(id, sPrice);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(updateTicketType.class.getName()).log(Level.SEVERE, null, ex);
+        }
         response.sendRedirect("ticketTypeServlet");
     }
 

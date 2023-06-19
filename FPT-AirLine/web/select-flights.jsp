@@ -185,7 +185,9 @@
                                                     <td><input class="price" type="text" value="${listTicket.get(0).ticketPrice} VND"
                                                                style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                                disabled></td>
-                                                    <td><a data-toggle="collapse" data-parent="#accordion1" href="#${l.flightId}">Xem chi tiết<i class="bi bi-plus-square"></i></a>
+                                                    <td><a data-toggle="collapse" data-parent="#accordion1" href="#${l.flightId}">Xem chi
+                                                            tiết
+                                                            <i class="bi bi-plus-square"></i></a>
                                                     </td>
                                                     <td><input type="radio" name="flightIdRound" value="${l.flightId}" required><label></label>Chọn</td>
                                                 </tr>

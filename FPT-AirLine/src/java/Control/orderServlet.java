@@ -7,6 +7,8 @@ package Control;
 import Model.AccountDAO;
 import Model.OrderDAO;
 import Model.PassengerDAO;
+import Model.Promotion;
+import Model.PromotionDAO;
 import Model.TicketDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,6 +46,7 @@ public class orderServlet extends HttpServlet {
         OrderDAO orderdao = new OrderDAO();
         TicketDAO ticketdao = new TicketDAO();
         PassengerDAO passdao = new PassengerDAO();
+        PromotionDAO prodao = new PromotionDAO();
 
         String userID = (String) session.getAttribute("userID");
         int numAdult = Integer.parseInt((String) session.getAttribute("adult"));
@@ -53,8 +56,10 @@ public class orderServlet extends HttpServlet {
         String flightID = (String) session.getAttribute("flightId");
         String flightIDBack = (String) session.getAttribute("flightIdBack");
         String totalAmount = request.getParameter("totalAmountGo");
+        int numTotalGo = prodao.convertStringToInt(totalAmount);
         String total = request.getParameter("total");
         String orderID = accdao.randomString();
+        String promotionId = request.getParameter("promotions");
         Date currentDate = new Date();
         // Định dạng chuỗi mong muốn
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -62,7 +67,20 @@ public class orderServlet extends HttpServlet {
         String currentDateTimeString = dateFormat.format(currentDate);
         try {
             if (total != null) {
-                orderdao.createOrder(orderID, userID, currentDateTimeString, "1.1", total);
+                int numTotal = prodao.convertStringToInt(total);
+                if (!promotionId.isBlank()) {
+                    Promotion promotion = prodao.isPromotionValid(promotionId, currentDateTimeString);
+                    if (promotion != null) {
+                        int newTotal = numTotal - (int)promotion.getAmount();
+                        orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", prodao.convertIntToString(newTotal));
+                    } else {
+                        request.setAttribute("promotionInvalid", "Promotion is not valid");
+                        request.getRequestDispatcher("detail_roundtrip.jsp").forward(request, response);
+                        return;
+                    }
+                } else {
+                    orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", total);
+                }
                 for (int i = 1; i <= numAdult; i++) {
                     String luggageA = null;
                     String passengerID = accdao.randomString();
@@ -95,7 +113,19 @@ public class orderServlet extends HttpServlet {
                     }
                 }
             } else {
-                orderdao.createOrder(orderID, userID, currentDateTimeString, "1.1", totalAmount);
+                if (!promotionId.isBlank()) {
+                    Promotion promotion = prodao.isPromotionValid(promotionId, currentDateTimeString);
+                    if (promotion != null) {
+                        int newTotal = numTotalGo - (int)promotion.getAmount();
+                        orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", prodao.convertIntToString(newTotal));
+                    } else {
+                        request.setAttribute("promotionInvalid", "Promotion is not valid");
+                        request.getRequestDispatcher("detail_onetrip.jsp").forward(request, response);
+                        return;
+                    }
+                } else {
+                    orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", totalAmount);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(orderServlet.class.getName()).log(Level.SEVERE, null, ex);

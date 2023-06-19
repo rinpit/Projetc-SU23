@@ -26,7 +26,7 @@ public class listPromotionServlet extends HttpServlet {
     throws ServletException, IOException {
         PromotionDAO promotionDao = new PromotionDAO();
         List<Promotion> promotions = promotionDao.getPromotion();
-        Collections.sort(promotions, Comparator.comparing(Promotion::getStartDate));
+//        Collections.sort(promotions, Comparator.comparing(Promotion::getStartDate));
         request.setAttribute("listPromotion", promotions);
         request.getRequestDispatcher("listPromotion.jsp").forward(request, response);
     } 

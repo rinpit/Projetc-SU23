@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class OrderDAO {
+
     private ArrayList<Order> orders = new ArrayList<Order>();
     Connection connection;
 
@@ -22,14 +23,18 @@ public class OrderDAO {
             throw new RuntimeException(e);
         }
     }
-    
-    public void createOrder(String orderID,String userID, String date, String tax, String totalAmount) throws SQLException {
+
+    public void createOrder(String orderID, String userID, String date, String promotionID, String tax, String totalAmount) throws SQLException {
         String stmt = "insert into OrderTicket values" + " (?,?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(stmt);
         ps.setString(1, orderID);
         ps.setString(2, userID);
         ps.setString(3, date);
-        ps.setNull(4, java.sql.Types.INTEGER);
+        if (promotionID.isBlank()) {
+            ps.setNull(4, java.sql.Types.INTEGER);
+        } else {
+            ps.setString(4, promotionID);
+        }
         ps.setString(5, tax);
         ps.setString(6, totalAmount);
         ps.setString(7, "false");

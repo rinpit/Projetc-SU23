@@ -8,30 +8,33 @@ import java.util.Date;
 
 /**
  *
- * @author Dell
+ * @author admin
  */
 public class Promotion {
 
-    private String promotionID;
+    private String id;
     private String description;
     private Date startDate;
     private Date endDate;
     private float amount;
 
-    public Promotion(String promotionID, String description, Date startDate, Date endDate, float amount) {
-        this.promotionID = promotionID;
+    public Promotion() {
+    }
+
+    public Promotion(String id, String description, Date startDate, Date endDate, float amount) {
+        this.id = id;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.amount = amount;
     }
 
-    public String getPromotionID() {
-        return promotionID;
+    public String getId() {
+        return id;
     }
 
-    public void setPromotionID(String promotionID) {
-        this.promotionID = promotionID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDescription() {
@@ -66,4 +69,8 @@ public class Promotion {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "Promotion{" + "id=" + id + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", amount=" + amount + '}';
+    }
 }

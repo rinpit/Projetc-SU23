@@ -25,7 +25,7 @@
         <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
         <!-- Custom CSS -->
-        <link href="cssHome/style.min.css" rel="stylesheet">
+        <link href="css/style.min.css" rel="stylesheet">
     </head>
     <body>
         <div class="preloader">
@@ -46,10 +46,10 @@
                 <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                     <div class="navbar-header" data-logobg="skin6">
                         <%
-                    // Kiểm tra vai trò của người dùng
-                    String role = (String) session.getAttribute("role");
-                    // Kiểm tra xem người dùng có phải là admin hay không
-                    boolean isAdmin = "admin".equals(role);
+                            // Kiểm tra vai trò của người dùng
+                            String role = (String) session.getAttribute("role");
+                            // Kiểm tra xem người dùng có phải là admin hay không
+                            boolean isAdmin = "admin".equals(role);
                         %>
                         <% if (!isAdmin) { %>
                         <a class="navbar-brand" href="homepage.jsp">
@@ -106,8 +106,7 @@
                             <!-- ============================================================== -->
                             <li>
                                 <a class="profile-pic" href="#">
-                                    <img src="plugins/images/users/avatar.webp" alt="user-img" width="36"
-                                         class="img-circle"><span class="text-white font-medium">${email}</span></a>
+                                    <span class="text-white font-medium">${email}</span></a>
                             </li>
                             <!-- ============================================================== -->
                             <!-- User profile and search -->
@@ -146,10 +145,10 @@
                             </li>
                             <% } %>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="listUser.jsp"
                                    aria-expanded="false">
                                     <i class="fa fa-table" aria-hidden="true"></i>
-                                    <span class="hide-menu">Basic Table</span>
+                                    <span class="hide-menu">Danh sách người dùng</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
@@ -221,14 +220,14 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                <% } %>
+                <% }%>
 
                 <!-- ============================================================== -->
                 <!-- NỘI DUNG THAY ĐỔI Ở TRONG container-fluid-->
                 <!-- ============================================================== -->
                 <div class="container-fluid">
-                    
-                    
+
+
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-12">
                             <div class="white-box analytics-info">
