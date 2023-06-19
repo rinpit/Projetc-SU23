@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>AccountServlet</servlet-name>
         <servlet-class>Control.AccountServlet</servlet-class>
@@ -15,6 +15,50 @@
     <servlet>
         <servlet-name>UpdatePasswordServlet</servlet-name>
         <servlet-class>Control.UpdatePasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>orderServlet</servlet-name>
+        <servlet-class>Control.orderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SelectFlightServelt</servlet-name>
+        <servlet-class>Control.SelectFlightServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderTicketServlet</servlet-name>
+        <servlet-class>Control.OrderTicketServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>promotionServlet</servlet-name>
+        <servlet-class>Control.promotionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ticketTypeServlet</servlet-name>
+        <servlet-class>Control.ticketTypeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateTicketType</servlet-name>
+        <servlet-class>Control.updateTicketType</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginAdminServlet</servlet-name>
+        <servlet-class>Control.loginAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginEmployeeServlet</servlet-name>
+        <servlet-class>Control.loginEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>Control.logoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listPromotionServlet</servlet-name>
+        <servlet-class>Control.listPromotionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserListServlet</servlet-name>
+        <servlet-class>Control.UserListServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AccountServlet</servlet-name>
@@ -32,9 +76,6 @@
         <servlet-name>UpdatePasswordServlet</servlet-name>
         <url-pattern>/UpdatePasswordServlet</url-pattern>
     </servlet-mapping>
-    
-    
-    
     <servlet>
         <servlet-name>SignUpServlet</servlet-name>
         <servlet-class>Control.SignUpServlet</servlet-class>
@@ -50,6 +91,50 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>orderServlet</servlet-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SelectFlightServelt</servlet-name>
+        <url-pattern>/SelectFlightServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderTicketServlet</servlet-name>
+        <url-pattern>/OrderTicketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>promotionServlet</servlet-name>
+        <url-pattern>/promotionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ticketTypeServlet</servlet-name>
+        <url-pattern>/ticketTypeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateTicketType</servlet-name>
+        <url-pattern>/updateTicketType</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginAdminServlet</servlet-name>
+        <url-pattern>/loginAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginEmployeeServlet</servlet-name>
+        <url-pattern>/loginEmployeeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listPromotionServlet</servlet-name>
+        <url-pattern>/listPromotionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserListServlet</servlet-name>
+        <url-pattern>/UserListServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

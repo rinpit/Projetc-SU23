@@ -1,11 +1,7 @@
 package Control;
 
-import Model.Distance;
-import Model.DistanceDAO;
-import Model.Flight;
-import Model.FlightDao;
-import Model.TicketType;
-import Model.TicketTypeDao;
+import Model.*;
+import Model.FlightDAO;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -16,6 +12,7 @@ import java.util.List;
 
 @WebServlet(name = "SearchFlight", value = "/SearchFlight")
 public class SearchFlight extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -25,7 +22,6 @@ public class SearchFlight extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Format format = new Format();
 
-//        round-trip or one-way
         String selectFlight = request.getParameter("flight");
 
         String sdeparture = request.getParameter("departure");
@@ -38,33 +34,60 @@ public class SearchFlight extends HttpServlet {
         String sbaby = request.getParameter("baby");
 
         HttpSession session = request.getSession();
+        String userIDSession = (String) session.getAttribute("userID");
+        //Xóa session cũ khi gọi đến servlet
+        session.invalidate();
+        //Tạo session mới
+        session = request.getSession(true);
+        
+        session.setAttribute("userID", userIDSession);
         session.setAttribute("FlightType", selectFlight);
         session.setAttribute("Departure", sdeparture);
         session.setAttribute("Destination", sdestination);
         session.setAttribute("StartDate", format.formatDate(sstartDate));
-        if(sendDate != null){
-            session.setAttribute("EndDate", format.formatDate(sendDate));
-        }
+
         session.setAttribute("adult", sadult);
         session.setAttribute("kid", skid);
         session.setAttribute("baby", sbaby);
 
-        FlightDao flightDao = new FlightDao();
-        List<Flight> flights = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
-        TicketTypeDao ticketDao = new TicketTypeDao();
+        FlightDAO flightDao = new FlightDAO();
+        List<Flight> flightsOne = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
+        request.setAttribute("listFlightOne", flightsOne);
+
+        if (sendDate != null) {
+            session.setAttribute("EndDate", format.formatDate(sendDate));
+            List<Flight> flightsRound = flightDao.getListFlight(sendDate, sdestination, sdeparture);
+            request.setAttribute("listFlightRound", flightsRound);
+        }
+        TicketTypeDAO ticketDao = new TicketTypeDAO();
         List<TicketType> ticketTypes = ticketDao.getTickets();
+
         DistanceDAO distanceDAO = new DistanceDAO();
         List<Distance> distances = distanceDAO.getDistances(sstartDate, sdeparture, sdestination);
-        for (TicketType ticketType : ticketTypes) {
-            float newPrice = ticketType.getTicketPrice() + distances.get(0).getDistancePrice();
-            ticketType.setTicketPrice(newPrice);
-        }
+        if (distances != null) {
+            for (TicketType ticketType : ticketTypes) {
+                float tickPrice = Float.parseFloat(ticketType.getTicketPrice());
+                float priceAdult = Float.parseFloat(sadult);
+                float priceKid = Float.parseFloat(skid);
+                float distancePrice = distances.get(0).getDistancePrice();
+                float newPrice = tickPrice + distancePrice;
+//            Tính Tổng tiền vé
+                float sumAdult = Float.parseFloat("1.1") * priceAdult * newPrice;
+                float sumKid = Float.parseFloat("1.1") * priceKid * newPrice;
+//            Format tiền vé
+                String Price = String.valueOf(newPrice);
+                String PriceAdult = String.valueOf(sumAdult);
+                String PriceKid = String.valueOf(sumKid);
 
-        request.setAttribute("listFlight", flights);
+                ticketType.setTicketPrice(format.formatPrice(Price));
+                ticketType.setTicketSumAdult(format.formatPrice(PriceAdult));
+                ticketType.setTicketSumKid(format.formatPrice(PriceKid));
+            }
+        }
         request.setAttribute("listTicket", ticketTypes);
 
         request.getRequestDispatcher("select-flights.jsp").forward(request, response);
-    }
 
+    }
 
 }

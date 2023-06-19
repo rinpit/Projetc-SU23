@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
-/**
- *
- * @author admin
- */
+
 public class Ticket {
     private String ticketID;
     private String orderID;
     private String flightID;
     private String ticketTypeID;
     private String luggageID;
-    
+
     public Ticket() {
     }
 
@@ -70,5 +63,5 @@ public class Ticket {
     public String toString() {
         return "Ticket{" + "ticketID=" + ticketID + ", orderID=" + orderID + ", flightID=" + flightID + ", ticketTypeID=" + ticketTypeID + ", luggageID=" + luggageID + '}';
     }
-    
+
 }

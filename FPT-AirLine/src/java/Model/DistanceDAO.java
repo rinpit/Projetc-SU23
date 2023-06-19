@@ -44,7 +44,8 @@ public class DistanceDAO {
             statement.setString(3, destination);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Distance distance = new Distance(resultSet.getString(11),resultSet.getString(12),resultSet.getFloat(13),resultSet.getString(1), format.formatDate(resultSet.getString(2)),
+                Distance distance = new Distance(resultSet.getString(12),resultSet.getString(13),resultSet.getFloat(14),
+                        resultSet.getString(1), format.formatDate(resultSet.getString(2)),
                         format.formatDate(resultSet.getString(3)), format.formatTime(resultSet.getString(4))
                         , format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7));
                 distanceList.add(distance);
@@ -53,13 +54,5 @@ public class DistanceDAO {
             e.printStackTrace();
         }
         return distanceList;
-    }
-    
-    public static void main(String[] args) {
-        DistanceDAO d = new DistanceDAO();
-        List<Distance> dis =d.getDistances("2023-05-25", "Đà Nẵng", "Hà Nội");
-        for (Distance di : dis) {
-            System.out.println(di);
-        }
     }
 }

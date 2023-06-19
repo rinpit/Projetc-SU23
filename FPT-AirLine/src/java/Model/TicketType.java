@@ -1,31 +1,35 @@
 package Model;
 
 public class TicketType {
-    private String ticketId;
+    private String ticketTypeId;
     private String ticketType;
-    private float ticketPrice;
+    private String ticketPrice;
+    private String ticketSumAdult;
+    private String ticketSumKid;
 
     public TicketType() {
     }
 
-    public TicketType(String ticketId, String ticketType, float ticketPrice) {
-        this.ticketId = ticketId;
+    public TicketType(String ticketId, String ticketType, String ticketPrice) {
+        this.ticketTypeId = ticketId;
         this.ticketType = ticketType;
         this.ticketPrice = ticketPrice;
     }
 
-    public TicketType(String ticketType, float ticketPrice) {
+    public TicketType(String ticketType, String ticketPrice) {
         this.ticketType = ticketType;
         this.ticketPrice = ticketPrice;
     }
 
-    public String getTicketId() {
-        return ticketId;
+
+    public String getTicketTypeId() {
+        return ticketTypeId;
     }
 
-    public void setTicketId(String ticketId) {
-        this.ticketId = ticketId;
+    public void setTicketTypeId(String ticketTypeId) {
+        this.ticketTypeId = ticketTypeId;
     }
+
 
     public String getTicketType() {
         return ticketType;
@@ -35,18 +39,34 @@ public class TicketType {
         this.ticketType = ticketType;
     }
 
-    public float getTicketPrice() {
+    public String getTicketPrice() {
         return ticketPrice;
     }
 
-    public void setTicketPrice(float ticketPrice) {
+    public void setTicketPrice(String ticketPrice) {
         this.ticketPrice = ticketPrice;
+    }
+
+    public String getTicketSumAdult() {
+        return ticketSumAdult;
+    }
+
+    public void setTicketSumAdult(String ticketSumAdult) {
+        this.ticketSumAdult = ticketSumAdult;
+    }
+
+    public String getTicketSumKid() {
+        return ticketSumKid;
+    }
+
+    public void setTicketSumKid(String ticketSumKid) {
+        this.ticketSumKid = ticketSumKid;
     }
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "ticketId='" + ticketId + '\'' +
+        return "TicketType{" +
+                "ticketTypeId='" + ticketTypeId + '\'' +
                 ", ticketType='" + ticketType + '\'' +
                 ", ticketPrice='" + ticketPrice + '\'' +
                 '}';

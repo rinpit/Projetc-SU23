@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightDao {
+public class FlightDAO {
     Connection connection;
     PreparedStatement statement;
     ResultSet resultSet;

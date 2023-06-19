@@ -22,19 +22,19 @@ import jakarta.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
 
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         String email = request.getParameter("login-email");
         String password = request.getParameter("login-pass");
         String remember = request.getParameter("remember");
@@ -42,8 +42,9 @@ public class LoginServlet extends HttpServlet {
         ArrayList<Account> accounts = dao.getAccount(email, password);
         if (!accounts.isEmpty()) {
             String userID = accounts.get(0).getAccID();
-            HttpSession session = request.getSession();
-            session.setAttribute("userID", userID);
+            HttpSession sessionFlight = request.getSession();
+            HttpSession sessionUser = request.getSession();
+            sessionUser.setAttribute("userID", userID);
             if (remember != null) {
                 Cookie e = new Cookie("emailC", email);
                 e.setMaxAge(60 * 15);

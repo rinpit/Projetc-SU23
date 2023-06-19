@@ -19,7 +19,7 @@
                 <div class="col-12 col-lg-4">
                     <div class="card custom-card">
                         <div class="row custom-card-title">
-                            <div class="col-6 col-lg-12"><a href="http://localhost:9999/FPT-AirLine/AccountServlet">
+                            <div class="col-6 col-lg-12"><a href="AccountServlet">
                                     <div class="row ">
                                         <div class="col-12 col-lg-3"><i class="fas fa-info-circle"></i></div>
                                         <div class="col-12 col-lg-9"> Tài khoản của tôi</div>

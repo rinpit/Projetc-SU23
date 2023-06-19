@@ -30,11 +30,11 @@ public class AccountDAO {
             throw new RuntimeException(e);
         }
     }
-    
+
     public ArrayList<Account> getAccount(String email, String pass) {
-        String query = "select UserID, Email, PassWord , Role\n" 
-                        +"from Users\n" 
-                        +"where Email = ? and PassWord = ?";
+        String query = "select UserID, Email, PassWord , Role\n"
+                + "from Users\n"
+                + "where Email = ? and PassWord = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);
@@ -65,7 +65,7 @@ public class AccountDAO {
 
     public Account checkExist(String email) {
         ResultSet resultSet;
-        String q = "select * from Account\n"
+        String q = "select * from Users\n"
                 + "where [Email] = ?\n";
         try {
             PreparedStatement statement = connection.prepareStatement(q);
@@ -81,10 +81,36 @@ public class AccountDAO {
         }
         return null;
     }
-    
-    
-    public static void main(String[] args) {
-        AccountDAO ac = new AccountDAO();
-        System.out.println(ac.getAccount("admin@123", "123456"));
+
+    public ArrayList<Account> getAccountAdmin(String email, String pass) {
+        String query = "select UserID, Email, PassWord , Role from Users "
+                + "where Email = ? and PassWord = ? and Role = 'admin'";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result.add(new Account(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (Exception e) {
+        }
+        return result;
+    }
+
+    public ArrayList<Account> getAccountEmployee(String email, String pass) {
+        String query = "select UserID, Email, PassWord , Role from Users "
+                + "where Email = ? and PassWord = ? and Role = 'employee'";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                result.add(new Account(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (Exception e) {
+        }
+        return result;
     }
 }

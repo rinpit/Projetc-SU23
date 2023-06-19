@@ -11,6 +11,7 @@ package Model;
 public class Customer extends Account {
     private String cusName;
     private String gender;
+    private String birthday;
     private String phone;
     private String email;
     private String address;
@@ -20,9 +21,10 @@ public class Customer extends Account {
     public Customer() {
     }
 
-    public Customer(String cusName, String gender, String phone, String email, String address, String nation, String cccd) {
+    public Customer(String cusName, String gender, String birthday, String phone, String email, String address, String nation, String cccd) {
         this.cusName = cusName;
         this.gender = gender;
+        this.birthday = birthday;
         this.phone = phone;
         this.email = email;
         this.address = address;
@@ -63,6 +65,14 @@ public class Customer extends Account {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public void setEmail(String email) {

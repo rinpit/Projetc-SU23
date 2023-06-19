@@ -3,7 +3,7 @@ body{
     background-image: url('https://www.vietjetair.com/static/media/bay_vao_tuong_lai_bg_mb.e310d427.png');
     /*background-repeat: no-repeat;*/
     background-size: 100%;
-    
+
 }
 
 .heading-h3{
@@ -11,7 +11,6 @@ body{
     color: #fff;
     font-size: 16px;
     line-height: 40px;
-    margin-bottom: 0;
     text-align: left;
     text-indent: 45px;
     text-shadow: 1px 1px 0 #343333;
@@ -49,8 +48,8 @@ select {
     background-color: #f44d06;
 }
 
-.infoticket tr td,
-.returnticket tr td {
+#infoticketGO tr td,
+#infoticketBack tr td {
     font-size: 12px;
     padding: 6px 7px;
     color: #000;
@@ -62,4 +61,11 @@ select {
 
 .border-airline {
     border-bottom: 2px solid #f44d06;
+}
+.count{
+    color: #F44D06; 
+    font-weight: bold; 
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 2px;
 }
