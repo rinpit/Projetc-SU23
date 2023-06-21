@@ -34,12 +34,6 @@ public class orderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
         HttpSession session = request.getSession();
         AccountDAO accdao = new AccountDAO();
         OrderDAO orderdao = new OrderDAO();
@@ -70,7 +64,7 @@ public class orderServlet extends HttpServlet {
                 if (!promotionId.isBlank()) {
                     Promotion promotion = prodao.isPromotionValid(promotionId, currentDateTimeString);
                     if (promotion != null) {
-                        int newTotal = numTotal - (int)promotion.getAmount();
+                        int newTotal = numTotal - (int) promotion.getAmount();
                         orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", prodao.convertIntToString(newTotal));
                     } else {
                         request.setAttribute("promotionInvalid", "Promotion is not valid");
@@ -115,7 +109,7 @@ public class orderServlet extends HttpServlet {
                 if (!promotionId.isBlank()) {
                     Promotion promotion = prodao.isPromotionValid(promotionId, currentDateTimeString);
                     if (promotion != null) {
-                        int newTotal = numTotalGo - (int)promotion.getAmount();
+                        int newTotal = numTotalGo - (int) promotion.getAmount();
                         orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", prodao.convertIntToString(newTotal));
                     } else {
                         request.setAttribute("promotionInvalid", "Promotion is not valid");
@@ -176,7 +170,13 @@ public class orderServlet extends HttpServlet {
             Logger.getLogger(orderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        request.getRequestDispatcher("payment.jsp").forward(request, response);
+        request.getRequestDispatcher("verify.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
     }
 
 }

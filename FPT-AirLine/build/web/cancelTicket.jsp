@@ -46,6 +46,12 @@
                                         <div class="col-12 col-lg-9 title"> Hủy vé</div>
                                     </div>
                                 </a></div> 
+                            <div class="col-6 col-lg-12"><a href="lookUpFlight.jsp">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-3"><i class="fa fa-search"></i></div>
+                                        <div class="col-12 col-lg-9 title"> Tra cứu chuyến bay</div>
+                                    </div>
+                                </a></div> 
                         </div>
                     </div>
                 </div>
@@ -65,7 +71,7 @@
                             <input type="checkbox" required> Bạn chấp nhận điều khoản của chúng tôi <br><br>
                             <button type="submit"
                                     style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #0077cc; color: #fff;"><i
-                                    class="fa fa-times"></i> Hủy vé</button>
+                                    class="fa fa-ban"></i> Hủy vé</button>
                         </form>
                     </div>
                 </div>  

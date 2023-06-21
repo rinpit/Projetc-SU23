@@ -1,6 +1,6 @@
 package Model;
 
-public class Flight {
+public class Flight extends TicketType {
 
     String flightId;
     String startDate;
@@ -9,8 +9,11 @@ public class Flight {
     String endTime;
     String departure;
     String destination;
+    String seat;
+    int gate;
     int seatB;
     int seatC;
+    String distanceID;
 
     public Flight() {
     }
@@ -25,6 +28,30 @@ public class Flight {
         this.destination = destination;
         this.seatB = seatB;
         this.seatC = seatC;
+    }
+
+    public Flight(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int gate, int seatB, int seatC, String distanceID) {
+        this.flightId = flightId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.departure = departure;
+        this.destination = destination;
+        this.gate = gate;
+        this.seatB = seatB;
+        this.seatC = seatC;
+        this.distanceID = distanceID;
+    }
+
+    public Flight(String flightId, String startDate, String startTime, String departure, String destination, String seat, String ticketType) {
+        super(ticketType);
+        this.flightId = flightId;
+        this.startDate = startDate;
+        this.startTime = startTime;
+        this.departure = departure;
+        this.destination = destination;
+        this.seat = seat;
     }
 
     public Flight(String flightId, String startDate, String startTime, String endTime, String departure, String destination) {
@@ -108,9 +135,33 @@ public class Flight {
         this.seatC = seatC;
     }
 
+    public String getSeat() {
+        return seat;
+    }
+
+    public void setSeat(String seat) {
+        this.seat = seat;
+    }
+
+    public String getDistanceID() {
+        return distanceID;
+    }
+
+    public void setDistanceID(String distanceID) {
+        this.distanceID = distanceID;
+    }
+
+    public int getGate() {
+        return gate;
+    }
+
+    public void setGate(int gate) {
+        this.gate = gate;
+    }
+
     @Override
     public String toString() {
-        return "Flight{" + "flightId=" + flightId + ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime=" + endTime + ", departure=" + departure + ", destination=" + destination + ", seatB=" + seatB + ", seatC=" + seatC + '}';
+        return "Flight{" + "flightId=" + flightId + ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime=" + endTime + ", departure=" + departure + ", destination=" + destination + ", seat=" + seat + ", seatB=" + seatB + ", seatC=" + seatC + ", distanceID=" + distanceID + '}';
     }
 
 }

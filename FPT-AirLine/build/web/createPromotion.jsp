@@ -26,7 +26,7 @@
         <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
         <!-- Custom CSS -->
-        <link href="cssHome/style.min.css" rel="stylesheet">
+        <link href="css/style.min.css" rel="stylesheet">
         <link rel="stylesheet" href="access/css/updateTicketTypePrice.css"/>
         <link rel="stylesheet" href="access/css/createPromotion.css"/>
     </head>
@@ -149,10 +149,10 @@
                             </li>
                             <% } %>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="listUser.jsp"
                                    aria-expanded="false">
                                     <i class="fa fa-table" aria-hidden="true"></i>
-                                    <span class="hide-menu">Basic Table</span>
+                                    <span class="hide-menu">Danh sách người dùng</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">

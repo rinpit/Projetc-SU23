@@ -33,12 +33,15 @@ public class SearchFlight extends HttpServlet {
 
         HttpSession session = request.getSession();
         String userIDSession = (String) session.getAttribute("userID");
+        String emailSession = (String) session.getAttribute("email");
+
         //Xóa session cũ khi gọi đến servlet
         session.invalidate();
         //Tạo session mới
         session = request.getSession(true);
 
         session.setAttribute("userID", userIDSession);
+        session.setAttribute("email", emailSession);
         session.setAttribute("FlightType", selectFlight);
         session.setAttribute("Departure", sdeparture);
         session.setAttribute("Destination", sdestination);

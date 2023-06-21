@@ -4,13 +4,14 @@
  */
 package Model;
 
+import java.util.Date;
+
 
 /**
  *
  * @author admin
  */
 public class Promotion {
-    private String promotion_id, description  ,StartDate, EndDate, price;
 
     private String id;
     private String description;
@@ -24,9 +25,9 @@ public class Promotion {
     public Promotion(String id, String description, Date startDate, Date endDate, float amount) {
         this.id = id;
         this.description = description;
-        this.StartDate = StartDate;
-        this.EndDate = EndDate;
-        this.price = price;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.amount = amount;
     }
 
     public String getId() {
@@ -45,28 +46,28 @@ public class Promotion {
         this.description = description;
     }
 
-    public String getStartDate() {
-        return StartDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
     public void setStartDate(String StartDate) {
-        this.StartDate = StartDate;
+        this.startDate = startDate;
     }
 
-    public String getEndDate() {
-        return EndDate;
+    public Date getEndDate() {
+        return endDate;
     }
 
     public void setEndDate(String EndDate) {
-        this.EndDate = EndDate;
+        this.endDate = endDate;
     }
 
-    public String getPrice() {
-        return price;
+    public float getAmount() {
+        return amount;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setAmount(String price) {
+        this.amount = amount;
     }
 
 }

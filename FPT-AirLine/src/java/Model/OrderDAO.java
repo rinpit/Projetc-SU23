@@ -17,7 +17,6 @@ public class OrderDAO {
     private ArrayList<Order> orders = new ArrayList<Order>();
     Connection connection;
     ResultSet resultSet;
-    List<Order> orders;
 
     public OrderDAO() {
         try {

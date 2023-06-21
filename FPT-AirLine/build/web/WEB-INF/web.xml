@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>AccountServlet</servlet-name>
         <servlet-class>Control.AccountServlet</servlet-class>
@@ -56,22 +56,11 @@
         <servlet-name>listPromotionServlet</servlet-name>
         <servlet-class>Control.listPromotionServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>AccountServlet</servlet-name>
-        <url-pattern>/AccountServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PersonalServlet</servlet-name>
-        <url-pattern>/PersonalServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateInformationServlet</servlet-name>
-        <url-pattern>/UpdateInformationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdatePasswordServlet</servlet-name>
-        <url-pattern>/UpdatePasswordServlet</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>UserListServlet</servlet-name>
+        <servlet-class>Control.UserListServlet</servlet-class>
+    </servlet>
+  
     <servlet>
         <servlet-name>SignUpServlet</servlet-name>
         <servlet-class>Control.SignUpServlet</servlet-class>
@@ -84,10 +73,70 @@
         <servlet-name>viewHistoryServlet</servlet-name>
         <servlet-class>Control.viewHistoryServlet</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>cancelTicketServlet</servlet-name>
         <servlet-class>Control.cancelTicketServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>lookUpFlight</servlet-name>
+        <servlet-class>Control.lookUpFlight</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Verify</servlet-name>
+        <servlet-class>Control.Verify</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListFlightServlet</servlet-name>
+        <servlet-class>Control.ListFlightServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addDistance</servlet-name>
+        <servlet-class>Control.addDistance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addFlight</servlet-name>
+        <servlet-class>Control.addFlight</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteFlightServlet</servlet-name>
+        <servlet-class>Control.DeleteFlightServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListDistanceServlet</servlet-name>
+        <servlet-class>Control.ListDistanceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatePriceServlet</servlet-name>
+        <servlet-class>Control.UpdatePriceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListFlightServlet</servlet-name>
+        <url-pattern>/ListFlightServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addDistance</servlet-name>
+        <url-pattern>/addDistance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addFlight</servlet-name>
+        <url-pattern>/addFlight</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteFlightServlet</servlet-name>
+        <url-pattern>/DeleteFlightServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListDistanceServlet</servlet-name>
+        <url-pattern>/ListDistanceServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePriceServlet</servlet-name>
+        <url-pattern>/UpdatePriceServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Verify</servlet-name>
+        <url-pattern>/Verify</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/SignUpServlet</url-pattern>
@@ -137,13 +186,40 @@
         <url-pattern>/listPromotionServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>UserListServlet</servlet-name>
+        <url-pattern>/UserListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>viewHistoryServlet</servlet-name>
         <url-pattern>/viewHistoryServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>cancelTicketServlet</servlet-name>
         <url-pattern>/cancelTicketServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/AccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonalServlet</servlet-name>
+        <url-pattern>/PersonalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateInformationServlet</servlet-name>
+        <url-pattern>/UpdateInformationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePasswordServlet</servlet-name>
+        <url-pattern>/UpdatePasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>lookUpFlight</servlet-name>
+        <url-pattern>/lookUpFlight</url-pattern>
+    </servlet-mapping>
     <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
     </session-config>
 </web-app>

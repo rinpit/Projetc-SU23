@@ -1,6 +1,7 @@
 package Model;
 
 public class TicketType {
+
     private String ticketTypeId;
     private String ticketType;
     private String ticketPrice;
@@ -8,6 +9,10 @@ public class TicketType {
     private String ticketSumKid;
 
     public TicketType() {
+    }
+
+    public TicketType(String ticketType) {
+        this.ticketType = ticketType;
     }
 
     public TicketType(String ticketId, String ticketType, String ticketPrice) {
@@ -21,7 +26,6 @@ public class TicketType {
         this.ticketPrice = ticketPrice;
     }
 
-
     public String getTicketTypeId() {
         return ticketTypeId;
     }
@@ -29,7 +33,6 @@ public class TicketType {
     public void setTicketTypeId(String ticketTypeId) {
         this.ticketTypeId = ticketTypeId;
     }
-
 
     public String getTicketType() {
         return ticketType;
@@ -65,10 +68,10 @@ public class TicketType {
 
     @Override
     public String toString() {
-        return "TicketType{" +
-                "ticketTypeId='" + ticketTypeId + '\'' +
-                ", ticketType='" + ticketType + '\'' +
-                ", ticketPrice='" + ticketPrice + '\'' +
-                '}';
+        return "TicketType{"
+                + "ticketTypeId='" + ticketTypeId + '\''
+                + ", ticketType='" + ticketType + '\''
+                + ", ticketPrice='" + ticketPrice + '\''
+                + '}';
     }
 }

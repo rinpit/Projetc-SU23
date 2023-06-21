@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="container mt-5 pt-5" >
-            <form action="orderServlet" method="post" onsubmit="return validateDateKid(), validateDateBaby()">
+            <form action="Verify" method="get" onsubmit="//return validateDateKid(event), validateDateBaby()">
                 <div class="count">
                     <p>Thời gian đặt vé còn lại: <span id="countdown"></span></p>
                 </div>
@@ -366,8 +366,6 @@
                                 </table>
                             </c:forEach>
 
-
-
                             <c:forEach var="list" begin="1" end="${kid}"><!-- trẻ em -->
                                 <c:set var="kNum" value="${list}"/>
                                 <table width="100%" cellpadding="0" cellspacing="0" style="padding-top: 150px; ";">
@@ -390,6 +388,23 @@
                                     </tr>
                                 </table>
                             </c:forEach>
+                            <div class="thong-tin-khuyen-mai">
+                                <div class="heading-h3">
+                                    <h3>
+                                        <span>Thông tin khuyến mãi</span>
+                                    </h3>
+                                </div>
+                                <table width="100%" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td colspan="1">
+                                            <span style="font-size: 14px;  width: 140px;  display: block; margin:0 0 10px 20px;font-weight: 700;">Mã giảm giá</span>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="promotions" style="margin-bottom: 10px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                             <div class="submit-flight float-right">
                                 <button  type="submit" class="bubbly-button">Submit</button>
                             </div>
@@ -630,6 +645,12 @@
             CaculatePrice("infoticketGO");
             CaculatePrice("infoticketBack");
             CaculateTotalPrice("infoticketGO", "infoticketBack");
+            function AlertPromotion(parameters) {
+                if (parameters) {
+                    alert("Promotion is not valid");
+                }
+            }
+            AlertPromotion("${promotionInvalid}")
         </script>
         <script>
             function checkInputLength(event) {
@@ -643,16 +664,11 @@
             }
         </script>
 
-        <script>
-            // Lấy ngày hiện tại
-            var today = new Date().toISOString().split('T')[0];
+<!--        <script>
 
-            // Thiết lập giá trị tối đa cho thẻ input
-            document.getElementById("birthdateAdult").max = today;
-        </script>
+            function validateDateKid(event) {
+                event.preventDefault(); // Ngăn chặn chuyển trang mặc định
 
-        <script>
-            function validateDateKid() {
                 var selectedDate = new Date(document.getElementById("birthdateKid").value);
                 var today = new Date();
                 var minDate = new Date();
@@ -663,25 +679,14 @@
                     alert("Vui lòng chọn ngày sinh trẻ em hợp lệ!");
                     return false;
                 }
+
+                // Ngày sinh hợp lệ, cho phép chuyển trang
+                // document.getElementById("formId").submit(); // Gửi form
+                // window.location.href = "new-page.html"; // Chuyển trang
+
                 return true;
             }
-        </script>
-
-        <script>
-            function validateDateBaby() {
-                var selectedDate = new Date(document.getElementById("birthdateBaby").value);
-                var today = new Date();
-                var minDate = new Date();
-                minDate.setFullYear(today.getFullYear() - 2); // Giới hạn từ 2 tuổi trở lại
-                minDate.setDate(minDate.getDate() + 1); // Giới hạn từ 1 ngày sau ngày hiện tại
-
-                if (selectedDate < minDate || selectedDate > today) {
-                    alert("Vui lòng chọn ngày sinh trẻ sơ sinh hợp lệ!");
-                    return false;
-                }
-                return true;
-            }
-        </script>
+        </script>-->
 
         <script>
             function countdown() {

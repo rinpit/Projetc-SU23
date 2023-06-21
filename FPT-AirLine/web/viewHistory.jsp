@@ -41,12 +41,18 @@
                                         <div class="col-12 col-lg-9 title"> Lịch sử đặt vé</div>
                                     </div>
                                 </a></div>  
-                            <div class="col-6 col-lg-12"><a href="/FPT-AirLine/cancelTicket.jsp">
+                            <div class="col-6 col-lg-12"><a href="/mavenproject1/cancelTicket.jsp">
                                     <div class="row">
                                         <div class="col-12 col-lg-3"><i class="fa fa-ban"></i></div>
                                         <div class="col-12 col-lg-9 title"> Hủy vé</div>
                                     </div>
                                 </a></div>
+                            <div class="col-6 col-lg-12"><a href="lookUpFlight.jsp">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-3"><i class="fa fa-search"></i></div>
+                                        <div class="col-12 col-lg-9 title"> Tra cứu chuyến bay</div>
+                                    </div>
+                                </a></div> 
                         </div>
                     </div>
                 </div>
@@ -98,7 +104,6 @@
         if ($.fn.DataTable.isDataTable('#myTable')) {
             $('#myTable').DataTable().destroy();
         }
-
         $('#myTable').DataTable({
             "pagingType": "full_numbers",
             "pageLength": 10,

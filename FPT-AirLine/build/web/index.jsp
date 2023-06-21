@@ -46,18 +46,48 @@
                                         <td colspan="2">
                                             <label>
                                                 <select name="departure" class="Des">
-                                                    <option>Đà Nẵng</option>
-                                                    <option>Hồ Chí Minh</option>
-                                                    <option>Hà Nội</option>
+                                                    <option value="Hà Nội">(HAN)Hà Nội</option>
+                                                    <option value="Hồ Chí Minh">(SGN)Hồ Chí Minh</option>
+                                                    <option value="Đà Nẵng">(DAD)Đà Nẵng</option>
+                                                    <option value="Nha Trang">(CXR)Nha Trang</option>
+                                                    <option value="Đà Lạt">(DLI)Đà Lạt</option>
+                                                    <option value="Hải Phòng">(HPH)Hải Phòng</option>
+                                                    <option value="Vinh">(VII)Vinh</option>
+                                                    <option value="Thanh Hóa">(THD)Thanh Hóa</option>
+                                                    <option value="Tam Điệp">(VCL)Tam Điệp</option>
+                                                    <option value="Vân Đồn">(VDO)Vân Đồn</option>
+                                                    <option value="Quy Nhơn">(UIH)Quy Nhơn</option>
+                                                    <option value="Pleiku">(PXU)Pleiku</option>
+                                                    <option value="Buôn Mê Thuột">(BMV)Buôn Mê Thuột</option>
+                                                    <option value="Đồng Hới">(VDH)Đồng Hới</option>
+                                                    <option value="Tuy Hòa">(TBB)Tuy Hòa</option>
+                                                    <option value="Cần Thơ">(VCA)Cần Thơ</option>
+                                                    <option value="Cà Mau">(CAH)Cà Mau</option>
+                                                    <option value="Phú Quốc">(PQC)Phú Quốc</option>
                                                 </select>
                                             </label>
                                         </td>
                                         <td colspan="2">
                                             <label>
                                                 <select name="destination" class="Des">
-                                                    <option>Hồ Chí Minh</option>
-                                                    <option>Đà Nẵng</option>
-                                                    <option>Hà Nội</option>
+                                                    <option value="Hà Nội">(HAN)Hà Nội</option>
+                                                    <option value="Hồ Chí Minh">(SGN)Hồ Chí Minh</option>
+                                                    <option value="Đà Nẵng">(DAD)Đà Nẵng</option>
+                                                    <option value="Nha Trang">(CXR)Nha Trang</option>
+                                                    <option value="Đà Lạt">(DLI)Đà Lạt</option>
+                                                    <option value="Hải Phòng">(HPH)Hải Phòng</option>
+                                                    <option value="Vinh">(VII)Vinh</option>
+                                                    <option value="Thanh Hóa">(THD)Thanh Hóa</option>
+                                                    <option value="Tam Điệp">(VCL)Tam Điệp</option>
+                                                    <option value="Vân Đồn">(VDO)Vân Đồn</option>
+                                                    <option value="Quy Nhơn">(UIH)Quy Nhơn</option>
+                                                    <option value="Pleiku">(PXU)Pleiku</option>
+                                                    <option value="Buôn Mê Thuột">(BMV)Buôn Mê Thuột</option>
+                                                    <option value="Đồng Hới">(VDH)Đồng Hới</option>
+                                                    <option value="Tuy Hòa">(TBB)Tuy Hòa</option>
+                                                    <option value="Cần Thơ">(VCA)Cần Thơ</option>
+                                                    <option value="Cà Mau">(CAH)Cà Mau</option>
+                                                    <option value="Phú Quốc">(PQC)Phú Quốc</option>
                                                 </select>
                                             </label>
                                         </td>
@@ -206,7 +236,9 @@
             document.getElementById("datepicker2").reset();
         }
 
+
     </script>
     <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+
 
 </html>

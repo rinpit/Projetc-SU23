@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="container mt-5 pt-5" >
-            <form action="orderServlet" method="post" onsubmit="return validateDateKid(), validateDateBaby()">
+            <form action="Verify" method="get" onsubmit="//return validateDateKid(event), validateDateBaby()">
                 <div class="count">
                     <p>Thời gian đặt vé còn lại: <span id="countdown"></span></p>
                 </div>
@@ -664,16 +664,11 @@
             }
         </script>
 
-        <script>
-            // Lấy ngày hiện tại
-            var today = new Date().toISOString().split('T')[0];
+<!--        <script>
 
-            // Thiết lập giá trị tối đa cho thẻ input
-            document.getElementById("birthdateAdult").max = today;
-        </script>
+            function validateDateKid(event) {
+                event.preventDefault(); // Ngăn chặn chuyển trang mặc định
 
-        <script>
-            function validateDateKid() {
                 var selectedDate = new Date(document.getElementById("birthdateKid").value);
                 var today = new Date();
                 var minDate = new Date();
@@ -684,25 +679,14 @@
                     alert("Vui lòng chọn ngày sinh trẻ em hợp lệ!");
                     return false;
                 }
+
+                // Ngày sinh hợp lệ, cho phép chuyển trang
+                // document.getElementById("formId").submit(); // Gửi form
+                // window.location.href = "new-page.html"; // Chuyển trang
+
                 return true;
             }
-        </script>
-
-        <script>
-            function validateDateBaby() {
-                var selectedDate = new Date(document.getElementById("birthdateBaby").value);
-                var today = new Date();
-                var minDate = new Date();
-                minDate.setFullYear(today.getFullYear() - 2); // Giới hạn từ 2 tuổi trở lại
-                minDate.setDate(minDate.getDate() + 1); // Giới hạn từ 1 ngày sau ngày hiện tại
-
-                if (selectedDate < minDate || selectedDate > today) {
-                    alert("Vui lòng chọn ngày sinh trẻ sơ sinh hợp lệ!");
-                    return false;
-                }
-                return true;
-            }
-        </script>
+        </script>-->
 
         <script>
             function countdown() {

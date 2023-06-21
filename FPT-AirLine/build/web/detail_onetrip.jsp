@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="container mt-5 pt-5" >
-            <form action="orderServlet" method="post" onsubmit="return validateDateKid(), validateDateBaby()">
+            <form action="Verify" method="get" onsubmit="//return validateDateKid(event), validateDateBaby()">
                 <div class="count">
                     <p>Thời gian đặt vé còn lại: <span id="countdown"></span></p>
                 </div>
@@ -149,7 +149,6 @@
                                             </tbody>
                                         </table>
                                     </span>
-
                                 </div>
                             </div>
 
@@ -259,6 +258,23 @@
                                     </tr>
                                 </table>
                             </c:forEach>
+                            <div class="thong-tin-khuyen-mai">
+                                <div class="heading-h3">
+                                    <h3>
+                                        <span>Thông tin khuyến mãi</span>
+                                    </h3>
+                                </div>
+                                <table width="100%" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td colspan="1">
+                                            <span style="font-size: 14px;  width: 140px;  display: block; margin:0 0 10px 20px;font-weight: 700;">Mã giảm giá</span>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="promotions" style="margin-bottom: 10px"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                             <div class="submit-flight float-right">
                                 <button  type="submit" class="bubbly-button">Đặt vé</button>
                             </div>
@@ -267,51 +283,66 @@
                     <div class="col-4 p-0">
                         <div class="price-details">
                             <h3 class="price-details-title">Chi tiết giá</h3>
-                            <table class="price-details-list">
-                                <table id="infoticketGO" width="100%" cellpadding="0" cellspacing="0">
-                                    <tbody>
+                            <table id="infoticketGO" width="100%" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5" style="color: #f44d06;font-size: 18px;font-weight: bold;">Chi tiết giá vé lượt đi</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="sAdult">${adult} Người lớn</span></td>
+                                        <td><b>X</b></td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red typePriceA">
+                                                ${ticketTypePrice}
+                                            </b>
+                                        </td>
+                                        <td style="padding:0px;">=</td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red totalPriceA">
+                                            </b>
+                                        </td>
+                                    </tr>
+                                    <c:if test="${kid > 0}">
                                         <tr>
-                                            <td colspan="5" style="color: #f44d06;font-size: 18px;font-weight: bold;">Chi tiết giá vé lượt đi</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="sAdult">${adult} Người lớn</span></td>
+                                            <td><span class="sKid">${kid} trẻ em</span></td>
                                             <td><b>X</b></td>
                                             <td style="text-align: right;">
-                                                <b class="color-red typePriceA">
+                                                <b class="color-red typePriceK">
                                                     ${ticketTypePrice}
                                                 </b>
                                             </td>
                                             <td style="padding:0px;">=</td>
                                             <td style="text-align: right;">
-                                                <b class="color-red totalPriceA">
+                                                <b class="color-red totalPriceK">
                                                 </b>
                                             </td>
                                         </tr>
-                                        <c:if test="${kid > 0}">
-                                            <tr>
-                                                <td><span class="sKid">${kid} trẻ em</span></td>
-                                                <td><b>X</b></td>
-                                                <td style="text-align: right;">
-                                                    <b class="color-red typePriceK">
-                                                        ${ticketTypePrice}
-                                                    </b>
-                                                </td>
-                                                <td style="padding:0px;">=</td>
-                                                <td style="text-align: right;">
-                                                    <b class="color-red totalPriceK">
-                                                    </b>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                        <!-- thue phi-->
-                                        <tr class="border-airline">
-                                            <td colspan="5"></td>
-                                        </tr>
+                                    </c:if>
+                                    <!-- thue phi-->
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="font-weight:bold">Thuế và phí</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>${adult} Người lớn</span></td>
+                                        <td><b>X</b></td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red">
+                                                10%
+                                            </b>
+                                        </td>
+                                        <td style="padding:0px;">=</td>
+                                        <td style="text-align: right;">
+                                            <b class="color-red tiketTotalA">
+                                                ${ticketTotalAGo}
+                                            </b>
+                                        </td>
+                                    </tr>
+                                    <c:if test="${kid > 0}">
                                         <tr>
-                                            <td colspan="5" style="font-weight:bold">Thuế và phí</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>${adult} Người lớn</span></td>
+                                            <td><span>${kid} trẻ em</span></td>
                                             <td><b>X</b></td>
                                             <td style="text-align: right;">
                                                 <b class="color-red">
@@ -320,53 +351,37 @@
                                             </td>
                                             <td style="padding:0px;">=</td>
                                             <td style="text-align: right;">
-                                                <b class="color-red tiketTotalA">
-                                                    ${ticketTotalAGo}
+                                                <b class="color-red tiketTotalK">
+                                                    ${ticketTotalKGo}
                                                 </b>
                                             </td>
                                         </tr>
-                                        <c:if test="${kid > 0}">
-                                            <tr>
-                                                <td><span>${kid} trẻ em</span></td>
-                                                <td><b>X</b></td>
-                                                <td style="text-align: right;">
-                                                    <b class="color-red">
-                                                        10%
-                                                    </b>
-                                                </td>
-                                                <td style="padding:0px;">=</td>
-                                                <td style="text-align: right;">
-                                                    <b class="color-red tiketTotalK">
-                                                        ${ticketTotalKGo}
-                                                    </b>
-                                                </td>
-                                            </tr>
-                                        </c:if>
-                                        <tr class="border-airline">
-                                            <td colspan="5"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span style="font-weight:bold">Hành Lý</span></td>
-                                            <td colspan="4"><span> 
-                                                    <b class="color-red float-right valuehanhlyld">0,0 VND
-                                                    </b>
-                                                </span></td>
-                                        </tr>
-                                        <tr class="border-airline">
-                                            <td colspan="5"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><span style="font-weight:bold">Tổng giá</span></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="font-weight:bold; text-align:right"><span>
-                                                    <b class="color-red">
-                                                        <input type="text" name="totalAmountGo" class="finalTotal" readonly style="max-width: 100px;">
-                                                    </b></span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                    </c:if>
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight:bold">Hành Lý</span></td>
+                                        <td colspan="4"><span> 
+                                                <b class="color-red float-right valuehanhlyld">0,0 VND
+                                                </b>
+                                            </span></td>
+                                    </tr>
+                                    <tr class="border-airline">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight:bold">Tổng giá</span></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="font-weight:bold; text-align:right"><span>
+                                                <b class="color-red">
+                                                    <input type="text" name="totalAmountGo" class="finalTotal" readonly style="max-width: 100px;">
+                                                </b></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -382,54 +397,38 @@
                 }
             }
         </script>
-
-        <script>
-            // Mong muốn của chúng ta
-            Validator({
-                form: '#register-form',
-                formGroupSelector: '.form-group',
-                errorSelector: '.form-message',
-                rules: [
-                    Validator.isRequired('#fullname')
-                ]
-            })
-            Validator({
-                form: '#login-form',
-                formGroupSelector: '.form-group',
-                errorSelector: '.form-message',
-                rules: [
-                    Validator.isRequired('#login-email'),
-                    Validator.isEmail('#login-email'),
-                    Validator.isRequired('#login-pass')
-                ]
-            })
-        </script>
         <script src="./access/js/orderDetails.js"></script>
         <script>
             CaculatePrice("infoticketGO");
-        </script>
-        <script>
-            // Lấy ngày hiện tại
-            var today = new Date().toISOString().split('T')[0];
-
-            // Thiết lập giá trị tối đa cho thẻ input
-            document.getElementById("birthdateAdult").max = today;
-        </script>
-
-        <script>
-            function validateDateKid() {
-                var selectedDate = new Date(document.getElementById("birthdateKid").value);
-                var today = new Date();
-                var minDate = new Date();
-                minDate.setFullYear(today.getFullYear() - 11); // Giới hạn từ 11 tuổi trở lại
-                minDate.setDate(minDate.getDate() - 365 * 2); // Giới hạn từ 2 năm trước ngày hiện tại (không chính xác 730 ngày)
-
-                if (selectedDate < minDate || selectedDate > today) {
-                    alert("Vui lòng chọn ngày sinh trẻ em hợp lệ!");
-                    return false;
+            function AlertPromotion(parameters) {
+                if (parameters) {
+                    alert("Promotion is not valid");
                 }
-                return true;
             }
+            AlertPromotion("${promotionInvalid}")
+        </script>
+
+        <script>
+//            function validateDateKid(event) {
+//                event.preventDefault(); // Ngăn chặn chuyển trang mặc định
+//
+//                var selectedDate = new Date(document.getElementById("birthdateKid").value);
+//                var today = new Date();
+//                var minDate = new Date();
+//                minDate.setFullYear(today.getFullYear() - 11); // Giới hạn từ 11 tuổi trở lại
+//                minDate.setDate(minDate.getDate() - 365 * 2); // Giới hạn từ 2 năm trước ngày hiện tại (không chính xác 730 ngày)
+//
+//                if (selectedDate < minDate || selectedDate > today) {
+//                    alert("Vui lòng chọn ngày sinh trẻ em hợp lệ!");
+//                    return false;
+//                }
+//
+//                // Ngày sinh hợp lệ, cho phép chuyển trang
+//                // document.getElementById("formId").submit(); // Gửi form
+//                // window.location.href = "new-page.html"; // Chuyển trang
+//
+//                return true;
+//            }
         </script>
 
         <script>
@@ -439,7 +438,6 @@
                 var minDate = new Date();
                 minDate.setFullYear(today.getFullYear() - 2); // Giới hạn từ 2 tuổi trở lại
                 minDate.setDate(minDate.getDate() + 1); // Giới hạn từ 1 ngày sau ngày hiện tại
-
                 if (selectedDate < minDate || selectedDate > today) {
                     alert("Vui lòng chọn ngày sinh trẻ sơ sinh hợp lệ!");
                     return false;
