@@ -31,6 +31,18 @@
                                         <div class="col-12 col-lg-9 title"> Thông tin cá nhân</div>
                                     </div>
                                 </a></div>
+                            <div class="col-6 col-lg-12"><a href="viewHistoryServlet">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-3"><i class="fa fa-history"></i></div>
+                                        <div class="col-12 col-lg-9 title"> Lịch sử đặt vé</div>
+                                    </div>
+                                </a></div>
+                            <div class="col-6 col-lg-12"><a href="/FPT-AirLine/cancelTicket.jsp">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-3"><i class="fa fa-ban"></i></div>
+                                        <div class="col-12 col-lg-9 title"> Hủy Vé</div>
+                                    </div>
+                                </a></div>
                         </div>
                     </div>
                 </div>

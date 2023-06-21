@@ -77,7 +77,7 @@ public class TicketDAO {
         }
         return seat;
     }
-    
+
     public void getTicket(int numAdult, int numKid, String flightId, String orderID, HttpServletRequest request, String ticketType, String isGo) {
         AccountDAO accdao = new AccountDAO();
         PassengerDAO passdao = new PassengerDAO();
@@ -120,4 +120,44 @@ public class TicketDAO {
             }
         }
     }
+
+    public void cancelTicket(String ticketID) throws SQLException {
+        String stmt = "ALTER TABLE dbo.Passenger\n"
+                + "DROP CONSTRAINT fk_tblPassenger2;\n"
+                + "\n"
+                + "ALTER TABLE dbo.Passenger\n"
+                + "ADD CONSTRAINT fk_tblPassenger2 \n"
+                + "    FOREIGN KEY (Ticket_ID) REFERENCES dbo.Ticket(Ticket_ID)\n"
+                + "    ON DELETE CASCADE;\n"
+                + "\n"
+                + "DELETE FROM Ticket WHERE Ticket_ID = ?;\n"
+                + "\n"
+                + "DELETE FROM Passenger WHERE Ticket_ID = ?;";
+        PreparedStatement ps = connection.prepareStatement(stmt);
+        ps.setString(1, ticketID);
+        ps.setString(2, ticketID);
+        ps.executeUpdate();
+    }
+
+    public void addSeat(String ticketID) throws SQLException {
+        String smtEco = "UPDATE Flight\n"
+                + "SET \n"
+                + "    SeatsB = CASE WHEN Ticket.TicketType_ID = 'TT2' THEN SeatsB + 1 ELSE SeatsB END,\n"
+                + "    SeatsC = CASE WHEN Ticket.TicketType_ID = 'TT1' THEN SeatsC + 1 ELSE SeatsC END        \n"
+                + "FROM (\n"
+                + "    SELECT Flight_ID, TicketType_ID\n"
+                + "    FROM Ticket\n"
+                + "    WHERE Ticket_ID = ?\n"
+                + ") AS Ticket \n"
+                + "INNER JOIN Flight ON Ticket.Flight_ID = Flight.Flight_ID\n"
+                + "WHERE Ticket.TicketType_ID IN ('TT1', 'TT2');";
+        PreparedStatement ps = connection.prepareStatement(smtEco);
+        ps.setString(1, ticketID);
+        ps.executeUpdate();
+    }
+
+//    public static void main(String[] args) throws SQLException {
+//        TicketDAO ticketDAO = new TicketDAO();
+//        ticketDAO.cancelTicket("sbhytx");
+//    }
 }

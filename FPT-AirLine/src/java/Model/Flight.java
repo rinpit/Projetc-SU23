@@ -1,11 +1,7 @@
 package Model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Flight {
+
     String flightId;
     String startDate;
     String endDate;
@@ -13,8 +9,13 @@ public class Flight {
     String endTime;
     String departure;
     String destination;
+    int seatB;
+    int seatC;
 
-    public Flight(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination) {
+    public Flight() {
+    }
+
+    public Flight(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int seatB, int seatC) {
         this.flightId = flightId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -22,7 +23,10 @@ public class Flight {
         this.endTime = endTime;
         this.departure = departure;
         this.destination = destination;
+        this.seatB = seatB;
+        this.seatC = seatC;
     }
+
     public Flight(String flightId, String startDate, String startTime, String endTime, String departure, String destination) {
         this.flightId = flightId;
         this.startDate = startDate;
@@ -88,17 +92,25 @@ public class Flight {
         this.destination = destination;
     }
 
+    public int getSeatB() {
+        return seatB;
+    }
+
+    public void setSeatB(int seatB) {
+        this.seatB = seatB;
+    }
+
+    public int getSeatC() {
+        return seatC;
+    }
+
+    public void setSeatC(int seatC) {
+        this.seatC = seatC;
+    }
+
     @Override
     public String toString() {
-        return "Flight{" +
-                "flightId='" + flightId + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                ", startTime='" + startTime + '\'' +
-                ", endTime='" + endTime + '\'' +
-                ", departure='" + departure + '\'' +
-                ", destination='" + destination + '\'' +
-                '}';
+        return "Flight{" + "flightId=" + flightId + ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime=" + endTime + ", departure=" + departure + ", destination=" + destination + ", seatB=" + seatB + ", seatC=" + seatC + '}';
     }
-}
 
+}

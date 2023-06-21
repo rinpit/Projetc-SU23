@@ -85,8 +85,8 @@
                                                                     <td>${p.startTime},${p.startDate}</td>
                                                                     <td>${p.endTime},${p.endDate}</td>
                                                                     <td><select name="ticketType"
-                                                                            style="background-color: rgb(65, 225, 225); border-radius: 50px; "
-                                                                            onchange="getValue(this)">
+                                                                                style="background-color: rgb(65, 225, 225); border-radius: 50px; "
+                                                                                onchange="getValue(this)">
                                                                             <c:forEach items="${listTicket}" var="f">
                                                                                 <option class="${f.ticketPrice} VND" value="${f.ticketTypeId}">${f.ticketType}</option>
                                                                             </c:forEach>
@@ -229,10 +229,10 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <c:set var="flightBack" value="${l.flightId}"></c:set>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Người lớn</td>
-                                                                        <td class="numA">${adult}</td>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Người lớn</td>
+                                                                            <td class="numA">${adult}</td>
                                                                         <td><input class="price" type="text" name="typePriceA<c:out value="${flightBack}"/>"
                                                                                    value="${listTicket.get(0).ticketPrice} VND"
                                                                                    style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
@@ -285,9 +285,16 @@
                                 </div>
                             </table>
                         </div>
-                        <div class="submit-flight float-right">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                        <c:if test="${userID!= null}">
+                            <div class="submit-flight float-left">
+                                <button type="submit" class="btn btn-primary">Tiếp tục</button>
+                            </div>
+                        </c:if>
+                        <c:if test="${userID == null}">
+                            <div class="alert alert-warning" role="alert" style="width: 276px">
+                                Vui lòng đăng nhập để đặt vé
+                            </div
+                        </c:if>
                     </div>
                 </div>
             </form>

@@ -84,6 +84,14 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>Control.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>viewHistoryServlet</servlet-name>
+        <servlet-class>Control.viewHistoryServlet</servlet-class>
+    </servlet>
+        <servlet>
+        <servlet-name>cancelTicketServlet</servlet-name>
+        <servlet-class>Control.cancelTicketServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/SignUpServlet</url-pattern>
@@ -135,6 +143,14 @@
     <servlet-mapping>
         <servlet-name>UserListServlet</servlet-name>
         <url-pattern>/UserListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewHistoryServlet</servlet-name>
+        <url-pattern>/viewHistoryServlet</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>cancelTicketServlet</servlet-name>
+        <url-pattern>/cancelTicketServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

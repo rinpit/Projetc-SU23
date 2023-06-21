@@ -19,7 +19,7 @@
         <meta name="description"
               content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
         <meta name="robots" content="noindex,nofollow">
-        <title>Danh sách mã giảm giá</title>
+        <title>Ample Admin Lite Template by WrapPixel</title>
         <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
@@ -232,7 +232,6 @@
                 <!-- ============================================================== -->
                 <!-- Container fluid  -->
                 <!-- ============================================================== -->
-                
                 <div class="container-fluid">
                     <div class="container">
                         <div class="table">
@@ -253,7 +252,7 @@
                                         <div class="table-data">${lp.amount}</div>
                                     </div>
                                 </div>
-                            </c:forEach>    
+                            </c:forEach>
                         </div>
                     </div>
                 </div>

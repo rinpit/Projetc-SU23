@@ -6,7 +6,6 @@ package Control;
 
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -75,6 +74,7 @@ public class SelectFlightServlet extends HttpServlet {
         } else if (flightType.equals("2")) {
             request.getRequestDispatcher("detail_onetrip.jsp").forward(request, response);
         }
+        
     }
 
     /**

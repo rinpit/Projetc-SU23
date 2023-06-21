@@ -4,13 +4,13 @@
  */
 package Model;
 
-import java.util.Date;
 
 /**
  *
  * @author admin
  */
 public class Promotion {
+    private String promotion_id, description  ,StartDate, EndDate, price;
 
     private String id;
     private String description;
@@ -24,9 +24,9 @@ public class Promotion {
     public Promotion(String id, String description, Date startDate, Date endDate, float amount) {
         this.id = id;
         this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.amount = amount;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.price = price;
     }
 
     public String getId() {
@@ -45,32 +45,28 @@ public class Promotion {
         this.description = description;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        return StartDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String StartDate) {
+        this.StartDate = StartDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public String getEndDate() {
+        return EndDate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEndDate(String EndDate) {
+        this.EndDate = EndDate;
     }
 
-    public float getAmount() {
-        return amount;
+    public String getPrice() {
+        return price;
     }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Promotion{" + "id=" + id + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", amount=" + amount + '}';
-    }
 }
