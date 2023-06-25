@@ -1,10 +1,9 @@
-<%-- 
-    Document   : header
-    Created on : May 24, 2023, 9:50:01 PM
-    Author     : Pham Thinh
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@page import="Model.User" %>
+<%@page import="Model.UserDAO" %>
+<%@page import="DBcontext.DB" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,18 +28,29 @@
                 <div class="logo">
                     <a href="index.jsp"><img src="./Img/FPT Airline.png" alt="" class="logo-img"></a>
                 </div>
-
                 <div class="nav-menu">
                     <div class="nav-sublist">
-                        <i class="ti-user"></i>
-                        <li><a href="login">Đăng nhập</a></li>
-                        <li><a href="login">Đăng kí</a></li>
+                        <c:set var="userID" value="${userID}" />
+                        <c:if test="${empty userID}">
+                            <li><a href="login.jsp">Đăng nhập</a></li>
+                            <li><a href="register.jsp">Đăng kí</a></li>
+                            </c:if>
+                            <c:if test="${not empty userID}">                   
+                            <li>
+                                <a href="logoutServlet" class="item logout-site" title="Logout">
+                                    <i></i>Đăng xuất
+                                </a>
+                            </li>
+                            <li>
+                                <a class="profile-pic" href="http://localhost:8080/FPT/AccountServlet">
+                                    <span>${email}</span></a>
+                            </li>
+                        </c:if>
                         <select class="nav-sublist-select" name="" id="">
                             <option class="a" value="">Tiếng Việt</option>
                             <option value="">English</option>
                         </select>
                     </div>
-
                     <div class="nav-list">
                         <li><a href="#">Tra cứu</a></li>
                         <li><a href="#">Ưu đãi</a></li>

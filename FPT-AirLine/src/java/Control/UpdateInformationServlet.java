@@ -1,6 +1,6 @@
 package Control;
 
-import Model.InformationDAO;
+import Model.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -17,9 +17,9 @@ public class UpdateInformationServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             String userIDSession = (String) session.getAttribute("userID");
-            InformationDAO information = new InformationDAO();
-            request.setAttribute("information", information.readInformation(userIDSession));
-            request.getRequestDispatcher("updateInformation.jsp").forward(request, response);
+            UserDAO information = new UserDAO();
+            request.setAttribute("user", information.readUser(userIDSession));
+            request.getRequestDispatcher("updateUser.jsp").forward(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UpdateInformationServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -35,8 +35,8 @@ public class UpdateInformationServlet extends HttpServlet {
         String nationalityPara = request.getParameter("nationalityPara");
         String phonePara = request.getParameter("phonePara");
         String addressPara = request.getParameter("addressPara");
-        InformationDAO information = new InformationDAO();
-        information.updateInformation(userIDPara, namePara, birthdayPara, cccdPara, nationalityPara, phonePara, addressPara);
+        UserDAO information = new UserDAO();
+        information.updateUser(userIDPara, namePara, birthdayPara, cccdPara, nationalityPara, phonePara, addressPara);
         response.sendRedirect("PersonalServlet");
     }
 }

@@ -1,6 +1,5 @@
 package Control;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.text.ParseException;

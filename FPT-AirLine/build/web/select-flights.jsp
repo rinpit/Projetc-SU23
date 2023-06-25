@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@include file="header.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
@@ -19,7 +20,7 @@
         <title>Select Flight</title>
     </head>
     <body>
-        <div class="container justify-content-around">
+        <div class="container justify-content-around" style="margin-top: 150px">
             <form action="SelectFlightServlet" method="post">
                 <div class="row">
                     <div class="col-sm-8" style="background-color: blanchedalmond ;">

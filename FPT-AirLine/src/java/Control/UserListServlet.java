@@ -4,8 +4,8 @@
  */
 package Control;
 
-import Model.Customer;
-import Model.CustomerDAO;
+import Model.User;
+import Model.UserDAO;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;

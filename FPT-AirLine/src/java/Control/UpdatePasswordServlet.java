@@ -1,6 +1,6 @@
 package Control;
 
-import Model.InformationDAO;
+import Model.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -17,8 +17,8 @@ public class UpdatePasswordServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             String userIDSession = (String) session.getAttribute("userID");
-            InformationDAO information = new InformationDAO();
-            request.setAttribute("information", information.readInformation(userIDSession));
+            UserDAO information = new UserDAO();
+            request.setAttribute("user", information.readUser(userIDSession));
             request.getRequestDispatcher("updatePassword.jsp").forward(request, response);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UpdatePasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -30,7 +30,7 @@ public class UpdatePasswordServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String userIDPara = (String) session.getAttribute("userID");
         String newPasswordPara = request.getParameter("newPasswordPara");
-        InformationDAO information = new InformationDAO();
+        UserDAO information = new UserDAO();
         information.updatePassword(userIDPara, newPasswordPara);
         response.sendRedirect("AccountServlet");
     }

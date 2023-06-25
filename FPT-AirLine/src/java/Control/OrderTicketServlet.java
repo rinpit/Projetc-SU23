@@ -5,7 +5,6 @@
 package Control;
 
 import Model.OrderTicketDAO;
-import Model.InformationDAO;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -24,8 +23,7 @@ public class OrderTicketServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            HttpSession session = request.getSession();
-            String userIDSession = (String) session.getAttribute("userID");
+//            HttpSession session = request.getSession();
 //            int flightTypeSession = (int) session.getAttribute("FlightType");
 //            if (flightTypeSession == 1) {
 //                request.setAttribute("flightType", "Khứ hồi");
@@ -33,12 +31,19 @@ public class OrderTicketServlet extends HttpServlet {
 //                request.setAttribute("flightType", "Một chiều");
 //            }
             OrderTicketDAO orderTicket = new OrderTicketDAO();
-            InformationDAO information = new InformationDAO();
-            request.setAttribute("orderTicket", orderTicket.readOrderTicket(userIDSession));
-            request.setAttribute("information", information.readInformation(userIDSession));
+            request.setAttribute("orderTicket", orderTicket.readOrderTicket());
             request.getRequestDispatcher("orderTicket.jsp").forward(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(OrderTicketServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BillServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+//    public static void main(String[] args) {
+//        try {
+//            OrderTicketDAO orderTicket = new OrderTicketDAO();
+//            System.out.println(   orderTicket.readOrderTicket());
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(OrderTicketServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//     
+//    }
 }

@@ -52,7 +52,7 @@ public class SendEmail {
                         + "<body>\r\n"
                         + "<h3>FPT-Airlines Xin Chào!</h3>\r\n"
                         + "</br>\r\n"
-                        + " <p>Quý khách vui lòng xác nhận <a href=\"http://localhost:8080/mavenproject1/payment.jsp\">Tại đây</a></p>\r\n"
+                        + " <p>Quý khách vui lòng xác nhận <a href=\"http://localhost:8080/FPT/payment.jsp\">Tại đây</a></p>\r\n"
                         + "</body>\r\n"
                         + "</html>", "text/html;charset=UTF-8");
             

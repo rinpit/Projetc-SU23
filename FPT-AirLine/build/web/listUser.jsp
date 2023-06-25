@@ -222,7 +222,7 @@
                 <!-- ============================================================== -->
                 <!-- NỘI DUNG THAY ĐỔI Ở TRONG container-fluid-->
                 <!-- ============================================================== -->
-                <jsp:useBean id="cusList" class="Model.CustomerDAO"/>
+                <jsp:useBean id="cusList" class="Model.UserDAO"/>
                 <c:set var="page" value="${param.page}"/>
 
                 <c:if test="${page == null}">
@@ -258,14 +258,14 @@
                                             <c:if test="${not empty cus.email}">
                                                 <tr>
                                                     <td>${cus.email}</td>
-                                                    <td>${cus.cusName}</td>
+                                                    <td>${cus.name}</td>
                                                     <td>
                                                         ${fn:contains(cus.gender, 'F')?'Female':'Male'}
                                                     </td>
                                                     <td>${cus.birthday}</td>
                                                     <td>${cus.phone}</td>
                                                     <td>${cus.address}</td>
-                                                    <td>${cus.nation}</td>
+                                                    <td>${cus.nationality}</td>
                                                     <td>${cus.cccd}</td>
                                                 </tr>
                                             </c:if>

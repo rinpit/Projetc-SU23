@@ -17,16 +17,84 @@
         <servlet-class>Control.UpdatePasswordServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>BillServlet</servlet-name>
+        <servlet-class>Control.BillServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeManagementServlet</servlet-name>
+        <servlet-class>Control.EmployeeManagementServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateEmployeeServlet</servlet-name>
+        <servlet-class>Control.CreateEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEmployeeServlet</servlet-name>
+        <servlet-class>Control.DeleteEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderTicketServlet</servlet-name>
+        <servlet-class>Control.OrderTicketServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmServlet</servlet-name>
+        <servlet-class>Control.ConfirmServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteOrderTicketServlet</servlet-name>
+        <servlet-class>Control.DeleteOrderTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/AccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonalServlet</servlet-name>
+        <url-pattern>/PersonalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateInformationServlet</servlet-name>
+        <url-pattern>/UpdateInformationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatePasswordServlet</servlet-name>
+        <url-pattern>/UpdatePasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BillServlet</servlet-name>
+        <url-pattern>/BillServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeManagementServlet</servlet-name>
+        <url-pattern>/EmployeeManagementServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateEmployeeServlet</servlet-name>
+        <url-pattern>/CreateEmployeeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEmployeeServlet</servlet-name>
+        <url-pattern>/DeleteEmployeeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderTicketServlet</servlet-name>
+        <url-pattern>/OrderTicketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmServlet</servlet-name>
+        <url-pattern>/ConfirmServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteOrderTicketServlet</servlet-name>
+        <url-pattern>/DeleteOrderTicketServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>orderServlet</servlet-name>
         <servlet-class>Control.orderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SelectFlightServelt</servlet-name>
         <servlet-class>Control.SelectFlightServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>OrderTicketServlet</servlet-name>
-        <servlet-class>Control.OrderTicketServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>promotionServlet</servlet-name>
@@ -60,7 +128,6 @@
         <servlet-name>UserListServlet</servlet-name>
         <servlet-class>Control.UserListServlet</servlet-class>
     </servlet>
-  
     <servlet>
         <servlet-name>SignUpServlet</servlet-name>
         <servlet-class>Control.SignUpServlet</servlet-class>
@@ -73,7 +140,7 @@
         <servlet-name>viewHistoryServlet</servlet-name>
         <servlet-class>Control.viewHistoryServlet</servlet-class>
     </servlet>
-    <servlet>
+        <servlet>
         <servlet-name>cancelTicketServlet</servlet-name>
         <servlet-class>Control.cancelTicketServlet</servlet-class>
     </servlet>
@@ -154,10 +221,6 @@
         <url-pattern>/SelectFlightServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>OrderTicketServlet</servlet-name>
-        <url-pattern>/OrderTicketServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>promotionServlet</servlet-name>
         <url-pattern>/promotionServlet</url-pattern>
     </servlet-mapping>
@@ -193,33 +256,12 @@
         <servlet-name>viewHistoryServlet</servlet-name>
         <url-pattern>/viewHistoryServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+        <servlet-mapping>
         <servlet-name>cancelTicketServlet</servlet-name>
         <url-pattern>/cancelTicketServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AccountServlet</servlet-name>
-        <url-pattern>/AccountServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PersonalServlet</servlet-name>
-        <url-pattern>/PersonalServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateInformationServlet</servlet-name>
-        <url-pattern>/UpdateInformationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdatePasswordServlet</servlet-name>
-        <url-pattern>/UpdatePasswordServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>lookUpFlight</servlet-name>
         <url-pattern>/lookUpFlight</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
 </web-app>

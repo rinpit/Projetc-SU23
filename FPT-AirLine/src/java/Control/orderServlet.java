@@ -73,6 +73,7 @@ public class orderServlet extends HttpServlet {
                     }
                 } else {
                     orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", total);
+                    
                 }
                 for (int i = 1; i <= numAdult; i++) {
                     String luggageA = null;
@@ -119,6 +120,7 @@ public class orderServlet extends HttpServlet {
                 } else {
                     orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", totalAmount);
                 }
+                session.setAttribute("orderId", orderID);
             }
         } catch (SQLException ex) {
             Logger.getLogger(orderServlet.class.getName()).log(Level.SEVERE, null, ex);

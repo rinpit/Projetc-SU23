@@ -78,47 +78,62 @@ public class TicketDAO {
         return seat;
     }
 
-    public void getTicket(int numAdult, int numKid, String flightId, String orderID, HttpServletRequest request, String ticketType, String isGo) {
-        AccountDAO accdao = new AccountDAO();
-        PassengerDAO passdao = new PassengerDAO();
-        for (int i = 1; i <= numAdult; i++) {
-            String luggageA = null;
-            String passengerID = accdao.randomString();
-            String passFullName = request.getParameter("nameAdult" + i);
-            String birthDay = request.getParameter("txtDateA" + i);
-            String ticketID = accdao.randomString();
-            String seat = createSeats(ticketType, flightId);
-            if (isGo.equals("Go")) {
-                luggageA = request.getParameter("luggageGoA" + i);
-            } else {
-                luggageA = request.getParameter("luggageBackA" + i);
-            }
-            try {
-                createTicket(ticketID, orderID, flightId, ticketType, luggageA, seat);
-                passdao.createPassenger(passengerID, ticketID, passFullName, birthDay);
-            } catch (SQLException ex) {
-                System.out.println(ex);
-            }
+    public ArrayList<String[]> getTicket() throws SQLException {
+        ArrayList<String[]> tickets = new ArrayList<>();
+        String stmt = "SELECT \n"
+                + "  t.[Ticket_ID], t.[Seats], f.[StartDate], f.[StartTime], f.[Departure],f.[Destination],f.[Gate], l.[Luggage], p.[Passenger_Name], tt.[TicketType_Name],ot.[Date]\n"
+                + "FROM \n"
+                + "  Ticket t\n"
+                + "JOIN \n"
+                + "  Flight f ON t.[Flight_ID] = f.[Flight_ID]\n"
+                + "JOIN \n"
+                + "  Luggage l ON t.[Luggage_ID] = l.[Luggage_ID]\n"
+                + "JOIN \n"
+                + "  Passenger p ON t.[Ticket_ID] = p.[Ticket_ID]\n"
+                + "JOIN \n"
+                + "  TicketType tt ON t.[TicketType_ID] = tt.[TicketType_ID]\n"
+                + "JOIN\n"
+                + "  OrderTicket ot ON t.[Order_ID] = ot.[Order_ID]";
+        PreparedStatement ps = connection.prepareStatement(stmt);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String[] ticketStatic = {rs.getString(1), rs.getString(2), rs.getString(3),
+                rs.getString(4), rs.getNString(5), rs.getNString(6), rs.getString(7),
+                rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11)};
+            tickets.add(ticketStatic);
         }
-        for (int i = 1; i <= numKid; i++) {
-            String luggageK = null;
-            String passengerID = accdao.randomString();
-            String passFullName = request.getParameter("nameKid" + i);
-            String birthDay = request.getParameter("txtDateK" + i);
-            String ticketID = accdao.randomString();
-            String seat = createSeats(ticketType, flightId);
-            if (isGo.equals("Go")) {
-                luggageK = request.getParameter("luggageGoK" + i);
-            } else {
-                luggageK = request.getParameter("luggageBackK" + i);
-            }
-            try {
-                createTicket(ticketID, orderID, flightId, ticketType, luggageK, seat);
-                passdao.createPassenger(passengerID, ticketID, passFullName, birthDay);
-            } catch (SQLException ex) {
-                Logger.getLogger(orderServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        return tickets;
+    }
+
+    public ArrayList<String[]> getTicketByPage(String page) throws SQLException {
+        ArrayList<String[]> tickets = new ArrayList<>();
+        String stmt = "SELECT t.[Ticket_ID], t.[Seats], f.[StartDate], f.[StartTime], f.[Departure], \n"
+                + "  f.[Destination], f.[Gate], l.[Luggage],  p.[Passenger_Name], tt.[TicketType_Name],ot.[Date]\n"
+                + "FROM \n"
+                + "  Ticket t\n"
+                + "JOIN \n"
+                + "  Flight f ON t.[Flight_ID] = f.[Flight_ID]\n"
+                + "JOIN \n"
+                + "  Luggage l ON t.[Luggage_ID] = l.[Luggage_ID]\n"
+                + "JOIN \n"
+                + "  Passenger p ON t.[Ticket_ID] = p.[Ticket_ID]\n"
+                + "JOIN \n"
+                + "  TicketType tt ON t.[TicketType_ID] = tt.[TicketType_ID]\n"
+                + "JOIN\n"
+                + "  OrderTicket ot ON t.[Order_ID] = ot.[Order_ID]\n"
+                + "ORDER BY ot.Date DESC\n"
+                + "OFFSET ? ROWS\n"
+                + "FETCH NEXT 5 ROWS ONLY;";
+        PreparedStatement ps = connection.prepareStatement(stmt);
+        ps.setInt(1, (Integer.parseInt(page) - 1) * 5);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String[] ticketStatic = {rs.getString(1), rs.getString(2), rs.getString(3),
+                rs.getString(4).substring(0, 8), rs.getNString(5), rs.getNString(6), rs.getString(7),
+                rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11)};
+            tickets.add(ticketStatic);
         }
+        return tickets;
     }
 
     public void cancelTicket(String ticketID) throws SQLException {
@@ -156,8 +171,57 @@ public class TicketDAO {
         ps.executeUpdate();
     }
 
-//    public static void main(String[] args) throws SQLException {
-//        TicketDAO ticketDAO = new TicketDAO();
-//        ticketDAO.cancelTicket("sbhytx");
-//    }
+    public ArrayList<String[]> getTicketByOrder_ID(String Order_ID) throws SQLException {
+        ArrayList<String[]> tickets = new ArrayList<>();
+        String stmt = "SELECT t.[Ticket_ID], t.[Seats], f.[StartDate], f.[StartTime], f.[Departure], \n"
+                + "  f.[Destination], f.[Gate], l.[Luggage],  p.[Passenger_Name], tt.[TicketType_Name],ot.[Date]\n"
+                + "FROM \n"
+                + "  Ticket t\n"
+                + "JOIN \n"
+                + "  Flight f ON t.[Flight_ID] = f.[Flight_ID]\n"
+                + "JOIN \n"
+                + "  Luggage l ON t.[Luggage_ID] = l.[Luggage_ID]\n"
+                + "JOIN \n"
+                + "  Passenger p ON t.[Ticket_ID] = p.[Ticket_ID]\n"
+                + "JOIN \n"
+                + "  TicketType tt ON t.[TicketType_ID] = tt.[TicketType_ID]\n"
+                + "JOIN\n"
+                + "  OrderTicket ot ON t.[Order_ID] = ot.[Order_ID]\n"
+                + "where ot.Order_ID = ? ";
+
+        PreparedStatement ps = connection.prepareStatement(stmt);
+        ps.setString(1, Order_ID);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String[] ticketStatic = {rs.getString(1), rs.getString(2), rs.getString(3),
+                rs.getString(4).substring(0, 8)
+            , rs.getNString(5)
+            , rs.getNString(6)
+            , rs.getString(7)
+            ,
+                rs.getString(
+            8), rs.getString(9)
+            , rs.getString(10)
+            , rs.getString(11)
+        };
+        tickets.add(ticketStatic);
+    }
+    return tickets ;
+}
+public static void main(String[] args) {
+        TicketDAO td = new TicketDAO();
+        try {
+            for (String[] arg : td.getTicketByOrder_ID("qdvtsn")) {
+                for (int i = 0; i < arg.length; i++) {
+                    System.out.print(arg[i] + ",");
+                }
+                System.out.println("\n");
+
+}
+        } catch (SQLException ex) {
+            Logger.getLogger(TicketDAO.class  
+
+.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

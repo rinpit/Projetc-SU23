@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import Model.Account;
-import Model.CustomerDAO;
+import Model.UserDAO;
 
 /**
  *
@@ -26,14 +26,14 @@ public class SignUpServlet extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CustomerDAO cusDao = new CustomerDAO();
+        UserDAO cusDao = new UserDAO();
         String fullName = request.getParameter("fullName");
         String password = request.getParameter("pass");
         String email = request.getParameter("email");
         Account acc = cusDao.checkExist(email);
         if (acc == null) {
             try {
-                cusDao.createCustomer(email, password,"Customer", fullName);
+                cusDao.createCustomer(email, password,"cus", fullName);
                 request.setAttribute("mess1", "Success");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
                 requestDispatcher.forward(request, response);

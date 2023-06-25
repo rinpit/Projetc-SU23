@@ -22,7 +22,7 @@ public class updateTicketTypeDAO {
         try {
             connection = new DB().makeConnection();
         }catch (ClassNotFoundException ex) {
-            Logger.getLogger(InformationDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -34,7 +34,7 @@ public class updateTicketTypeDAO {
             preparedStatement.setString(2, id);
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(InformationDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

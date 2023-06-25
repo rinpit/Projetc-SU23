@@ -66,7 +66,7 @@ public class FlightDAO {
                 statement.setString(2, FlightID);
                 statement.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(InformationDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             try {
@@ -79,7 +79,7 @@ public class FlightDAO {
                 statement.setString(2, FlightID);
                 statement.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(InformationDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -224,16 +224,16 @@ public class FlightDAO {
         }
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Flight flights = new Flight();
-        FlightDAO flightDAO = new FlightDAO();
-//        List<Flight> flightsOne = flightDAO.getListFlight("2023-05-25", "Đà Nẵng", "Hồ Chí Minh");
-        List<Flight> fl = flightDAO.lookUpFlight("udwwsi", "zbr");
-        for (Flight flight : fl) {
-            System.out.println(flight);
-//            System.out.println(flight.getSeatB());
-        }
-//        flightDAO.updateSeatFlight(50, 50, "DM1", "Economic");
-
-    }
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        Flight flights = new Flight();
+//        X flightDAO = new X();
+////        List<Flight> flightsOne = flightDAO.getListFlight("2023-05-25", "Đà Nẵng", "Hồ Chí Minh");
+//        List<Flight> fl = flightDAO.lookUpFlight("udwwsi", "zbr");
+//        for (Flight flight : fl) {
+//            System.out.println(flight);
+////            System.out.println(flight.getSeatB());
+//        }
+////        flightDAO.updateSeatFlight(50, 50, "DM1", "Economic");
+//
+//    }
 }

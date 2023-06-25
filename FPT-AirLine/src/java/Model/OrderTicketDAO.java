@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,49 +20,66 @@ import java.util.logging.Logger;
  */
 public class OrderTicketDAO {
 
-    OrderTicket orderTicket = new OrderTicket();
     private Connection connection;
+    OrderTicket orderTicket = new OrderTicket();
 
     public OrderTicketDAO() {
         try {
             connection = DB.makeConnection();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(InformationDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public OrderTicket readOrderTicket(String userID) throws ClassNotFoundException {
+    public List<OrderTicket> readOrderTicket() throws ClassNotFoundException {
+        List<OrderTicket> orderTickets = new ArrayList<>();
         try {
             ResultSet resultSet;
-            String statement = "SELECT SubQuery.*\n"
-                    + "FROM (\n"
-                    + "    SELECT OT.Order_ID, OT.TotalAmount, F.Departure, F.StartDate, F.StartTime, F.Destination, F.EndDate, F.EndTime, ROW_NUMBER() OVER (ORDER BY OT.date DESC) AS RowNum\n"
-                    + "    FROM Users U\n"
-                    + "    FULL OUTER JOIN OrderTicket OT ON U.UserID = OT.UserID\n"
-                    + "    FULL OUTER JOIN Ticket T ON OT.Order_ID = T.Order_ID\n"
-                    + "    FULL OUTER JOIN Flight F ON T.Flight_ID = F.Flight_ID\n"
-                    + "    WHERE U.UserID = ?\n"
-                    + ") AS SubQuery\n"
-                    + "WHERE SubQuery.RowNum = 1;";
+            String statement = "SELECT * FROM OrderTicket  ";
             PreparedStatement preparedStatement = connection.prepareStatement(statement);
-            preparedStatement.setString(1, userID);
+
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                OrderTicket orderTicket = new OrderTicket();
                 orderTicket.setOrderID(resultSet.getString(1));
-                orderTicket.setTotalAmount(resultSet.getFloat(2));
-                orderTicket.setDeparture(resultSet.getString(3));
-                orderTicket.setStartDate(resultSet.getDate(4));
-                orderTicket.setStartTime(resultSet.getString(5));
-                orderTicket.setDestination(resultSet.getString(6));
-                orderTicket.setEndDate(resultSet.getDate(7));
-                orderTicket.setEndTime(resultSet.getString(8));
+                orderTicket.setUserID(resultSet.getString(2));
+                orderTicket.setDate(resultSet.getDate(3));
+                orderTicket.setPromotionID(resultSet.getString(4));
+                orderTicket.setTax(resultSet.getFloat(5));
+                orderTicket.setTotalAmount(resultSet.getString(6));
+                orderTicket.setIsConfirmed(resultSet.getString(7));
+                orderTickets.add(orderTicket);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(InformationDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return orderTicket;
+        return orderTickets;
     }
 
+    public void confirm(String orderTicketID) throws ClassNotFoundException {
+
+        try {
+            String statement = """
+                               UPDATE OrderTicket
+                               SET [IsConfirmed] = 'true'
+                               WHERE Order_ID = ?""";
+            PreparedStatement preparedStatement = connection.prepareStatement(statement);
+            preparedStatement.setString(1, orderTicketID);
+            preparedStatement.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteOrderTicekt(String orderTicketID) throws SQLException {
+
+        String stmt = """
+                      DELETE FROM OrderTicket
+                      WHERE Order_ID=?""";
+        PreparedStatement ps = connection.prepareStatement(stmt);
+        ps.setString(1, orderTicketID);
+        ps.executeUpdate();
+    }
 //    public void updateInformation(String userIDPara, String namePara, String birthdayPara, String cccdPara, String nationalityPara, String phonePara, String addressPara) {
 //        try {
 //            String statement = "UPDATE Users SET Name=?,Birthday=?,CCCD=?,Nationality=?,Phone=?,Address=? WHERE UserID=?";
@@ -90,4 +109,14 @@ public class OrderTicketDAO {
 //            Logger.getLogger(InformationDAO.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }
+
+    public static void main(String[] args) {
+        OrderTicketDAO test = new OrderTicketDAO();
+        try {
+            test.readOrderTicket();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BillDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
