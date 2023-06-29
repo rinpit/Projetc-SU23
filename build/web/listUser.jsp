@@ -150,6 +150,7 @@
                                     <span class="hide-menu">Danh sách người dùng</span>
                                 </a>
                             </li>
+                             <% if (!isAdmin) { %>
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/ListFlightServlet"
                                    aria-expanded="false">
@@ -157,6 +158,8 @@
                                     <span class="hide-menu">Danh sách chuyến bay</span>
                                 </a>
                             </li>
+                                 <% } %>
+                                  <% if (!isAdmin) { %>
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/addFlight.jsp"
                                    aria-expanded="false">
@@ -164,6 +167,8 @@
                                     <span class="hide-menu">Tạo chuyến bay</span>
                                 </a>
                             </li>
+                               <% } %>
+                                <% if (!isAdmin) { %>
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/ListDistanceServlet"
                                    aria-expanded="false">
@@ -171,6 +176,8 @@
                                     <span class="hide-menu">Danh sách khoảng cách</span>
                                 </a>
                             </li>
+                             <% } %>
+                                <% if (!isAdmin) { %>
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/addDistance.jsp"
                                    aria-expanded="false">
@@ -178,6 +185,7 @@
                                     <span class="hide-menu">Tạo khoảng cách</span>
                                 </a>
                             </li>
+                            <% } %>
                         </ul>
 
                     </nav>
@@ -219,7 +227,7 @@
                 <!-- ============================================================== -->
                 <!-- NỘI DUNG THAY ĐỔI Ở TRONG container-fluid-->
                 <!-- ============================================================== -->
-                <jsp:useBean id="cusList" class="Model.UserDAO"/>
+                <jsp:useBean id="cusList" class="Model.dao.UserDAO"/>
                 <c:set var="page" value="${param.page}"/>
 
                 <c:if test="${page == null}">

@@ -1,6 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@page import="Model.User" %>
+<%@page import="Model.dao.UserDAO" %>
+<%@page import="DBcontext.DB" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -205,8 +208,8 @@
                 <!-- ============================================================== -->
                 <!-- NỘI DUNG THAY ĐỔI Ở TRONG container-fluid-->
                 <!-- ============================================================== -->
-                <jsp:useBean id="cusList" class="Model.UserDAO"/>
-                <jsp:useBean id="ticketList" class="Model.TicketDAO"/>
+                <jsp:useBean id="cusList" class="Model.dao.UserDAO"/>
+                <jsp:useBean id="ticketList" class="Model.dao.TicketDAO"/>
                 <c:set var="page" value="${param.page}"/>
 
                 <c:if test="${page == null}">

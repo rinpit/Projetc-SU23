@@ -5,7 +5,7 @@
 package Control;
 
 import Model.Account;
-import Model.AccountDAO;
+import Model.dao.AccountDAO;
 import java.io.IOException;
 import java.util.ArrayList;
 import jakarta.servlet.ServletException;
