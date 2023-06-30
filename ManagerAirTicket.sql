@@ -54,8 +54,6 @@ CREATE TABLE Flight
 	Departure nVARCHAR(20),
 	Destination nVARCHAR(20),
 	Gate int,
-	SeatsB int,
-	SeatsC int,
 	Distance_ID varchar(20),
 	constraint fk_tblDistance foreign key (Distance_ID) references Distance(Distance_ID)
 )
@@ -63,9 +61,16 @@ CREATE TABLE Flight
 CREATE TABLE TicketType 
 (
 	TicketType_ID varchar(20) not null primary key,
-	TicketType_Name VARCHAR(50),
-	Seat_Begin varchar(20),
-	Seat_End varchar(20)
+	TicketType_Name VARCHAR(50)
+)
+
+CREATE TABLE TicketType_Flight 
+(
+	TicketType_ID varchar(20) not null,
+	Flight_ID varchar(20) not null,
+	Seats int
+	constraint fk_tblType1 foreign key (Flight_ID) references Flight(Flight_ID),
+	constraint fk_tblType2 foreign key (TicketType_ID) references TicketType(TicketType_ID),
 )
 
 create table Luggage (
@@ -127,21 +132,21 @@ INSERT [dbo].[Distance] ([Distance_ID], [Distance], [Price]) VALUES (N'DT3', 500
 
 Insert into Flight 
 values 
-('DM1' , '2023-05-25' , '2023-05-29' , '10:00' , '16:00' , N'Đà Nẵng' , N'Hồ Chí Minh', 3,50,50,'DT1'),
-('DM2',	'2023-05-29',	'2023-06-03',	'07:00:00',	'19:00:00',	N'Hà Nội',	N'Đà Nẵng',	6, 50,50, 'DT2'),
-('DM3',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	N'Đà Nẵng',	N'Hồ Chí Minh',	5, 50,50, 'DT1'),
-('DM4',	'2023-07-02',	'2023-07-07',	'14:00:00',	'17:00:00',	N'Hà Nội',	N'Đà Nẵng',	1, 50,50, 'DT2'),
-('DM5',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	N'Đà Nẵng',	N'Hồ Chí Minh',	9, 50,50, 'DT3'),
-('DM6',	'2023-05-29',	'2023-06-03',	'15:00:00',	'18:00:00',	N'Hà Nội',	N'Đà Nẵng',	3, 50,50, 'DT2'),
-('DM7',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	N'Đà Nẵng',	N'Hồ Chí Minh',	8, 50,50, 'DT3'),
-('DM8',	'2023-05-25',	'2023-05-31',	'12:00:00',	'15:30:00',	N'Đà Nẵng',	N'Hà Nội',	9, 50,50, 'DT2'),
-('DM9',	'2023-05-25',	'2023-05-31',	'01:00:00',	'04:30:00',	N'Đà Nẵng',	N'Hà Nội',	2, 50,50, 'DT2'),
-('DM10','2023-05-25',	'2023-05-31',	'21:30:00',	'23:00:00',	N'Đà Nẵng',	N'Hà Nội',	2, 50,50, 'DT2')
+('DM1' , '2023-05-25' , '2023-05-29' , '10:00' , '16:00' , N'Đà Nẵng' , N'Hồ Chí Minh', 3,'DT1'),
+('DM2',	'2023-05-29',	'2023-06-03',	'07:00:00',	'19:00:00',	N'Hà Nội',	N'Đà Nẵng',	6, 'DT2'),
+('DM3',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	N'Đà Nẵng',	N'Hồ Chí Minh',	5, 'DT1'),
+('DM4',	'2023-07-02',	'2023-07-07',	'14:00:00',	'17:00:00',	N'Hà Nội',	N'Đà Nẵng',	1, 'DT2'),
+('DM5',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	N'Đà Nẵng',	N'Hồ Chí Minh',	9, 'DT3'),
+('DM6',	'2023-05-29',	'2023-06-03',	'15:00:00',	'18:00:00',	N'Hà Nội',	N'Đà Nẵng',	3, 'DT2'),
+('DM7',	'2023-06-05',	'2023-06-10',	'12:00:00',	'15:00:00',	N'Đà Nẵng',	N'Hồ Chí Minh',	8, 'DT3'),
+('DM8',	'2023-05-25',	'2023-05-31',	'12:00:00',	'15:30:00',	N'Đà Nẵng',	N'Hà Nội',	9, 'DT2'),
+('DM9',	'2023-05-25',	'2023-05-31',	'01:00:00',	'04:30:00',	N'Đà Nẵng',	N'Hà Nội',	2, 'DT2'),
+('DM10','2023-05-25',	'2023-05-31',	'21:30:00',	'23:00:00',	N'Đà Nẵng',	N'Hà Nội',	2, 'DT2')
 
 insert into TicketType (TicketType_ID, TicketType_Name,Seat_Begin,Seat_End) 
 values
-('TT1', 'Economic', 'A1', 'A20'),
-('TT2', 'Business', 'B1', 'B20')
+('TT1', 'Economic'),
+('TT2', 'Business')
 
 insert into Price(Price_ID, TicketType_ID,Unit_Price,StartDate,EndDate) 
 values
