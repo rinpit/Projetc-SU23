@@ -13,7 +13,8 @@ Phone varchar(20),
 Address nvarchar(20),
 Nationality nvarchar(20),
 CCCD varchar(20),
-Role varchar(20)
+Role varchar(20),
+isValid varchar(20)
 )
 
 Create table Promotion
@@ -114,17 +115,17 @@ CREATE TABLE Price
 	constraint fk_tblPrice foreign key (TicketType_ID) references TicketType(TicketType_ID)
 )
 
-insert into  Users(UserID, Email, PassWord, Name, Gender, Birthday, Phone, Address, Nationality, CCCD, Role)
-values('1','admin@gmail.com','123456',null, null, null, null, null, null, null,'admin'),
-('024358','thunade170102@fpt.edu.vn','123456','Nguyen Anh Thu', 'F', '2002-07-05', '0913545213', 'Quang Nam', 'Vietnam', '6590768954','admin'),
-('884327','khoanqdde160390@fpt.edu.vn','123456','Nguyen Quang Khoa','M', '2002-03-16', '0913545432', 'Quang Binh', 'Vietnam', '6590768954','cus'),
-('366421','Lehvde160240@fpt.edu.vn','123456','Ho Van Le','M', '2002-12-09', '0913545213', 'Quang Tri', 'Vietnam', '9682224127','cus'),
-('772668','thiepktnde160439@fpt.edu.vn','123456','Khau Tran Ngoc Thiep','M', '2002-09-19', '0913545213', 'Quang Nam', 'Vietnam', '2345871766','cus'),
-('885972','thinhphde160042@fpt.edu.vn','123456','Pham Hung Thinh','M', '2002-08-19', '0913545213', 'Hue', 'Vietnam', '0955732284', 'cus'),
-('221608','thanhvnde160635@fpt.edu.vn','123456','Vo Ngoc Thanh','M', '2002-11-09', '0913545213', 'Da Nang', 'Vietnam', '8472481229', 'cus'),
-('994892','trieutdde160252@fpt.edu.vn','123456','Tran Dinh Trieu','M', '2002-05-09', '0913545213', 'Quang Nam', 'Vietnam', '0566344430', 'cus'),
-('260048','huyhgde160045@fpt.edu.vn','123456','Hoang Gia Huy','M', '2002-06-29', '0913545213', 'Quang Ngai', 'Vietnam', '7411535707', 'cus'),
-('497807','lentdde160294@fpt.edu.vn','123456','Nguyen Tran Duc Le','F', '2002-09-29', '0913545213', 'Hue', 'Vietnam', '6752083105', 'cus');
+insert into  Users(UserID, Email, PassWord, Name, Gender, Birthday, Phone, Address, Nationality, CCCD, Role, isValid)
+values('1','admin@gmail.com','123456',null, null, null, null, null, null, null,'admin', 'true'),
+('024358','thunade170102@fpt.edu.vn','123456','Nguyen Anh Thu', 'F', '2002-07-05', '0913545213', 'Quang Nam', 'Vietnam', '6590768954','admin', 'true'),
+('884327','khoanqdde160390@fpt.edu.vn','123456','Nguyen Quang Khoa','M', '2002-03-16', '0913545432', 'Quang Binh', 'Vietnam', '6590768954','cus', 'true'),
+('366421','Lehvde160240@fpt.edu.vn','123456','Ho Van Le','M', '2002-12-09', '0913545213', 'Quang Tri', 'Vietnam', '9682224127','cus', 'true'),
+('772668','thiepktnde160439@fpt.edu.vn','123456','Khau Tran Ngoc Thiep','M', '2002-09-19', '0913545213', 'Quang Nam', 'Vietnam', '2345871766','cus', 'true'),
+('885972','thinhphde160042@fpt.edu.vn','123456','Pham Hung Thinh','M', '2002-08-19', '0913545213', 'Hue', 'Vietnam', '0955732284', 'cus', 'true'),
+('221608','thanhvnde160635@fpt.edu.vn','123456','Vo Ngoc Thanh','M', '2002-11-09', '0913545213', 'Da Nang', 'Vietnam', '8472481229', 'cus', 'true'),
+('994892','trieutdde160252@fpt.edu.vn','123456','Tran Dinh Trieu','M', '2002-05-09', '0913545213', 'Quang Nam', 'Vietnam', '0566344430', 'cus', 'true'),
+('260048','huyhgde160045@fpt.edu.vn','123456','Hoang Gia Huy','M', '2002-06-29', '0913545213', 'Quang Ngai', 'Vietnam', '7411535707', 'cus', 'true'),
+('497807','lentdde160294@fpt.edu.vn','123456','Nguyen Tran Duc Le','F', '2002-09-29', '0913545213', 'Hue', 'Vietnam', '6752083105', 'cus', 'true');
 
 INSERT [dbo].[Distance] ([Distance_ID], [Distance], [Price]) VALUES (N'DT1', 1000, 1000000)
 INSERT [dbo].[Distance] ([Distance_ID], [Distance], [Price]) VALUES (N'DT2', 800, 800000)
@@ -143,7 +144,7 @@ values
 ('DM9',	'2023-05-25',	'2023-05-31',	'01:00:00',	'04:30:00',	N'Đà Nẵng',	N'Hà Nội',	2, 'DT2'),
 ('DM10','2023-05-25',	'2023-05-31',	'21:30:00',	'23:00:00',	N'Đà Nẵng',	N'Hà Nội',	2, 'DT2')
 
-insert into TicketType (TicketType_ID, TicketType_Name,Seat_Begin,Seat_End) 
+insert into TicketType (TicketType_ID, TicketType_Name) 
 values
 ('TT1', 'Economic'),
 ('TT2', 'Business')
