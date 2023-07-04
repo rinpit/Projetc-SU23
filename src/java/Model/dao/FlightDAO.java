@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FlightDAO{
+public class FlightDAO {
 
     Connection connection;
     PreparedStatement statement;
@@ -24,9 +24,11 @@ public class FlightDAO{
     public List<Flight> getListFlight(String startDate, String departure, String destination) {
         flights = new ArrayList<>();
         Format format = new Format();
-        String query = "Select * from \n"
-                + "Flight where StartDate = ? and Departure = ? and Destination = ?\n"
-                + "ORDER BY StartTime ASC";
+        String query = "SELECT Flight.Flight_ID, Flight.StartDate, Flight.EndDate, Flight.StartTime, Flight.EndTime, Flight.Departure, Flight.Destination, TicketType_Flight.Seats\n"
+                + "FROM Flight\n"
+                + "JOIN TicketType_Flight ON Flight.Flight_ID = TicketType_Flight.Flight_ID\n"
+                + "WHERE Flight.StartDate = ? AND Flight.Departure = ? AND Flight.Destination = ?\n"
+                + "ORDER BY Flight.StartTime ASC";
         try {
             connection = new DB().makeConnection();
             statement = connection.prepareStatement(query);
@@ -44,8 +46,8 @@ public class FlightDAO{
             while (resultSet.next()) {
                 Flight flight = new Flight(resultSet.getString(1), format.addTwoDays(format.formatDate(resultSet.getString(2))),
                         format.addTwoDays(format.formatDate(resultSet.getString(3))), format.formatTime(resultSet.getString(4)),
-                        format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7), resultSet.getInt(9),
-                        resultSet.getInt(10));
+                        format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7),
+                        resultSet.getInt(8));
                 flights.add(flight);
             }
             return flights;
@@ -226,16 +228,15 @@ public class FlightDAO{
         }
     }
 
-//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        Flight flights = new Flight();
-//        X flightDAO = new X();
-////        List<Flight> flightsOne = flightDAO.getListFlight("2023-05-25", "Đà Nẵng", "Hồ Chí Minh");
-//        List<Flight> fl = flightDAO.lookUpFlight("udwwsi", "zbr");
-//        for (Flight flight : fl) {
-//            System.out.println(flight);
-////            System.out.println(flight.getSeatB());
-//        }
-////        flightDAO.updateSeatFlight(50, 50, "DM1", "Economic");
-//
-//    }
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        Flight flights = new Flight();
+        FlightDAO flightDAO = new  FlightDAO();
+        List<Flight> flightsOne = flightDAO.getListFlight("2023-05-25", "Đà Nẵng", "Hồ Chí Minh");
+        for (Flight flight : flightsOne) {
+            System.out.println(flight);
+//            System.out.println(flight.getSeatB());
+        }
+//        flightDAO.updateSeatFlight(50, 50, "DM1", "Economic");
+
+    }
 }

@@ -58,45 +58,43 @@ public class SearchFlightServlet extends HttpServlet {
         List<Flight> flightsOne = flightDao.getListFlight(sstartDate, sdeparture, sdestination);
         request.setAttribute("listFlightOne", flightsOne);
         for (Flight flightOne : flightsOne) {
-            session.setAttribute("seatBusiOne", flightOne.getSeatB());
-            session.setAttribute("seatEcoOne", flightOne.getSeatC());
+            session.setAttribute("seatFlightOne", flightOne.getSeat());
         }
         if (sendDate != null) {
             session.setAttribute("EndDate", format.formatDate(sendDate));
             List<Flight> flightsRound = flightDao.getListFlight(sendDate, sdestination, sdeparture);
             request.setAttribute("listFlightRound", flightsRound);
             for (Flight flightRound : flightsRound) {
-                session.setAttribute("seatBusiRound", flightRound.getSeatB());
-                session.setAttribute("seatEcoRound", flightRound.getSeatC());
+                session.setAttribute("seatFlightRound", flightRound.getSeat());
             }
         }
 
-        TicketTypeDAO ticketDao = new TicketTypeDAO();
-        List<TicketType> ticketTypes = ticketDao.getTickets();
-
-        DistanceDAO distanceDAO = new DistanceDAO();
-        List<Distance> distances = distanceDAO.getDistances(sstartDate, sdeparture, sdestination);
-        if (distances != null) {
-            for (TicketType ticketType : ticketTypes) {
-                float tickPrice = Float.parseFloat(ticketType.getTicketPrice());
-                float priceAdult = Float.parseFloat(sadult);
-                float priceKid = Float.parseFloat(skid);
-                float distancePrice = distances.get(0).getDistancePrice();
-                float newPrice = tickPrice + distancePrice;
-//            Tính Tổng tiền vé
-                float sumAdult = Float.parseFloat("1.1") * priceAdult * newPrice;
-                float sumKid = Float.parseFloat("1.1") * priceKid * newPrice;
-//            Format tiền vé
-                String Price = String.valueOf(newPrice);
-                String PriceAdult = String.valueOf(sumAdult);
-                String PriceKid = String.valueOf(sumKid);
-
-                ticketType.setTicketPrice(format.formatPrice(Price));
-                ticketType.setTicketSumAdult(format.formatPrice(PriceAdult));
-                ticketType.setTicketSumKid(format.formatPrice(PriceKid));
-            }
-        }
-        request.setAttribute("listTicket", ticketTypes);
+//            TicketTypeDAO ticketDao = new TicketTypeDAO();
+//        List<TicketType> ticketTypes = ticketDao.getTickets();
+//
+//        DistanceDAO distanceDAO = new DistanceDAO();
+//        List<Distance> distances = distanceDAO.getDistances(sstartDate, sdeparture, sdestination);
+//        if (distances != null) {
+//            for (TicketType ticketType : ticketTypes) {
+//                float tickPrice = Float.parseFloat(ticketType.getTicketPrice());
+//                float priceAdult = Float.parseFloat(sadult);
+//                float priceKid = Float.parseFloat(skid);
+//                float distancePrice = distances.get(0).getDistancePrice();
+//                float newPrice = tickPrice + distancePrice;
+////            Tính Tổng tiền vé
+//                float sumAdult = Float.parseFloat("1.1") * priceAdult * newPrice;
+//                float sumKid = Float.parseFloat("1.1") * priceKid * newPrice;
+////            Format tiền vé
+//                String Price = String.valueOf(newPrice);
+//                String PriceAdult = String.valueOf(sumAdult);
+//                String PriceKid = String.valueOf(sumKid);
+//
+//                ticketType.setTicketPrice(format.formatPrice(Price));
+//                ticketType.setTicketSumAdult(format.formatPrice(PriceAdult));
+//                ticketType.setTicketSumKid(format.formatPrice(PriceKid));
+//            }
+//        }
+//        request.setAttribute("listTicket", ticketTypes);
 
         request.getRequestDispatcher("select-flights.jsp").forward(request, response);
 
