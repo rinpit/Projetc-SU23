@@ -69,8 +69,8 @@ public class SearchFlightServlet extends HttpServlet {
             }
         }
 
-//            TicketTypeDAO ticketDao = new TicketTypeDAO();
-//        List<TicketType> ticketTypes = ticketDao.getTickets();
+        TicketTypeDAO ticketDao = new TicketTypeDAO();
+        List<TicketType> ticketTypes = ticketDao.getTickets();
 //
 //        DistanceDAO distanceDAO = new DistanceDAO();
 //        List<Distance> distances = distanceDAO.getDistances(sstartDate, sdeparture, sdestination);
@@ -94,7 +94,7 @@ public class SearchFlightServlet extends HttpServlet {
 //                ticketType.setTicketSumKid(format.formatPrice(PriceKid));
 //            }
 //        }
-//        request.setAttribute("listTicket", ticketTypes);
+        request.setAttribute("listTicket", ticketTypes);
 
         request.getRequestDispatcher("select-flights.jsp").forward(request, response);
 
