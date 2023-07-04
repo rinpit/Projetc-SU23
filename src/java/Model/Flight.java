@@ -9,14 +9,15 @@ public class Flight extends TicketType {
     String endTime;
     String departure;
     String destination;
-    int seat;
+    String seat;
+    int seats;
     int gate;
     String distanceID;
 
     public Flight() {
     }
 
-    public Flight(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int seat) {
+    public Flight(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int seats) {
         this.flightId = flightId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -24,11 +25,11 @@ public class Flight extends TicketType {
         this.endTime = endTime;
         this.departure = departure;
         this.destination = destination;
-        this.seat = seat;
+        this.seats = seats;
 
     }
 
-    public Flight(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int gate, int seat, String distanceID) {
+    public Flight(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int gate, int seats, String distanceID) {
         this.flightId = flightId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -37,11 +38,11 @@ public class Flight extends TicketType {
         this.departure = departure;
         this.destination = destination;
         this.gate = gate;
-        this.seat = seat;
+        this.seats = seats;
         this.distanceID = distanceID;
     }
 
-    public Flight(String flightId, String startDate, String startTime, String departure, String destination, int seat, String ticketType) {
+    public Flight(String flightId, String startDate, String startTime, String departure, String destination, String seat, String ticketType) {
         super(ticketType);
         this.flightId = flightId;
         this.startDate = startDate;
@@ -116,14 +117,6 @@ public class Flight extends TicketType {
         this.destination = destination;
     }
 
-    public int getSeat() {
-        return seat;
-    }
-
-    public void setSeat(int seat) {
-        this.seat = seat;
-    }
-
     public String getDistanceID() {
         return distanceID;
     }
@@ -140,10 +133,28 @@ public class Flight extends TicketType {
         this.gate = gate;
     }
 
+    public String getSeat() {
+        return seat;
+    }
+
+    public void setSeat(String seat) {
+        this.seat = seat;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
     @Override
     public String toString() {
-        return "Flight{" + "flightId=" + flightId + ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime=" + endTime + ", departure=" + departure + ", destination=" + destination + ", seat=" + seat + ", gate=" + gate + ", distanceID=" + distanceID + '}';
+        return "Flight{" + "flightId=" + flightId + ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime=" + endTime + ", departure=" + departure + ", destination=" + destination + ", seat=" + seat + ", seats=" + seats + ", gate=" + gate + ", distanceID=" + distanceID + '}';
     }
+
+
 
 
 

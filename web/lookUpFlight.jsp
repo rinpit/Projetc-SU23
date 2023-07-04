@@ -78,7 +78,7 @@
                                 <th scope="col">Ngày khởi hành</th>
                                 <th scope="col">Thời gian khởi hành</th>
                                 <th scope="col">Điểm xuất phát</th>
-                                <th scope="col">Điểm ghế</th>
+                                <th scope="col">Điểm đến</th>
                                 <th scope="col">Ghế</th>
                                 <th scope="col">Hạng</th>
                             </tr>
