@@ -87,7 +87,7 @@ CREATE TABLE Ticket
 	Flight_ID varchar(20),
 	TicketType_ID varchar(20),
 	Luggage_ID varchar(20),
-	Seats varchar(20),
+	Seat varchar(20),
 	constraint fk_tblTicket foreign key (Order_ID) references OrderTicket(Order_ID),
 	constraint fk_tblTicket2 foreign key (Flight_ID) references Flight(Flight_ID),
 	constraint fk_tblTicket3 foreign key (TicketType_ID) references TicketType(TicketType_ID),
@@ -148,6 +148,29 @@ insert into TicketType (TicketType_ID, TicketType_Name)
 values
 ('TT1', 'Economic'),
 ('TT2', 'Business')
+
+insert into TicketType_Flight (TicketType_ID, Flight_ID, Seats) 
+values
+('TT1', 'DM1', 50),
+('TT2', 'DM1', 50),
+('TT1', 'DM2', 50),
+('TT2', 'DM2', 50),
+('TT1', 'DM3', 50),
+('TT2', 'DM3', 50),
+('TT1', 'DM4', 50),
+('TT2', 'DM4', 50),
+('TT1', 'DM5', 50),
+('TT2', 'DM5', 50),
+('TT1', 'DM6', 50),
+('TT2', 'DM6', 50),
+('TT1', 'DM7', 50),
+('TT2', 'DM7', 50),
+('TT1', 'DM8', 50),
+('TT2', 'DM8', 50),
+('TT1', 'DM9', 50),
+('TT2', 'DM9', 50),
+('TT1', 'DM10', 50),
+('TT2', 'DM10', 50)
 
 insert into Price(Price_ID, TicketType_ID,Unit_Price,StartDate,EndDate) 
 values
