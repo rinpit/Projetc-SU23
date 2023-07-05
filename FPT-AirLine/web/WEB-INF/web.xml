@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>PersonalServlet</servlet-name>
-        <servlet-class>Control.PersonalServlet</servlet-class>
+        <servlet-class>Control.customer.PersonalServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateInformationServlet</servlet-name>
@@ -18,31 +18,39 @@
     </servlet>
     <servlet>
         <servlet-name>BillServlet</servlet-name>
-        <servlet-class>Control.BillServlet</servlet-class>
+        <servlet-class>Control.customer.BillServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EmployeeManagementServlet</servlet-name>
-        <servlet-class>Control.EmployeeManagementServlet</servlet-class>
+        <servlet-class>Control.admin.EmployeeManagementServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateEmployeeServlet</servlet-name>
-        <servlet-class>Control.CreateEmployeeServlet</servlet-class>
+        <servlet-class>Control.admin.CreateEmployeeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteEmployeeServlet</servlet-name>
-        <servlet-class>Control.DeleteEmployeeServlet</servlet-class>
+        <servlet-class>Control.admin.DeleteEmployeeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>OrderTicketServlet</servlet-name>
-        <servlet-class>Control.OrderTicketServlet</servlet-class>
+        <servlet-class>Control.employee.OrderTicketServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ConfirmServlet</servlet-name>
-        <servlet-class>Control.ConfirmServlet</servlet-class>
+        <servlet-class>Control.employee.ConfirmServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteOrderTicketServlet</servlet-name>
-        <servlet-class>Control.DeleteOrderTicketServlet</servlet-class>
+        <servlet-class>Control.employee.DeleteOrderTicketServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditCustomerServlet</servlet-name>
+        <servlet-class>Control.employee.EditCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditTicketServlet</servlet-name>
+        <servlet-class>Control.employee.EditTicketServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AccountServlet</servlet-name>
@@ -90,31 +98,31 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>orderServlet</servlet-name>
-        <servlet-class>Control.orderServlet</servlet-class>
+        <servlet-class>Control.customer.orderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SelectFlightServelt</servlet-name>
-        <servlet-class>Control.SelectFlightServlet</servlet-class>
+        <servlet-class>Control.customer.SelectFlightServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>promotionServlet</servlet-name>
-        <servlet-class>Control.promotionServlet</servlet-class>
+        <servlet-class>Control.customer.promotionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ticketTypeServlet</servlet-name>
-        <servlet-class>Control.ticketTypeServlet</servlet-class>
+        <servlet-class>Control.customer.ticketTypeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>updateTicketType</servlet-name>
-        <servlet-class>Control.updateTicketType</servlet-class>
+        <servlet-class>Control.employee.updateTicketType</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>loginAdminServlet</servlet-name>
-        <servlet-class>Control.loginAdminServlet</servlet-class>
+        <servlet-class>Control.admin.loginAdminServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>loginEmployeeServlet</servlet-name>
-        <servlet-class>Control.loginEmployeeServlet</servlet-class>
+        <servlet-class>Control.employee.loginEmployeeServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logoutServlet</servlet-name>
@@ -122,7 +130,7 @@
     </servlet>
     <servlet>
         <servlet-name>listPromotionServlet</servlet-name>
-        <servlet-class>Control.listPromotionServlet</servlet-class>
+        <servlet-class>Control.employee.listPromotionServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UserListServlet</servlet-name>
@@ -138,43 +146,43 @@
     </servlet>
     <servlet>
         <servlet-name>viewHistoryServlet</servlet-name>
-        <servlet-class>Control.viewHistoryServlet</servlet-class>
+        <servlet-class>Control.customer.viewHistoryServlet</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>cancelTicketServlet</servlet-name>
-        <servlet-class>Control.cancelTicketServlet</servlet-class>
+        <servlet-class>Control.customer.cancelTicketServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>lookUpFlight</servlet-name>
-        <servlet-class>Control.lookUpFlight</servlet-class>
+        <servlet-class>Control.customer.lookUpFlight</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Verify</servlet-name>
-        <servlet-class>Control.Verify</servlet-class>
+        <servlet-class>Control.customer.Verify</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListFlightServlet</servlet-name>
-        <servlet-class>Control.ListFlightServlet</servlet-class>
+        <servlet-class>Control.employee.ListFlightServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addDistance</servlet-name>
-        <servlet-class>Control.addDistance</servlet-class>
+        <servlet-class>Control.employee.addDistance</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addFlight</servlet-name>
-        <servlet-class>Control.addFlight</servlet-class>
+        <servlet-class>Control.employee.addFlight</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteFlightServlet</servlet-name>
-        <servlet-class>Control.DeleteFlightServlet</servlet-class>
+        <servlet-class>Control.employee.DeleteFlightServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListDistanceServlet</servlet-name>
-        <servlet-class>Control.ListDistanceServlet</servlet-class>
+        <servlet-class>Control.employee.ListDistanceServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdatePriceServlet</servlet-name>
-        <servlet-class>Control.UpdatePriceServlet</servlet-class>
+        <servlet-class>Control.employee.UpdatePriceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ListFlightServlet</servlet-name>
@@ -256,7 +264,7 @@
         <servlet-name>viewHistoryServlet</servlet-name>
         <url-pattern>/viewHistoryServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>cancelTicketServlet</servlet-name>
         <url-pattern>/cancelTicketServlet</url-pattern>
     </servlet-mapping>
@@ -264,4 +272,25 @@
         <servlet-name>lookUpFlight</servlet-name>
         <url-pattern>/lookUpFlight</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchFlightServlet</servlet-name>
+        <servlet-class>Control.SearchFlightServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchFlightServlet</servlet-name>
+        <url-pattern>/SearchFlightServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCustomerServlet</servlet-name>
+        <url-pattern>/EditCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditTicketServlet</servlet-name>
+        <url-pattern>/EditTicketServlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
 </web-app>

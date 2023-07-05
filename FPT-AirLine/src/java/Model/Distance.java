@@ -24,8 +24,8 @@ public class Distance extends Flight{
         this.distancePrice = distancePrice;
     }
 
-    public Distance(String distanceID, String distance, float distancePrice, String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int seatB, int seatC) {
-        super(flightId, startDate, endDate, startTime, endTime, departure, destination, seatB, seatC);
+    public Distance(String distanceID, String distance, float distancePrice, String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination) {
+        super(flightId, startDate, endDate, startTime, endTime, departure, destination);
         this.distanceID = distanceID;
         this.distance = distance;
         this.distancePrice = distancePrice;
