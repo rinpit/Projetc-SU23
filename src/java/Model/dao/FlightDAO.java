@@ -24,11 +24,33 @@ public class FlightDAO {
     public List<Flight> getListFlight(String startDate, String departure, String destination) {
         flights = new ArrayList<>();
         Format format = new Format();
-        String query = "SELECT Flight.Flight_ID, Flight.StartDate, Flight.EndDate, Flight.StartTime, Flight.EndTime, Flight.Departure, Flight.Destination, TicketType_Flight.Seats\n"
-                + "FROM Flight\n"
-                + "JOIN TicketType_Flight ON Flight.Flight_ID = TicketType_Flight.Flight_ID\n"
-                + "WHERE Flight.StartDate = ? AND Flight.Departure = ? AND Flight.Destination = ?\n"
-                + "ORDER BY Flight.StartTime ASC";
+        String query = "SELECT \n"
+                + "    Flight.Flight_ID,\n"
+                + "    Flight.StartDate,\n"
+                + "    Flight.EndDate,\n"
+                + "    Flight.StartTime,\n"
+                + "    Flight.EndTime,\n"
+                + "    Flight.Departure,\n"
+                + "    Flight.Destination,\n"
+                + "    SUM(TicketType_Flight.Seats) AS TotalSeats\n"
+                + "FROM \n"
+                + "    Flight\n"
+                + "JOIN \n"
+                + "    TicketType_Flight ON Flight.Flight_ID = TicketType_Flight.Flight_ID\n"
+                + "WHERE \n"
+                + "    Flight.StartDate = ?\n"
+                + "    AND Flight.Departure = ?\n"
+                + "    AND Flight.Destination = ?\n"
+                + "GROUP BY \n"
+                + "    Flight.Flight_ID,\n"
+                + "    Flight.StartDate,\n"
+                + "    Flight.EndDate,\n"
+                + "    Flight.StartTime,\n"
+                + "    Flight.EndTime,\n"
+                + "    Flight.Departure,\n"
+                + "    Flight.Destination\n"
+                + "ORDER BY \n"
+                + "    Flight.StartTime ASC;";
         try {
             connection = new DB().makeConnection();
             statement = connection.prepareStatement(query);
@@ -57,36 +79,21 @@ public class FlightDAO {
         return null;
     }
 
-    public void updateSeatFlight(int seatsB, int seatsC, String FlightID, String ticketType) throws SQLException, ClassNotFoundException {
+    public void updateSeatFlight(int seats, String FlightID, String ticketTypeID) throws SQLException, ClassNotFoundException {
         connection = new DB().makeConnection();
-        if (ticketType.equals("TT2")) {
-            try {
-                flights = new ArrayList<>();
-                String query = "UPDATE Flight\n"
-                        + "Set SeatsB = ?\n"
-                        + "WHERE Flight_ID = ?";
-                statement = connection.prepareStatement(query);
-                statement.setInt(1, seatsB);
-                statement.setString(2, FlightID);
-                statement.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            try {
-                flights = new ArrayList<>();
-                String query = "UPDATE Flight\n"
-                        + "Set SeatsC = ?\n"
-                        + "WHERE Flight_ID = ?";
-                statement = connection.prepareStatement(query);
-                statement.setInt(1, seatsC);
-                statement.setString(2, FlightID);
-                statement.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            flights = new ArrayList<>();
+            String query = "UPDATE TicketType_Flight\n"
+                    + "Set Seats = Seats - ?\n"
+                    + "WHERE Flight_ID = ? And TicketType_ID = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, seats);
+            statement.setString(2, FlightID);
+            statement.setString(3, ticketTypeID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public List<Flight> lookUpFlight(String ticketId, String passengerName) throws ClassNotFoundException {
@@ -230,7 +237,7 @@ public class FlightDAO {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Flight flights = new Flight();
-        FlightDAO flightDAO = new  FlightDAO();
+        FlightDAO flightDAO = new FlightDAO();
         List<Flight> flightsOne = flightDAO.getListFlight("2023-05-25", "Đà Nẵng", "Hồ Chí Minh");
         for (Flight flight : flightsOne) {
             System.out.println(flight);

@@ -30,7 +30,7 @@
                         <c:set var="userID" value="${userID}" />
                         <c:if test="${empty userID}">
                             <li><a href="login.jsp">Đăng nhập</a></li>
-                            <li><a href="register.jsp">Đăng kí</a></li>
+                            <li><a href="login.jsp">Đăng kí</a></li>
                             </c:if>
                             <c:if test="${not empty userID}">                   
                             <li>

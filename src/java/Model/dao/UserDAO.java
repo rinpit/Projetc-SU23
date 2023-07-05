@@ -205,7 +205,7 @@ public class UserDAO {
 
     public void createCustomer(String email, String password, String role, String fullName) throws SQLException {
         String id = randomString();
-        String stmt = "insert into Users values" + " (?,?,?,?,'','','','','','',?)";
+        String stmt = "insert into Users values" + " (?,?,?,?,'','','','','','',?,'')";
 
         PreparedStatement ps = connection.prepareStatement(stmt);
         ps.setString(1, id);

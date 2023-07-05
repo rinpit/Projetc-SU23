@@ -73,7 +73,7 @@ public class orderServlet extends HttpServlet {
                     }
                 } else {
                     orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", total);
-                    
+
                 }
                 for (int i = 1; i <= numAdult; i++) {
                     String luggageA = null;
@@ -158,15 +158,11 @@ public class orderServlet extends HttpServlet {
         }
         //Trừ ghế trong chuyến bay
         FlightDAO flightDAO = new FlightDAO();
-        int seatBusiOne = (int) session.getAttribute("seatBusiOne");
-        int seatEcoOne = (int) session.getAttribute("seatEcoOne");
         int sumPassenger = numAdult + numKid;
         try {
-            flightDAO.updateSeatFlight(seatBusiOne - sumPassenger, seatEcoOne - sumPassenger, flightID, ticketType);
+            flightDAO.updateSeatFlight(sumPassenger, flightID, ticketType);
             if (flightIDBack != null) {
-                int seatBusiRound = (int) session.getAttribute("seatBusiRound");
-                int seatEcoRound = (int) session.getAttribute("seatEcoRound");
-                flightDAO.updateSeatFlight(seatBusiRound - sumPassenger, seatEcoRound - sumPassenger, flightIDBack, ticketType);
+                flightDAO.updateSeatFlight(sumPassenger, flightIDBack, ticketType);
             }
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(orderServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -43,11 +43,10 @@ public class DistanceDAO {
             statement.setString(3, destination);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Distance distance = new Distance(resultSet.getString(12), resultSet.getString(13), resultSet.getFloat(14),
+                Distance distance = new Distance(resultSet.getString(10), resultSet.getString(11), resultSet.getFloat(12),
                         resultSet.getString(1), format.formatDate(resultSet.getString(2)),
                         format.formatDate(resultSet.getString(3)), format.formatTime(resultSet.getString(4)),
-                        format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7), resultSet.getInt(9),
-                        resultSet.getInt(10));
+                        format.formatTime(resultSet.getString(5)), resultSet.getString(6), resultSet.getString(7));
                 distanceList.add(distance);
             }
             //Only for Minh
@@ -145,5 +144,14 @@ public class DistanceDAO {
         } catch (Exception e) {
         }
         return distanceId;
+    }
+    
+    public static void main(String[] args) {
+        Distance distance = new Distance();
+        DistanceDAO distanceDAO = new DistanceDAO();
+        List<Distance> distances = distanceDAO.getDistances("2023-05-25", "Đà Nẵng", "Hồ Chí Minh");
+        for (Distance distance1 : distances) {
+            System.out.println(distance1);
+        }
     }
 }
