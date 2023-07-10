@@ -30,10 +30,6 @@ public class listPromotionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        PromotionDAO promotionDao = new PromotionDAO();
-        List<Promotion> promotions = promotionDao.getPromotion();
-        request.setAttribute("abc", promotions);
-        request.getRequestDispatcher("test.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

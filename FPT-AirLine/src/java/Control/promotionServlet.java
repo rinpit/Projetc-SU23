@@ -42,7 +42,7 @@ public class promotionServlet extends HttpServlet {
         PromotionDAO promotionDAO = new PromotionDAO();
         try {
             promotionDAO.createPromotion(promotionID, description, startDayString, endDayString, Float_price);
-            request.getRequestDispatcher("homepage.jsp").forward(request, response);
+            response.sendRedirect("listPromotionServlet");
         } catch (SQLException ex) {
             Logger.getLogger(promotionServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
