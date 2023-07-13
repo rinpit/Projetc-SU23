@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="header.jsp" %>
-
+<%@page import="Model.User" %>
+<%@page import="Model.UserDAO" %>
+<%@page import="DBcontext.DB" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -81,7 +83,7 @@
         <c:set var="user" value="${requestScope.user}" />
         <!--        <div class="container" >-->
         <form action="UpdateInformationServlet" method="post" class="was-validated" onsubmit="return validateForm();">
-            <div class="container" style="margin-top: 150px">
+            <div class="container">
                 <div class="card">
                     <div class="row">
                         <div class="col-12">
