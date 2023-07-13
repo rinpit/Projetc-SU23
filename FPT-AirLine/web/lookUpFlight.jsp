@@ -1,8 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="header.jsp" %>
-<%@page import="Model.User" %>
-<%@page import="Model.UserDAO" %>
-<%@page import="DBcontext.DB" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -81,7 +78,7 @@
                                 <th scope="col">Ngày khởi hành</th>
                                 <th scope="col">Thời gian khởi hành</th>
                                 <th scope="col">Điểm xuất phát</th>
-                                <th scope="col">Điểm ghế</th>
+                                <th scope="col">Điểm đến</th>
                                 <th scope="col">Ghế</th>
                                 <th scope="col">Hạng</th>
                             </tr>

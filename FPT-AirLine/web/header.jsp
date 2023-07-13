@@ -1,8 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@page import="Model.User" %>
-<%@page import="Model.UserDAO" %>
-<%@page import="DBcontext.DB" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -33,7 +30,7 @@
                         <c:set var="userID" value="${userID}" />
                         <c:if test="${empty userID}">
                             <li><a href="login.jsp">Đăng nhập</a></li>
-                            <li><a href="register.jsp">Đăng kí</a></li>
+                            <li><a href="login.jsp">Đăng kí</a></li>
                             </c:if>
                             <c:if test="${not empty userID}">                   
                             <li>

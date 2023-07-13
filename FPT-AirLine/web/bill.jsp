@@ -1,8 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="header.jsp" %>
-<%@page import="Model.OrderTicket" %>
-<%@page import="Model.OrderTicketDAO" %>
-<%@page import="DBcontext.DB" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -64,7 +61,7 @@
                 </div>
                 <hr style="border-width: 1px; border-style: solid; border-color: #F44D06">
                 <div class="row custom-card-item">
-                    <div class="col-12" style="font-style: italic; padding-bottom: 10px"> Quý khách vui lòng kiểm tra email và điện thoại để đảm bảo thông tin chính xác và chắc chắn giữ chổ.</div>
+                    <div class="col-12" style="font-style: italic; padding-bottom: 10px"> Quý khách vui lòng kiểm tra email để lấy vé điện tử.</div>
                 </div>
             </div>
         </div>

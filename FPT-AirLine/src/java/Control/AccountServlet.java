@@ -1,6 +1,6 @@
 package Control;
 
-import Model.UserDAO;
+import Model.dao.UserDAO;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

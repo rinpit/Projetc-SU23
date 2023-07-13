@@ -116,7 +116,7 @@
                                                                     </td>
                                                                     <td>10%</td>
                                                                     <td><input class="totalAdult" type="text" name="totalPriceA<c:out value="${ticketTypePrice}"/>"
-                                                                               value="${listTicket.get(0).ticketSumAdult}VND"
+                                                                               value="${listTicket.get(0).ticketSumAdult} VND"
                                                                                style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                                                readonly>
                                                                     </td>
@@ -134,7 +134,7 @@
                                                                         <td>10%</td>
                                                                         <td>
                                                                             <input class="totalKid" type="text" name="totalPriceK<c:out value="${ticketTypePrice}"/>"
-                                                                                   value="${listTicket.get(0).ticketSumKid}VND"
+                                                                                   value="${listTicket.get(0).ticketSumKid} VND"
                                                                                    style="background-color: rgb(65, 225, 225); border-radius: 50px; width: 120px;"
                                                                                    readonly>
                                                                         </td>

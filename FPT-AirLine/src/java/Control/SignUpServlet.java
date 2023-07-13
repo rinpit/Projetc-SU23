@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import Model.Account;
-import Model.UserDAO;
+import Model.dao.UserDAO;
 
 /**
  *

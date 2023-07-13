@@ -42,7 +42,8 @@ public class User {
         this.cccd = cccd;
     }
 
-    public User(String name, String gender, Date birthday, String phone, String email, String address, String nationality, String cccd) {
+    public User(String userID, String email, String name, String gender, Date birthday, String phone, String address, String nationality, String cccd) {
+        this.userID = userID;
         this.email = email;
         this.name = name;
         this.gender = gender;
@@ -52,6 +53,8 @@ public class User {
         this.nationality = nationality;
         this.cccd = cccd;
     }
+    
+    
 
 //    public User(String userID, String email, String password, String role) {
 //        this.userID = userID;

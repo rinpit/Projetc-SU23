@@ -5,7 +5,7 @@
 package Control;
 
 import Model.User;
-import Model.UserDAO;
+import Model.dao.UserDAO;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;

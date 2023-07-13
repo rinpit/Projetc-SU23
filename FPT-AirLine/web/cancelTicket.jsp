@@ -1,8 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@include file="header.jsp" %>
-<%@page import="Model.User" %>
-<%@page import="Model.UserDAO" %>
-<%@page import="DBcontext.DB" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -71,7 +68,7 @@
                                    style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;"><br><br>
                             <input type="checkbox" required> Bạn chấp nhận điều khoản của chúng tôi <br><br>
                             <button type="submit"
-                                    style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #0077cc; color: #fff;"><i
+                                    style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #0077cc; color: #fff;" onclick="showNotification()"><i
                                     class="fa fa-ban"></i> Hủy vé</button>
                         </form>
                     </div>
@@ -80,4 +77,10 @@
         </div>
     </div>
 </body>
+<script>
+    function showNotification() {
+        // Display the notification message
+        alert("Vui lòng kiểm tra email của bạn.");
+    }
+</script>
 </html>
