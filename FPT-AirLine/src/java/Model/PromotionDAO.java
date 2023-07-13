@@ -54,23 +54,6 @@ public class PromotionDAO {
         return list;
     }
 
-    public Promotion getPromotionById(String id) {
-        String query = "select* From Promotion where Promotion_ID = ?";
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setString(1, id);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                Promotion promotion = new Promotion(rs.getString("Promotion_ID"), rs.getString("Description"),
-                        rs.getDate("StartDate"), rs.getDate("EndDate"), rs.getFloat("Amount"));
-                return promotion;
-            }
-        } catch (SQLException e) {
-        }
-        return null;
-
-    }
-
     public void createPromotion(String id, String description, String startDay, String endDay, float price) throws SQLException {
         String stmt = "insert into Promotion values (?, ?, ?, ?, ? )";
         PreparedStatement ps = connection.prepareStatement(stmt);
@@ -79,26 +62,6 @@ public class PromotionDAO {
         ps.setString(3, startDay);
         ps.setString(4, endDay);
         ps.setFloat(5, price);
-        ps.executeUpdate();
-    }
-
-    public void updatePromotion(String id, String description, String startDay, String endDay, float price) throws SQLException {
-        String stmt = "update Promotion set Description=? , StartDate=?, EndDate=?, Amount=? "
-                + "where Promotion_ID=?";
-        PreparedStatement ps = connection.prepareStatement(stmt);
-        ps.setString(1, description);
-        ps.setNString(2, startDay);
-        ps.setString(3, endDay);
-        ps.setFloat(4, price);
-        ps.setString(5, id);
-        ps.executeUpdate();
-    }
-
-    public void deletePromotion(String id) throws SQLException {
-        String stmt = "DELETE FROM Promotion\n"
-                + "WHERE Promotion_ID = ?;";
-        PreparedStatement ps = connection.prepareStatement(stmt);
-        ps.setString(1, id);
         ps.executeUpdate();
     }
 

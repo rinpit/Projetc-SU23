@@ -42,157 +42,7 @@
         <!-- ============================================================== -->
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
              data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-            <!-- ============================================================== -->
-            <!-- Topbar header - style you can find in pages.scss -->
-            <!-- ============================================================== -->
-            <header class="topbar" data-navbarbg="skin5">
-                <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                    <div class="navbar-header" data-logobg="skin6">
-                        <%
-                    // Kiểm tra vai trò của người dùng
-                    String role = (String) session.getAttribute("role");
-                    // Kiểm tra xem người dùng có phải là admin hay không
-                    boolean isAdmin = "admin".equals(role);
-                        %>
-                        <% if (!isAdmin) { %>
-                        <a class="navbar-brand" href="homepage.jsp">
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img style="width: 100%" src="plugins/images/users/logo_employee.png" alt="homepage" />
-                            </span>
-                        </a>
-                        <% } %>
-                        <!-- ============================================================== -->
-                        <!-- Logo -->
-                        <!-- ============================================================== -->
-                        <% if (isAdmin) { %>
-                        <a class="navbar-brand" href="homepage.jsp">
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img style="width: 100%" src="plugins/images/users/logo_admin.png" alt="homepage" />
-                            </span>
-                        </a>
-                        <% } %>
-                        <!-- ============================================================== -->
-                        <!-- End Logo -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- toggle and nav items -->
-                        <!-- ============================================================== -->
-                        <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
-                           href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-
-                        <!-- ============================================================== -->
-                        <!-- Right side toggle and nav items -->
-                        <!-- ============================================================== -->
-                        <ul class="navbar-nav ms-auto d-flex align-items-center">
-
-                            <!-- ============================================================== -->
-                            <!-- Log out -->
-                            <!-- ============================================================== -->
-                            <li>
-                                <a href="logoutServlet" class="item logout-site" title="Logout">
-                                    <i class="la la-sign-in-alt"></i>Đăng xuất
-                                </a>
-                            </li>
-                            <!-- ============================================================== -->
-                            <!-- User profile and search -->
-                            <!-- ============================================================== -->
-                            <li>
-                                <a class="profile-pic" href="#"><span class="text-white font-medium">${email}</span></a>
-                            </li>
-                            <!-- ============================================================== -->
-                            <!-- User profile and search -->
-                            <!-- ============================================================== -->
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-            <!-- ============================================================== -->
-            <!-- End Topbar header -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Left Sidebar - style you can find in sidebar.scss  -->
-            <!-- ============================================================== -->
-            <aside class="left-sidebar" data-sidebarbg="skin6">
-                <!-- Sidebar scroll-->
-                <div class="scroll-sidebar">
-                    <!-- Sidebar navigation-->
-                    <nav class="sidebar-nav">
-                        <ul id="sidebarnav">
-                            <!-- User Profile-->
-                            <!--                            <li class="sidebar-item pt-2">
-                                                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
-                                                               aria-expanded="false">
-                                                                <i class="far fa-clock" aria-hidden="true"></i>
-                                                                <span class="hide-menu">Dashboard</span>
-                                                            </a>
-                                                        </li>-->
-                            <% if (!isAdmin) { %>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="ticketTypeServlet"
-                                   aria-expanded="false">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <span class="hide-menu">Danh sách loại vé</span>
-                                </a>
-                            </li>
-                            <% } %>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="listUser.jsp"
-                                   aria-expanded="false">
-                                    <i class="fa fa-table" aria-hidden="true"></i>
-                                    <span class="hide-menu">Danh sách người dùng</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/ListFlightServlet"
-                                   aria-expanded="false">
-                                    <i class="fa fa-font" aria-hidden="true"></i>
-                                    <span class="hide-menu">Danh sách chuyến bay</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/addFlight.jsp"
-                                   aria-expanded="false">
-                                    <i class="fa fa-globe" aria-hidden="true"></i>
-                                    <span class="hide-menu">Tạo chuyến bay</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/ListDistanceServlet"
-                                   aria-expanded="false">
-                                    <i class="fa fa-columns" aria-hidden="true"></i>
-                                    <span class="hide-menu">Danh sách khoảng cách</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/addDistance.jsp"
-                                   aria-expanded="false">
-                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                    <span class="hide-menu">Tạo khoảng cách</span>
-                                </a>
-                            </li>
-                            <!--                            <li class="text-center p-20 upgrade-btn">
-                                                            <a href="https://www.wrappixel.com/templates/ampleadmin/"
-                                                               class="btn d-grid btn-danger text-white" target="_blank">
-                                                                Upgrade to Pro</a>
-                                                        </li>-->
-                        </ul>
-
-                    </nav>
-                    <!-- End Sidebar navigation -->
-                </div>
-                <!-- End Sidebar scroll-->
-            </aside>
+            <%@include file="NavEmployee.jsp" %>
             <!-- ============================================================== -->
             <!-- End Left Sidebar - style you can find in sidebar.scss  -->
             <!-- ============================================================== -->
@@ -231,25 +81,21 @@
                 <!-- Container fluid  -->
                 <!-- ============================================================== -->
                 <div class="container-fluid">
-                    <div class="d-md-flex">
-                        <a href="createTicketType.jsp"
-                           class="btn btn-danger d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Tạo loại vé</a>
-                    </div>
                     <div class="container">
                         <div class="table">
                             <div class="table-header">
+                                <div class="header__item"><a id="name" class="filter__link">ID</a></div>
                                 <div class="header__item"><a id="wins" class="filter__link filter__link--number">Tên loại vé</a></div>
                                 <div class="header__item"><a id="draws" class="filter__link filter__link--number">Giá</a></div>
                                 <div class="header__item"><a id="losses" class="filter__link filter__link--number">Cập nhật giá</a></div>
-                                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Xóa</a></div>
                             </div>
                             <c:forEach items="${listTicketType}" var="l">
                                 <div class="table-content">	
                                     <div class="table-row">		
+                                        <div class="table-data">${l.ticketTypeId}</div>
                                         <div class="table-data">${l.ticketType}</div>
                                         <div class="table-data">${l.ticketPrice} VND</div>
-                                        <div class="table-data"><a href="updateTicketType?id=${l.ticketTypeId}&type=${l.ticketType}">Cập nhật</a></div>
-                                        <div class="table-data"><a href="deleteTicketTypeServlet?id=${l.ticketTypeId}">Xóa</a></div>
+                                        <div class="table-data"><a href="updateTicketType?id=${l.ticketTypeId}&type=${l.ticketType}">Cập nhật </a></div>
                                     </div>
                                 </div>
                             </c:forEach>

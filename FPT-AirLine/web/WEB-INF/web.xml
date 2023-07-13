@@ -52,22 +52,6 @@
         <servlet-name>EditTicketServlet</servlet-name>
         <servlet-class>Control.employee.EditTicketServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>updatePromotionServlet</servlet-name>
-        <servlet-class>Control.employee.updatePromotionServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>deletePromotionServlet</servlet-name>
-        <servlet-class>Control.deletePromotionServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>createTicketTypeServlet</servlet-name>
-        <servlet-class>Control.createTicketTypeServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>deleteTicketTypeServlet</servlet-name>
-        <servlet-class>Control.deleteTicketTypeServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>AccountServlet</servlet-name>
         <url-pattern>/AccountServlet</url-pattern>
@@ -303,22 +287,6 @@
     <servlet-mapping>
         <servlet-name>EditTicketServlet</servlet-name>
         <url-pattern>/EditTicketServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>updatePromotionServlet</servlet-name>
-        <url-pattern>/updatePromotionServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>deletePromotionServlet</servlet-name>
-        <url-pattern>/deletePromotionServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>createTicketTypeServlet</servlet-name>
-        <url-pattern>/createTicketTypeServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>deleteTicketTypeServlet</servlet-name>
-        <url-pattern>/deleteTicketTypeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

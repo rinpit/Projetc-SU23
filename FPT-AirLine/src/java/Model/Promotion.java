@@ -50,7 +50,7 @@ public class Promotion {
         return startDate;
     }
 
-    public void setStartDate(Date StartDate) {
+    public void setStartDate(String StartDate) {
         this.startDate = startDate;
     }
 
@@ -58,7 +58,7 @@ public class Promotion {
         return endDate;
     }
 
-    public void setEndDate(Date EndDate) {
+    public void setEndDate(String EndDate) {
         this.endDate = endDate;
     }
 
@@ -66,7 +66,7 @@ public class Promotion {
         return amount;
     }
 
-    public void setAmount(float price) {
+    public void setAmount(String price) {
         this.amount = amount;
     }
 
