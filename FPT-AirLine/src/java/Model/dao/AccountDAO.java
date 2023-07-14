@@ -35,7 +35,7 @@ public class AccountDAO {
     public ArrayList<Account> getAccount(String email, String pass) {
         String query = "select UserID, Email, PassWord , Role\n"
                 + "from Users\n"
-                + "where Email = ? and PassWord = ? and isValid = 'true'";
+                + "where Email = ? and PassWord = ? and isValid = 'true' and Role = 'cus'";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, email);

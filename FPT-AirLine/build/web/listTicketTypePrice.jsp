@@ -130,13 +130,13 @@
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav">
                             <!-- User Profile-->
-                            <li class="sidebar-item pt-2">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
-                                   aria-expanded="false">
-                                    <i class="far fa-clock" aria-hidden="true"></i>
-                                    <span class="hide-menu">Dashboard</span>
-                                </a>
-                            </li>
+                            <!--                            <li class="sidebar-item pt-2">
+                                                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                                                               aria-expanded="false">
+                                                                <i class="far fa-clock" aria-hidden="true"></i>
+                                                                <span class="hide-menu">Dashboard</span>
+                                                            </a>
+                                                        </li>-->
                             <% if (!isAdmin) { %>
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="ticketTypeServlet"
@@ -154,38 +154,38 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/ListFlightServlet"
                                    aria-expanded="false">
                                     <i class="fa fa-font" aria-hidden="true"></i>
-                                    <span class="hide-menu">Icon</span>
+                                    <span class="hide-menu">Danh sách chuyến bay</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/addFlight.jsp"
                                    aria-expanded="false">
                                     <i class="fa fa-globe" aria-hidden="true"></i>
-                                    <span class="hide-menu">Google Map</span>
+                                    <span class="hide-menu">Tạo chuyến bay</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/ListDistanceServlet"
                                    aria-expanded="false">
                                     <i class="fa fa-columns" aria-hidden="true"></i>
-                                    <span class="hide-menu">Blank Page</span>
+                                    <span class="hide-menu">Danh sách khoảng cách</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="http://localhost:8080/FPT/addDistance.jsp"
                                    aria-expanded="false">
                                     <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                    <span class="hide-menu">Error 404</span>
+                                    <span class="hide-menu">Tạo khoảng cách</span>
                                 </a>
                             </li>
-                            <li class="text-center p-20 upgrade-btn">
-                                <a href="https://www.wrappixel.com/templates/ampleadmin/"
-                                   class="btn d-grid btn-danger text-white" target="_blank">
-                                    Upgrade to Pro</a>
-                            </li>
+                            <!--                            <li class="text-center p-20 upgrade-btn">
+                                                            <a href="https://www.wrappixel.com/templates/ampleadmin/"
+                                                               class="btn d-grid btn-danger text-white" target="_blank">
+                                                                Upgrade to Pro</a>
+                                                        </li>-->
                         </ul>
 
                     </nav>
@@ -231,21 +231,25 @@
                 <!-- Container fluid  -->
                 <!-- ============================================================== -->
                 <div class="container-fluid">
+                    <div class="d-md-flex">
+                        <a href="createTicketType.jsp"
+                           class="btn btn-danger d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Tạo loại vé</a>
+                    </div>
                     <div class="container">
                         <div class="table">
                             <div class="table-header">
-                                <div class="header__item"><a id="name" class="filter__link">ID</a></div>
                                 <div class="header__item"><a id="wins" class="filter__link filter__link--number">Tên loại vé</a></div>
                                 <div class="header__item"><a id="draws" class="filter__link filter__link--number">Giá</a></div>
                                 <div class="header__item"><a id="losses" class="filter__link filter__link--number">Cập nhật giá</a></div>
+                                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Xóa</a></div>
                             </div>
                             <c:forEach items="${listTicketType}" var="l">
                                 <div class="table-content">	
                                     <div class="table-row">		
-                                        <div class="table-data">${l.ticketTypeId}</div>
                                         <div class="table-data">${l.ticketType}</div>
                                         <div class="table-data">${l.ticketPrice} VND</div>
-                                        <div class="table-data"><a href="updateTicketType?id=${l.ticketTypeId}&type=${l.ticketType}">Cập nhật </a></div>
+                                        <div class="table-data"><a href="updateTicketType?id=${l.ticketTypeId}&type=${l.ticketType}">Cập nhật</a></div>
+                                        <div class="table-data"><a href="deleteTicketTypeServlet?id=${l.ticketTypeId}">Xóa</a></div>
                                     </div>
                                 </div>
                             </c:forEach>

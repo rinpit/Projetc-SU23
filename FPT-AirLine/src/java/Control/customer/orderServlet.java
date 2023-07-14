@@ -62,7 +62,7 @@ public class orderServlet extends HttpServlet {
             if (total != null) {
                 int numTotal = prodao.convertStringToInt(total);
                 if (!promotionId.isBlank()) {
-                    Promotion promotion = prodao.isPromotionValid(promotionId, currentDateTimeString);
+                    Model.dao.Promotion promotion = prodao.isPromotionValid(promotionId, currentDateTimeString);
                     if (promotion != null) {
                         int newTotal = numTotal - (int) promotion.getAmount();
                         orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", prodao.convertIntToString(newTotal));
@@ -108,7 +108,7 @@ public class orderServlet extends HttpServlet {
                 }
             } else {
                 if (!promotionId.isBlank()) {
-                    Promotion promotion = prodao.isPromotionValid(promotionId, currentDateTimeString);
+                    Model.dao.Promotion promotion = prodao.isPromotionValid(promotionId, currentDateTimeString);
                     if (promotion != null) {
                         int newTotal = numTotalGo - (int) promotion.getAmount();
                         orderdao.createOrder(orderID, userID, currentDateTimeString, promotionId, "1.1", prodao.convertIntToString(newTotal));

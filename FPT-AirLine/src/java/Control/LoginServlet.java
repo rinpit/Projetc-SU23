@@ -37,28 +37,73 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("login-email");
         String password = request.getParameter("login-pass");
+        String role = request.getParameter("role");
         String remember = request.getParameter("remember");
         AccountDAO dao = new AccountDAO();
-        ArrayList<Account> accounts = dao.getAccount(email, password);
-        if (!accounts.isEmpty()) {
-            String userID = accounts.get(0).getAccID();
-            HttpSession sessionFlight = request.getSession();
-            HttpSession sessionUser = request.getSession();
+        if (role.equals("customer")) {
             
-            sessionUser.setAttribute("email", email);
-            sessionUser.setAttribute("userID", userID);
-            if (remember != null) {
-                Cookie e = new Cookie("emailC", email);
-                e.setMaxAge(60 * 15);
-                Cookie p = new Cookie("passC", password);
-                response.addCookie(e);
-                p.setMaxAge(60 * 15);
+            ArrayList<Account> accounts = dao.getAccount(email, password);
+            if (!accounts.isEmpty()) {
+                String userID = accounts.get(0).getAccID();
+                HttpSession sessionUser = request.getSession();
+                sessionUser.setAttribute("email", email);
+                sessionUser.setAttribute("userID", userID);
+                if (remember != null) {
+                    Cookie e = new Cookie("emailC", email);
+                    e.setMaxAge(60 * 15);
+                    Cookie p = new Cookie("passC", password);
+                    response.addCookie(e);
+                    p.setMaxAge(60 * 15);
+                }
+                response.sendRedirect("index.jsp?id=" + userID);
+            } else {
+                request.setAttribute("mess", "Wrong username or password");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-            response.sendRedirect("index.jsp?id=" + userID);
-        } else {
-            request.setAttribute("mess", "Wrong username or password");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            
+        } else if (role.equals("employee")) {
+            ArrayList<Account> accountsEmployee = dao.getAccountEmployee(email, password);
+            if (!accountsEmployee.isEmpty()) {
+                String employeeID = accountsEmployee.get(0).getAccID();
+                HttpSession sessionEmployee = request.getSession();
+                sessionEmployee.setAttribute("role", "employee");
+                sessionEmployee.setAttribute("email", email);
+                sessionEmployee.setAttribute("employeeID", employeeID);
+                if (remember != null) {
+                    Cookie e = new Cookie("emailC", email);
+                    e.setMaxAge(60 * 15);
+                    Cookie p = new Cookie("passC", password);
+                    response.addCookie(e);
+                    p.setMaxAge(60 * 15);
+                }
+                response.sendRedirect("homepage.jsp");
+            } else {
+                request.setAttribute("mess", "Wrong username or password");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+            
+        } else if (role.equals("admin")) {
+            ArrayList<Account> accountsAdmin = dao.getAccountAdmin(email, password);
+            if (!accountsAdmin.isEmpty()) {
+                String adminID = accountsAdmin.get(0).getAccID();
+                HttpSession sessionAdmin = request.getSession();
+                sessionAdmin.setAttribute("role", "admin");
+                sessionAdmin.setAttribute("email", email);
+                sessionAdmin.setAttribute("adminID", adminID);
+                if (remember != null) {
+                    Cookie e = new Cookie("emailC", email);
+                    e.setMaxAge(60 * 15);
+                    Cookie p = new Cookie("passC", password);
+                    response.addCookie(e);
+                    p.setMaxAge(60 * 15);
+                }
+                response.sendRedirect("homepage.jsp");
+            } else {
+                request.setAttribute("mess", "Wrong username or password");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
         }
+
     }
 
 }

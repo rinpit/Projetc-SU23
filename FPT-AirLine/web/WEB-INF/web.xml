@@ -188,6 +188,26 @@
         <servlet-name>UpdatePriceServlet</servlet-name>
         <servlet-class>Control.employee.UpdatePriceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>updatePromotionServlet</servlet-name>
+        <servlet-class>Control.employee.updatePromotionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deletePromotionServlet</servlet-name>
+        <servlet-class>Control.employee.deletePromotionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>createTicketTypeServlet</servlet-name>
+        <servlet-class>Control.employee.createTicketTypeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteTicketTypeServlet</servlet-name>
+        <servlet-class>Control.employee.deleteTicketTypeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updatePromotionServlet</servlet-name>
+        <servlet-class>Control.employee.updatePromotionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListFlightServlet</servlet-name>
         <url-pattern>/ListFlightServlet</url-pattern>
@@ -295,6 +315,22 @@
     <servlet-mapping>
         <servlet-name>FilterOrderServlet</servlet-name>
         <url-pattern>/FilterOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatePromotionServlet</servlet-name>
+        <url-pattern>/updatePromotionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deletePromotionServlet</servlet-name>
+        <url-pattern>/deletePromotionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>createTicketTypeServlet</servlet-name>
+        <url-pattern>/createTicketTypeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteTicketTypeServlet</servlet-name>
+        <url-pattern>/deleteTicketTypeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -22,7 +22,7 @@
 
     <body>
         <div id="slider">
-            <form class="form-flight" action="SearchFlight" method="post">
+            <form class="form-flight" action="SearchFlightServlet" method="post">
                 <div class="container">
                     <div class="MainColumn">
                         <script src="Scripts/jquery-ui.js" type="text/javascript"></script>

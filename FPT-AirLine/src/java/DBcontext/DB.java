@@ -11,8 +11,8 @@ public class DB {
     public static Connection makeConnection() throws ClassNotFoundException {
         try {
             String url = "jdbc:sqlserver://localhost:1433;" + "databaseName=ManagerTicket;encrypt=false";
-            String username = "sa123";
-            String password = "123";
+            String username = "sa";
+            String password = "sa";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             System.out.println("Connected");
             return DriverManager.getConnection(url, username, password);

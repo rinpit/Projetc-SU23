@@ -33,6 +33,13 @@
                         <input id="login-pass" type="password" name="login-pass"/>
                         <span class="form-message"></span>
                     </label>
+                    <label class="form-group">
+                        <select id="role" name="role" style="text-align: center;">
+                            <option value="customer">Khách hàng</option>
+                            <option value="employee">Nhân viên</option>
+                            <option value="admin">Admin</option>
+                        </select><br>
+                    </label>
                     <div class="group">
                         <input id="check" type="checkbox" class="check">
                         <label for="check" class="remember">Ghi nhớ đăng nhập</label>
@@ -99,9 +106,9 @@
                     alert("Đăng ký tài khoản thành công");
                 }
             }
-            
+
             displayErrorMessage("${mess1}")
-            
+
             // Validate
             Validator({
                 form: '#register-form',

@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,10 +31,6 @@ public class listPromotionServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        PromotionDAO promotionDao = new PromotionDAO();
-        List<Promotion> promotions = promotionDao.getPromotion();
-        request.setAttribute("abc", promotions);
-        request.getRequestDispatcher("test.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,7 +45,7 @@ public class listPromotionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         PromotionDAO promotionDao = new PromotionDAO();
-        List<Promotion> promotions = promotionDao.getPromotion();
+        ArrayList<Model.dao.Promotion> promotions = promotionDao.getPromotion();
         //Collections.sort(promotions, Comparator.comparing(Promotion::getStartDate));
         request.setAttribute("listPromotion", promotions);
         request.getRequestDispatcher("listPromotion.jsp").forward(request, response);
