@@ -41,13 +41,17 @@ public class LoginServlet extends HttpServlet {
         String remember = request.getParameter("remember");
         AccountDAO dao = new AccountDAO();
         if (role.equals("customer")) {
-            
+
             ArrayList<Account> accounts = dao.getAccount(email, password);
             if (!accounts.isEmpty()) {
                 String userID = accounts.get(0).getAccID();
                 HttpSession sessionUser = request.getSession();
                 sessionUser.setAttribute("email", email);
                 sessionUser.setAttribute("userID", userID);
+                sessionUser.setAttribute("roll", role);
+                Cookie roleCookie = new Cookie("role", role);
+                roleCookie.setMaxAge(60 * 15);
+                response.addCookie(roleCookie);
                 if (remember != null) {
                     Cookie e = new Cookie("emailC", email);
                     e.setMaxAge(60 * 15);
@@ -60,7 +64,7 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("mess", "Wrong username or password");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-            
+
         } else if (role.equals("employee")) {
             ArrayList<Account> accountsEmployee = dao.getAccountEmployee(email, password);
             if (!accountsEmployee.isEmpty()) {
@@ -69,6 +73,9 @@ public class LoginServlet extends HttpServlet {
                 sessionEmployee.setAttribute("role", "employee");
                 sessionEmployee.setAttribute("email", email);
                 sessionEmployee.setAttribute("employeeID", employeeID);
+                Cookie roleCookie = new Cookie("role", role);
+                roleCookie.setMaxAge(60 * 15);
+                response.addCookie(roleCookie);
                 if (remember != null) {
                     Cookie e = new Cookie("emailC", email);
                     e.setMaxAge(60 * 15);
@@ -76,12 +83,12 @@ public class LoginServlet extends HttpServlet {
                     response.addCookie(e);
                     p.setMaxAge(60 * 15);
                 }
-                response.sendRedirect("homepage.jsp");
+                response.sendRedirect("dashboard.jsp");
             } else {
                 request.setAttribute("mess", "Wrong username or password");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-            
+
         } else if (role.equals("admin")) {
             ArrayList<Account> accountsAdmin = dao.getAccountAdmin(email, password);
             if (!accountsAdmin.isEmpty()) {
@@ -90,6 +97,9 @@ public class LoginServlet extends HttpServlet {
                 sessionAdmin.setAttribute("role", "admin");
                 sessionAdmin.setAttribute("email", email);
                 sessionAdmin.setAttribute("adminID", adminID);
+                Cookie roleCookie = new Cookie("role", role);
+                roleCookie.setMaxAge(60 * 15);
+                response.addCookie(roleCookie);
                 if (remember != null) {
                     Cookie e = new Cookie("emailC", email);
                     e.setMaxAge(60 * 15);
@@ -97,7 +107,7 @@ public class LoginServlet extends HttpServlet {
                     response.addCookie(e);
                     p.setMaxAge(60 * 15);
                 }
-                response.sendRedirect("homepage.jsp");
+                response.sendRedirect("dashboard.jsp");
             } else {
                 request.setAttribute("mess", "Wrong username or password");
                 request.getRequestDispatcher("login.jsp").forward(request, response);

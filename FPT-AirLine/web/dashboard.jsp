@@ -178,7 +178,6 @@
                                                     <td>${order.promotionID}</td>
                                                     <td>${order.tax}</td>
                                                     <td>${order.totalAmount}</td>
-                                                    <td><button><a href="EditCustomerServlet?id=${order.orderID}">Xoá</a></button></td>
                                                 </tr
                                             </c:forEach>
                                             </tr>

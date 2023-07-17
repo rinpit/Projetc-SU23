@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static org.eclipse.jdt.internal.compiler.parser.Parser.name;
 
 public class TicketTypeDAO {
 
@@ -84,6 +85,21 @@ public class TicketTypeDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(statement);
             preparedStatement.setString(1, id);
             preparedStatement.setString(2, name);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void createTicketType_Flight(String ticketType_ID, String flightId, int seats) throws ClassNotFoundException {
+        try {
+            String statement = "insert into TicketType_Flight\n"
+                    + "values(?, ?, ?)";
+            connection = DB.makeConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(statement);
+            preparedStatement.setString(1, ticketType_ID);
+            preparedStatement.setString(2, flightId);
+            preparedStatement.setInt(3, seats);
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);

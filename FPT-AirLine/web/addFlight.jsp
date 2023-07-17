@@ -23,18 +23,17 @@
         <!-- Custom CSS -->
         <link href="css/style.min.css" rel="stylesheet">
         <link href="./access/css/basic-table.css" rel="stylesheet">
-
+        <link href="Styles/jquery-ui-1.8.7.all.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
         <style>
-
-
             input,
             select {
                 padding: 0;
                 margin: 0;
                 outline: none;
                 font-family: Roboto, Arial, sans-serif;
-                font-size: 16px;
-                color: #eee;
+                /*                font-size: 16px;*/
+                color: #000;
             }
             h1,
             h3 {
@@ -68,15 +67,15 @@
                 width: 80%;
                 padding: 25px;
                 margin-bottom: 20px;
-                background: black;
+                background: #2F323E;
             }
 
             input,
             select {
                 padding: 5px;
-                margin-bottom: 20px;
-                background: transparent;
-                border: none;
+                margin-bottom: 8px;
+                /*                background: transparent;
+                                border: none;*/
                 border-bottom: 1px solid #eee;
             }
 
@@ -149,6 +148,12 @@
             button:hover {
                 background: #095484;
             }
+
+            .labelform {
+                font-size: 16px;
+                color: #fff;
+            }
+
         </style>
     </head>
     <body>
@@ -214,20 +219,27 @@
                     <div class="main-block">
                         <h1 style="color: orange;">Create Flight</h1>
                         <h3 style="color: red;">${requestScope.error}</h3>
-                        <form action="addFlight">
+                        <form action="addFlight" method="post">
                             <div class="info">
-                                <input class="fname" type="text" name="flightId" placeholder="Flight ID">
+                                <label class="labelform">Flight ID</label>
+                                <input class="fname" type="text" value="" name="flightId" placeholder="Flight ID">
+                                <label class="labelform">Departure</label>
                                 <input type="text" name="departure" placeholder="Departure">
+                                <label class="labelform">Destination</label>
                                 <input type="text" name="destination" placeholder="Destination">
-                                <input type="text" name="startDate" placeholder="Start Date">
-                                <input type="text" name="endDate" placeholder="End Date">
+                                <label class="labelform">Start Date</label>
+                                <input type="text" name="startDate" id="datepicker1" placeholder="Start Date">
+                                <label class="labelform">End Date</label>
+                                <input type="text" name="endDate" id="datepicker2"  placeholder="End Date">
+                                <label class="labelform">Start Time</label>
                                 <input type="text" name="startTime" placeholder="Start Time">
+                                <label class="labelform">End Time</label>
                                 <input type="text" name="endTime" placeholder="End Time">
+                                <label class="labelform">Gate</label>
                                 <input type="text" name="gate" placeholder="Gate">
-                                <input type="text" name="distanceID" placeholder="Distance_ID">
-                                <input type="text" name="seatsB" placeholder="Seats B">
-                                <input type="text" name="seatsC" placeholder="Seats C">
-                                <button href="ListFlightServlet" class="button">Submit</button>
+                                <label class="labelform">Distance_ID</label>
+                                <input type="text" name="distanceID" placeholder="Distance_ID">                            
+                                <button type="submit" class="button">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -267,6 +279,9 @@
         <!-- ============================================================== -->
         <!-- All Jquery -->
         <!-- ============================================================== -->
+
+
+
         <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap tether Core JavaScript -->
         <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -279,10 +294,21 @@
         <!--Custom JavaScript -->
         <script src="js/custom.js"></script>
         <!--This page JavaScript -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!--chartis chart-->
         <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
         <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
         <script src="js/pages/dashboards/dashboard1.js"></script>
+        <script>
+            var date = $('#datepicker1').datepicker({
+                dateFormat: 'yy-mm-dd',
+                minDate: 0
+            }).val();
+            var date = $('#datepicker2').datepicker({
+                dateFormat: 'yy-mm-dd',
+                minDate: 0
+            }).val();
+        </script>
     </body>
 </html>
 

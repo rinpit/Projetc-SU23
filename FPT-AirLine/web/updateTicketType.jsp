@@ -81,13 +81,17 @@
                 <!-- Container fluid  -->
                 <!-- ============================================================== -->
                 <div class="container-fluid">
+                    <div class="d-md-flex">
+                        <a href="createTicketType.jsp"
+                           class="btn btn-danger d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Tạo loại vé</a>
+                    </div>
                     <form action="updateTicketType" method="post">
                         <div class="container">
                             <div class="table">
                                 <div class="table-header">
                                     <div class="header__item"><a id="name" class="filter__link">ID</a></div>
-                                    <div class="header__item"><a id="wins" class="filter__link filter__link--number">Tên loại vé</a></div>
-                                    <div class="header__item"><a id="draws" class="filter__link filter__link--number">Giá mới</a></div>
+                                    <div class="header__item"><a id="wins" class="filter__link filter__link--number" required>Tên loại vé</a></div>
+                                    <div class="header__item"><a id="draws" class="filter__link filter__link--number" required>Giá mới</a></div>
                                     <div class="header__item"><a id="losses" class="filter__link filter__link--number"></a></div>
                                 </div>
                                 <div class="table-content">	

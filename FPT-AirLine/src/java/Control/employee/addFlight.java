@@ -10,10 +10,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import Model.dao.DistanceDAO;
-import Model.DistanceV2;
 import Model.Flight;
+import Model.TicketType;
 import Model.dao.FlightDAO;
+import Model.dao.TicketTypeDAO;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSessionEvent;
 
 /**
  *
@@ -31,9 +33,9 @@ public class addFlight extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -58,30 +60,8 @@ public class addFlight extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         //processRequest(request, response);
-        String flightId = request.getParameter("flightId");
-        String startDate = request.getParameter("startDate");
-        String endDate = request.getParameter("endDate");
-        String startTime = request.getParameter("startTime");
-        String endTime = request.getParameter("endTime");
-        String departure = request.getParameter("departure");
-        String destination = request.getParameter("destination");
-        int gate = Integer.parseInt(request.getParameter("gate"));
-        int seatsB = Integer.parseInt(request.getParameter("seatsB"));
-        int seatsC = Integer.parseInt(request.getParameter("seatsC"));
-        String distanceID = request.getParameter("distanceID");
-
-        FlightDAO flightdao = new FlightDAO();
-        Flight d = flightdao.getFlightById(flightId);
-        if (d == null) {
-            Flight fNew = new Flight(flightId, startDate, endDate, startTime, endTime, departure, destination, gate, seatsB, seatsC, distanceID);
-            flightdao.insert(fNew);
-            response.sendRedirect("ListFlightServlet");
-        } else {
-            request.setAttribute("error", flightId + " exitsed!!");
-            request.getRequestDispatcher("addFlight.jsp").forward(request, response);
-        }
     }
 
     /**
@@ -94,8 +74,31 @@ public class addFlight extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException {
+        String flightId = request.getParameter("flightId");
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
+        String startTime = request.getParameter("startTime");
+        String endTime = request.getParameter("endTime");
+        String departure = request.getParameter("departure");
+        String destination = request.getParameter("destination");
+        int gate = Integer.parseInt(request.getParameter("gate"));
+        String distanceID = request.getParameter("distanceID");
+        
+        HttpSession httpSession = request.getSession();
+     
+        FlightDAO flightdao = new FlightDAO();
+        Flight d = flightdao.getFlightById(flightId);
+        if (d == null) {
+            Flight fNew = new Flight(flightId, startDate, endDate, startTime, endTime, departure, destination, gate, distanceID);
+            flightdao.insert(fNew);
+            httpSession.setAttribute("flightId", flightId);
+            response.sendRedirect("createTicketTypeFlight.jsp?flightId=" + flightId);
+        } else {    
+            request.setAttribute("error", flightId + " exitsed!!");
+            request.setAttribute("flightID", flightId);
+            request.getRequestDispatcher("addFlight.jsp").forward(request, response);
+        }
     }
 
     /**

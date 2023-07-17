@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="container mt-5 pt-5" >
-            <form action="Verify" method="get" onsubmit="//return validateDateKid(event), validateDateBaby()">
+            <form action="Verify" method="get" onsubmit="//return validateDateKid(event), validateDateAdult()">
                 <div class="count">
                     <p>Thời gian đặt vé còn lại: <span id="countdown"></span></p>
                 </div>
@@ -132,7 +132,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Đổi Hành Trình</td>
-                                                    <td>Được phép - Thu phí : 500.000 VND + chênh lệch giá vé (nếu có)</td>
+                                                    <td>Không được phép</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Bảo lưu</td>
@@ -140,11 +140,11 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Thời hạn thay đổi (bao gồm thay đổi tên, ngày/chuyến bay, hành trình)</td>
-                                                    <td>Trước 12 tiếng so với giờ khởi hành</td>
+                                                    <td>Không được phép</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Thay đổi chuyến bay</td>
-                                                    <td>Được phép - Thu phí: 500.000 VND + chênh lệch giá vé (nếu có)</td>
+                                                    <td>Không được phép</td>
                                                 </tr>
                                             </tbody>
                                         </table>

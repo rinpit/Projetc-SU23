@@ -26,15 +26,14 @@
 
         <style>
 
-
             input,
             select {
                 padding: 0;
                 margin: 0;
                 outline: none;
                 font-family: Roboto, Arial, sans-serif;
-                font-size: 16px;
-                color: #eee;
+                /*                font-size: 16px;*/
+                color: #000;
             }
             h1,
             h3 {
@@ -68,15 +67,15 @@
                 width: 80%;
                 padding: 25px;
                 margin-bottom: 20px;
-                background: black;
+                background: #2F323E;
             }
 
             input,
             select {
                 padding: 5px;
-                margin-bottom: 20px;
-                background: transparent;
-                border: none;
+                margin-bottom: 8px;
+                /*                background: transparent;
+                                border: none;*/
                 border-bottom: 1px solid #eee;
             }
 
@@ -149,6 +148,11 @@
             button:hover {
                 background: #095484;
             }
+
+            .labelform {
+                font-size: 16px;
+                color: #fff;
+            }
         </style>
     </head>
     <body>
@@ -216,9 +220,12 @@
                         <h3 style="color: red;">${requestScope.error}</h3>
                         <form action="addDistance">
                             <div class="info">
-                                <input type="text" name="distance_ID" placeholder="Distance_ID">
-                                <input type="text" name="distance" placeholder="Distance">
-                                <input type="text" name="price" placeholder="Price">
+                                <label class="labelform">Distance ID</label>
+                                <input type="text" name="distance_ID" placeholder="Distance_ID" required>
+                                <label class="labelform">Distance</label>
+                                <input type="text" name="distance" placeholder="Distance" required>
+                                <label class="labelform">Price</label>
+                                <input type="text" name="price" placeholder="Price" required>
                                 <button href="" class="button">Submit</button>
                             </div>    
                         </form>

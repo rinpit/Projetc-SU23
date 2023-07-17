@@ -143,18 +143,18 @@
                                     <h3 class="box-title mb-0">Recent sales</h3>
                                     <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
                                         <select id="monthSelect" name="month" class="form-select shadow-none row border-top" onchange="redirectToURL(this)">
-                                            <option value="1" >January</option>
-                                            <option value="2">February</option>
-                                            <option value="3">March</option>
-                                            <option value="4">April</option>
-                                            <option value="5">May</option>
-                                            <option value="6">June</option>
-                                            <option value="7">July</option>
-                                            <option value="8">August</option>
-                                            <option value="9">September</option>
-                                            <option value="10">October</option>
-                                            <option value="11">November</option>
-                                            <option value="12">December</option>
+                                            <option value="1" >Tháng 1</option>
+                                            <option value="2">Tháng 2</option>
+                                            <option value="3">Tháng 3</option>
+                                            <option value="4">Tháng 4</option>
+                                            <option value="5">Tháng 5</option>
+                                            <option value="6">Tháng 6</option>
+                                            <option value="7">Tháng 7</option>
+                                            <option value="8">Tháng 8</option>
+                                            <option value="9">Tháng 9</option>
+                                            <option value="10">Tháng 10</option>
+                                            <option value="11">Tháng 11</option>
+                                            <option value="12">Tháng 12</option>
                                         </select>
                                     </div>
                                 </div>
@@ -178,7 +178,6 @@
                                                     <td>${order.promotionID}</td>
                                                     <td>${order.tax}</td>
                                                     <td>${order.totalAmount}</td>
-                                                    <td><button><a href="EditCustomerServlet?id=${order.orderID}">Xoá</a></button></td>
                                                 </tr
                                             </c:forEach>
                                             </tr>

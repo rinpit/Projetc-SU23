@@ -332,9 +332,54 @@
         <servlet-name>deleteTicketTypeServlet</servlet-name>
         <url-pattern>/deleteTicketTypeServlet</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
+    
+<!--    <filter>
+        <filter-name>NoCacheFilter</filter-name>
+        <filter-class>Control.filter.NoCacheFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>NoCacheFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+        <filter>
+        <filter-name>PreventBackFilter</filter-name>
+        <filter-class>Control.filter.PreventBackFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>PreventBackFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+<!--        <filter>
+        <filter-name>IdValidFilter</filter-name>
+        <filter-class>Control.filter.IdValidFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>IdValidFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+    
+    <filter>
+        <filter-name>TypeFilter</filter-name>
+        <filter-class>Control.filter.TypeFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>TypeFilter</filter-name>
+        <url-pattern>/dashboard.jsp</url-pattern>
+        <url-pattern>/listUser.jsp</url-pattern>
+        <url-pattern>/listTicket.jsp</url-pattern>
+        <url-pattern>/listDistance.jsp</url-pattern>
+        <url-pattern>/listFlight.jsp</url-pattern>
+        <url-pattern>/listTicketTypePrice.jsp</url-pattern>
+        <url-pattern>/createEmployee.jsp</url-pattern>
+        <url-pattern>/EmployeeManagementServlet</url-pattern>
+        <url-pattern>/employeeManagement.jsp</url-pattern>
+    </filter-mapping>
+
+
+
 </web-app>

@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="container mt-5 pt-5" >
-            <form action="Verify" method="get" onsubmit="//return validateDateKid(event), validateDateBaby()">
+            <form action="Verify" method="get" onsubmit="//return validateDateKid(event), validateDateAdult()">
                 <div class="count">
                     <p>Thời gian đặt vé còn lại: <span id="countdown"></span></p>
                 </div>
@@ -130,7 +130,7 @@
                                 <div id="myDIV" style="display: none">
                                     <strong style="font-size: 18px; margin:0 5%; line-height: 22px; display: inline-block;">Điều kiện vé chiều đi</strong>
                                     <span class="dieu-kien-chieu-di">
-                                        <table cellpadding="8" cellspacing="0" height="70" style="table-layout: fixed;">
+                                        <table cellpadding="8" cellspacing="0" height="70" style="table-layout: fixed; padding-left: 10px;">
                                             <colgroup>
                                                 <col width="200">
                                                 <col width="450">
@@ -169,7 +169,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Đổi Hành Trình</td>
-                                                    <td>Được phép - Thu phí : 500.000 VND + chênh lệch giá vé (nếu có)</td>
+                                                    <td>Không được phép</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Bảo lưu</td>
@@ -177,70 +177,11 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Thời hạn thay đổi (bao gồm thay đổi tên, ngày/chuyến bay, hành trình)</td>
-                                                    <td>Trước 12 tiếng so với giờ khởi hành</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Thay đổi chuyến bay</td>
-                                                    <td>Được phép - Thu phí: 500.000 VND + chênh lệch giá vé (nếu có)</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </span>
-                                    <hr style="border-width: 2px; border-style: solid; border-color: #F44D06">
-                                    <strong style="font-size: 18px; margin:0 5%; line-height: 22px; display: inline-block;">Điều kiện vé chiều về</strong>
-                                    <span class="dieu-kien-chieu-ve">
-                                        <table cellpadding="8" cellspacing="0" height="70" style="table-layout: fixed;">
-                                            <colgroup>
-                                                <col width="200">
-                                                <col width="450">
-                                            </colgroup>
-                                            <tbody>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <span style="color: #F44D06; line-height: 32px; padding: 0px;">Điều kiện hành lý  </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hành lý xách tay</td>
-                                                    <td>7 kg</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hành lý ký gửi</td>
-                                                    <td>Vui lòng chọn ở bước sau</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                        <table cellpadding="8" cellspacing="0" height="70" style="table-layout: fixed;">
-                                            <colgroup>
-                                                <col width="200">
-                                                <col width="450">
-                                            </colgroup>
-                                            <tbody>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <span style="color: #F44D06; line-height: 32px; padding: 0px;">Điều kiện về vé  </span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Đổi tên hành khách</td>
                                                     <td>Không được phép</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Đổi Hành Trình</td>
-                                                    <td>Được phép - Thu phí : 500.000 VND + chênh lệch giá vé (nếu có)</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bảo lưu</td>
-                                                    <td>Không được phép</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Thời hạn thay đổi (bao gồm thay đổi tên, ngày/chuyến bay, hành trình)</td>
-                                                    <td>Trước 12 tiếng so với giờ khởi hành</td>
-                                                </tr>
-                                                <tr>
                                                     <td>Thay đổi chuyến bay</td>
-                                                    <td>Được phép - Thu phí: 500.000 VND + chênh lệch giá vé (nếu có)</td>
+                                                    <td>Không được phép</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -664,29 +605,10 @@
             }
         </script>
 
-<!--        <script>
+        <script>
 
-            function validateDateKid(event) {
-                event.preventDefault(); // Ngăn chặn chuyển trang mặc định
-
-                var selectedDate = new Date(document.getElementById("birthdateKid").value);
-                var today = new Date();
-                var minDate = new Date();
-                minDate.setFullYear(today.getFullYear() - 11); // Giới hạn từ 11 tuổi trở lại
-                minDate.setDate(minDate.getDate() - 365 * 2); // Giới hạn từ 2 năm trước ngày hiện tại (không chính xác 730 ngày)
-
-                if (selectedDate < minDate || selectedDate > today) {
-                    alert("Vui lòng chọn ngày sinh trẻ em hợp lệ!");
-                    return false;
-                }
-
-                // Ngày sinh hợp lệ, cho phép chuyển trang
-                // document.getElementById("formId").submit(); // Gửi form
-                // window.location.href = "new-page.html"; // Chuyển trang
-
-                return true;
-            }
-        </script>-->
+            
+        </script>
 
         <script>
             function countdown() {

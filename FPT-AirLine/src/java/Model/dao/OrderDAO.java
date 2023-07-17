@@ -68,7 +68,7 @@ public class OrderDAO {
 
     public List<Order> getFullListOrder(){
         orders = new ArrayList<>();
-        String query = "Select * from OrderTicket where isComfirmed = 'true'";
+        String query = "Select * from OrderTicket ";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             resultSet = ps.executeQuery();
@@ -86,7 +86,7 @@ public class OrderDAO {
 
     public ArrayList<Order> getOrderByPage(String page) throws SQLException {
         ArrayList<Order> custs = new ArrayList<>();
-        String query = "Select * from OrderTicket where isComfirmed = 'true'\n"
+        String query = "Select * from OrderTicket "
                 + "order by Date desc\n"
                 + "offset ? rows fetch next 5 rows only";
 

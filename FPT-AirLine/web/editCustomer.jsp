@@ -25,16 +25,14 @@
         <link href="./access/css/basic-table.css" rel="stylesheet">
 
         <style>
-
-
             input,
             select {
                 padding: 0;
                 margin: 0;
                 outline: none;
                 font-family: Roboto, Arial, sans-serif;
-                font-size: 16px;
-                color: #eee;
+                /*                font-size: 16px;*/
+                color: #000;
             }
             h1,
             h3 {
@@ -68,15 +66,15 @@
                 width: 80%;
                 padding: 25px;
                 margin-bottom: 20px;
-                background: black;
+                background: #2F323E;
             }
 
             input,
             select {
                 padding: 5px;
-                margin-bottom: 20px;
-                background: transparent;
-                border: none;
+                margin-bottom: 8px;
+                /*                background: transparent;
+                                border: none;*/
                 border-bottom: 1px solid #eee;
             }
 
@@ -149,6 +147,13 @@
             button:hover {
                 background: #095484;
             }
+
+            .labelform {
+                font-size: 16px;
+                color: #fff;
+            }
+
+
         </style>
     </head>
     <body>
@@ -205,17 +210,35 @@
                     <!-- Start Page Content -->
                     <!-- ============================================================== -->
                     <div class="main-block">
-                        <h1 style="color: orange;">Chỉnh sửa thông tin người dùng</h1>
+                        <h1 style="color: orangered;">Chỉnh sửa thông tin người dùng</h1>
                         <h3 style="color: red;">${requestScope.error}</h3>
-                        <form action="EditCustomerServlet?id=${param.id}" method="post">
+                        <form name="editForm" action="EditCustomerServlet?id=${param.id}" method="post" onsubmit="return validateForm()"">
                             <div class="info">
-                                <input type="text" name="email" value="${user.email}">
+                                <label class="labelform">Email</label>
+                                <input type="text" name="email" value="${user.email}" readonly="">
+
+                                <label class="labelform">Name</label>
                                 <input type="text" name="name" value="${user.name}">
-                                <input type="text" name="gender" value="${fn:contains(cus.gender, 'F')?'Female':'Male'}">
-                                <input type="text" name="birthday" value="${user.birthday}">
+
+                                <label class="labelform">Gender</label>
+                                <select id="gender" name="gender" >
+                                    <option value="Male" style="background-color: white" <c:if test="${fn:contains(cus.gender, 'Male')}">selected</c:if>>Male</option>
+                                    <option value="Female" style="background-color: white" <c:if test="${fn:contains(cus.gender, 'Female')}">selected</c:if>>Female</option>
+                                    </select>
+
+                                    <label class="labelform">Birthday</label>                                
+                                    <input type="text" name="birthday" value="${user.birthday}">
+
+                                <label class="labelform">Phone</label>  
                                 <input type="text" name="phone" value="${user.phone}">
+
+                                <label class="labelform">Address</label>  
                                 <input type="text" name="address" value="${user.address}">
+
+                                <label class="labelform">Nation</label>  
                                 <input type="text" name="nation" value="${user.nationality}">
+
+                                <label class="labelform">CCCD</label>  
                                 <input type="text" name="cccd" value="${user.cccd}">
                                 <button type="submit" class="button">Submit</button>
                             </div>
@@ -273,6 +296,11 @@
         <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
         <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
         <script src="js/pages/dashboards/dashboard1.js"></script>
+        <script>
+
+        </script>
     </body>
+
+
 </html>
 

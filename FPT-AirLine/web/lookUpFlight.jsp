@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <c:if test="${lookUpFlight != null}">
-                    <h1>Tên hành khách : ${Name}</h1>
+                    <h1>Tên hành khách: ${Name}</h1>
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
@@ -97,6 +97,12 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                    <c:if test="${empty lookUpFlight}">
+                        <div class="alert alert-warning" role="alert" style="width: 276px">
+                            Không tìm thấy
+                            Hãy xem lại thông tin vé của bạn
+                        </div>
+                    </c:if>
                 </c:if>
             </div>
         </div>

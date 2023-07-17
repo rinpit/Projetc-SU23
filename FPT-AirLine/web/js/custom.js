@@ -1,13 +1,13 @@
-$(function() {
+$(function () {
     "use strict";
 
     $(".preloader").fadeOut();
     // this is for close icon when navigation open in mobile view
-    $(".nav-toggler").on('click', function() {
+    $(".nav-toggler").on('click', function () {
         $("#main-wrapper").toggleClass("show-sidebar");
         $(".nav-toggler i").toggleClass("ti-menu");
     });
-    $(".search-box a, .search-box .app-search .srh-btn").on('click', function() {
+    $(".search-box a, .search-box .app-search .srh-btn").on('click', function () {
         $(".app-search").toggle(200);
         $(".app-search input").focus();
     });
@@ -17,11 +17,11 @@ $(function() {
     // ============================================================== 
     $("body, .page-wrapper").trigger("resize");
     $(".page-wrapper").delay(20).show();
-    
+
     //****************************
     /* This is for the mini-sidebar if width is less then 1170*/
     //**************************** 
-    var setsidebartype = function() {
+    var setsidebartype = function () {
         var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
         if (width < 1170) {
             $("#main-wrapper").attr("data-sidebartype", "mini-sidebar");
@@ -33,3 +33,33 @@ $(function() {
     $(window).on("resize", setsidebartype);
 
 });
+
+
+function validateForm() {
+    var birthday = document.forms["editForm"]["birthday"].value;
+    var phone = document.forms["editForm"]["phone"].value;
+    var cccd = document.forms["editForm"]["cccd"].value;
+
+    // Validate birthday format (yyyy-MM-dd)
+    var birthdayRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!birthday.match(birthdayRegex)) {
+        alert("Birthday format should be yyyy-MM-dd");
+        return false;
+    }
+
+    // Validate phone format (10 numbers starting with 0)
+    var phoneRegex = /^0\d{9}$/;
+    if (!phone.match(phoneRegex)) {
+        alert("Phone format should be 10 numbers starting with 0");
+        return false;
+    }
+
+    // Validate CCCD format (12 numbers)
+    var cccdRegex = /^\d{12}$/;
+    if (!cccd.match(cccdRegex)) {
+        alert("CCCD format should be 12 numbers");
+        return false;
+    }
+
+    return true;
+}

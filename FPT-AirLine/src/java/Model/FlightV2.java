@@ -17,14 +17,12 @@ public class FlightV2 {
     String departure;
     String destination;
     int gate;
-    int seatsB;
-    int seatsC;
     float price;
 
     public FlightV2() {
     }
 
-    public FlightV2(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int gate, int seatsB, int seatsC, float price) {
+    public FlightV2(String flightId, String startDate, String endDate, String startTime, String endTime, String departure, String destination, int gate, float price) {
         this.flightId = flightId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -33,8 +31,6 @@ public class FlightV2 {
         this.departure = departure;
         this.destination = destination;
         this.gate = gate;
-        this.seatsB = seatsB;
-        this.seatsC = seatsC;
         this.price = price;
     }
 
@@ -102,22 +98,6 @@ public class FlightV2 {
         this.gate = gate;
     }
 
-    public int getSeatsB() {
-        return seatsB;
-    }
-
-    public void setSeatsB(int seatsB) {
-        this.seatsB = seatsB;
-    }
-
-    public int getSeatsC() {
-        return seatsC;
-    }
-
-    public void setSeatsC(int seatsC) {
-        this.seatsC = seatsC;
-    }
-
     public float getPrice() {
         return price;
     }
@@ -128,8 +108,9 @@ public class FlightV2 {
 
     @Override
     public String toString() {
-        return "FlightV2{" + "flightId=" + flightId + ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime=" + endTime + ", departure=" + departure + ", destination=" + destination + ", gate=" + gate + ", seatsB=" + seatsB + ", seatsC=" + seatsC + ", price=" + price + '}';
+        return "FlightV2{" + "flightId=" + flightId + ", startDate=" + startDate + ", endDate=" + endDate + ", startTime=" + startTime + ", endTime=" + endTime + ", departure=" + departure + ", destination=" + destination + ", gate=" + gate + ", price=" + price + '}';
     }
+
 
     
     

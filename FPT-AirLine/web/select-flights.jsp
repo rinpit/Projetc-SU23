@@ -10,20 +10,21 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-
-        <!-- Search-Form -->
-        <link href=access/Styles/reset-css.css rel="stylesheet" type="text/css"/>
-        <link href="access/Styles/jquery-ui-1.8.7.all.css" rel="stylesheet" type="text/css"/>
-        <link href=access/Styles/SearchView.css rel="stylesheet" type="text/css"/>
-
+        <style>
+            body{
+                background-image: url('https://www.vietjetair.com/static/media/bay_vao_tuong_lai_bg_mb.e310d427.png');
+                background-size: 100%;
+                background-repeat: no-repeat;
+            }
+        </style>
 
         <title>Select Flight</title>
     </head>
     <body>
-        <div class="container justify-content-around" style="margin-top: 150px">
+        <div class="container justify-content-around" style="margin-top: 75px">
             <form action="SelectFlightServlet" method="post">
                 <div class="row">
-                    <div class="col-sm-8" style="background-color: blanchedalmond ;">
+                    <div class="col-sm-8" style="background-color: blanchedalmond ;" >
                         <div class="row">
                             <div class="col-sm-6">
                                 <a class="text-danger">Giá vé chưa bao gồm thuế và phí</a>
@@ -288,8 +289,9 @@
                         </div>
                         <c:if test="${userID!= null}">
                             <div class="submit-flight float-left">
-                                <button type="submit" class="btn btn-primary">Tiếp tục</button>
+                                <button type="submit" class="btn btn-primary" onclick="validateFlightAvailability()">Tiếp tục</button>
                             </div>
+
                         </c:if>
                         <c:if test="${userID == null}">
                             <div class="alert alert-warning" role="alert" style="width: 276px">

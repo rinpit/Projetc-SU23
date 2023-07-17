@@ -1,5 +1,6 @@
 package Model.dao;
 
+import Control.format.Format;
 import DBcontext.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,6 +56,7 @@ public class PromotionDAO {
     }
 
     public Promotion getPromotionById(String id) {
+
         String query = "select* From Promotion where Promotion_ID = ?";
         try {
             ps = connection.prepareStatement(query);

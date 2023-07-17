@@ -16,9 +16,15 @@
         <link href="Styles/reset-css.css" rel="stylesheet" type="text/css"/>
         <link href="Styles/jquery-ui-1.8.7.all.css" rel="stylesheet" type="text/css"/>
         <link href="Styles/SearchView.css" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+            <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
     </head>
-
+    //Làm mờ
+    <style>
+        input.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
 
     <body>
         <div id="slider">
@@ -221,12 +227,21 @@
     </body>
 
     <script>
-        var date = $('#datepicker1').datepicker({dateFormat: 'yy-mm-dd'}).val();
-        var date = $('#datepicker2').datepicker({dateFormat: 'yy-mm-dd'}).val();
+        var date = $('#datepicker1').datepicker({
+            dateFormat: 'yy-mm-dd',
+            minDate: 0
+        }).val();
+        var date = $('#datepicker2').datepicker({
+            dateFormat: 'yy-mm-dd',
+            minDate: 0
+        }).val();
 
         function disable() {
-            document.getElementById("datepicker2").disabled = true;
+            var input = document.getElementById("datepicker2");
+            input.disabled = true;
+            input.classList.add("disabled"); // Thêm lớp "disabled"
         }
+
 
         function undisable() {
             document.getElementById("datepicker2").disabled = false;

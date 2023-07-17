@@ -179,19 +179,20 @@ public class TicketDAO {
     }
 
     public void addSeat(String ticketID) throws SQLException {
-        String smtEco = "UPDATE Flight\n"
-                + "SET \n"
-                + "    SeatsB = CASE WHEN Ticket.TicketType_ID = 'TT2' THEN SeatsB + 1 ELSE SeatsB END,\n"
-                + "    SeatsC = CASE WHEN Ticket.TicketType_ID = 'TT1' THEN SeatsC + 1 ELSE SeatsC END        \n"
-                + "FROM (\n"
-                + "    SELECT Flight_ID, TicketType_ID\n"
+        String smt = "UPDATE ticketType_Flight\n"
+                + "SET Seats = Seats + 1\n"
+                + "WHERE TicketType_ID = (\n"
+                + "    SELECT TicketType_ID\n"
                 + "    FROM Ticket\n"
                 + "    WHERE Ticket_ID = ?\n"
-                + ") AS Ticket \n"
-                + "INNER JOIN Flight ON Ticket.Flight_ID = Flight.Flight_ID\n"
-                + "WHERE Ticket.TicketType_ID IN ('TT1', 'TT2');";
-        PreparedStatement ps = connection.prepareStatement(smtEco);
+                + ") AND Flight_ID = (\n"
+                + "    SELECT Flight_ID\n"
+                + "    FROM Ticket\n"
+                + "    WHERE Ticket_ID = ?\n"
+                + ");";
+        PreparedStatement ps = connection.prepareStatement(smt);
         ps.setString(1, ticketID);
+        ps.setString(2, ticketID);
         ps.executeUpdate();
     }
 

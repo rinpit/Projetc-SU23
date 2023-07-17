@@ -100,8 +100,6 @@
                                                 <th class="border-top-0">Departure</th>
                                                 <th class="border-top-0">Destination</th>
                                                 <th class="border-top-0">Gate</th>
-                                                <th class="border-top-0">Seat B</th>
-                                                <th class="border-top-0">Seat C</th>
                                                 <th class="border-top-0">Price</th>
                                                 <th class="border-top-0">Action</th>
                                             </tr>
@@ -118,8 +116,6 @@
                                                     <td>${f.departure}</td>
                                                     <td>${f.destination}</td>
                                                     <td>${f.gate}</td>
-                                                    <td>${f.seatsB}</td>
-                                                    <td>${f.seatsC}</td>
                                                     <td>${f.price}</td>
                                                     <td>
                                                         <a href="DeleteFlightServlet?id=${f.flightId}">Delete</a>

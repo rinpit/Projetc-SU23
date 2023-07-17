@@ -22,6 +22,7 @@
         <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
+        <link rel="stylesheet" href="access/css/submit.css"/>
         <!-- Custom CSS -->
         <link href="plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -234,30 +235,34 @@
                     <div class="d-md-flex">
                         <a href="createTicketType.jsp"
                            class="btn btn-danger d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Tạo loại vé</a>
-
                     </div>
-                    <div class="container">
-                        <div class="table">
-                            <div class="table-header">
-                                <div class="header__item"><a id="wins" class="filter__link filter__link--number">ID loại vé</a></div>
-                                <div class="header__item"><a id="wins" class="filter__link filter__link--number">Tên loại vé</a></div>
-                                <div class="header__item"><a id="draws" class="filter__link filter__link--number">Giá</a></div>
-                                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Cập nhật giá</a></div>
-                                <div class="header__item"><a id="losses" class="filter__link filter__link--number">Xóa</a></div>
-                            </div>
-                            <c:forEach items="${listTicketType}" var="l">
-                                <div class="table-content">	
-                                    <div class="table-row">	
-                                        <div class="table-data">${l.ticketTypeId}</div>
-                                        <div class="table-data">${l.ticketType}</div>
-                                        <div class="table-data">${l.ticketPrice} VND</div>
-                                        <div class="table-data"><a href="updateTicketType?id=${l.ticketTypeId}&type=${l.ticketType}">Cập nhật</a></div>
-                                        <div class="table-data"><a href="deleteTicketTypeServlet?id=${l.ticketTypeId}">Xóa</a></div>
-                                    </div>
+                    <jsp:useBean id="ticktype" class="Model.dao.TicketTypeDAO"/>
+                    <c:set var="tickeTypeList" value="${ticktype.getTickets()}"/>
+                    <form action="CreateTicketTypeFlightServlet" method="post">
+                        <div class="container">
+                            <div class="table">
+                                <div class="table-header">
+                                    <div class="header__item"><a id="wins" class="filter__link filter__link--number">ID của loại vé</a></div>
+                                    <div class="header__item"><a id="draws" class="filter__link filter__link--number">ID của chuyến bay</a></div>
+                                    <div class="header__item"><a id="draws" class="filter__link filter__link--number">Số ghế muốn thêm</a></div>
                                 </div>
-                            </c:forEach>
+                                <div class="table-content">
+                                    <c:set var="f" value="${flightID}"/>   
+                                    <c:out value="${f}"/>
+                                    <c:forEach var="t" items="${tickeTypeList}">
+                                        <div class="table-row">
+                                            <div class="table-data"><input type ="text" name="tid" value="${t.ticketTypeId}" readonly=""></div>
+                                            <div class="table-data"><input type ="text" name="fid" value="${flightId} " readonly=""></div>
+                                            <div class="table-data"><input type ="number" name="seats<c:out value="${t.ticketTypeId}"/>" required></div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                                <div class="submit-flight float-right" style="float: right">
+                                    <button  type="submit" class="bubbly-button">Tạo</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Container fluid  -->

@@ -105,7 +105,7 @@
                                                     <td>${d.distance}</td>
                                                     <td>${d.price}</td>
                                                     <td>
-                                                        <a href="UpdatePriceServlet?id=${d.distanceID}">Update Price</a>
+                                                        <a href="UpdatePriceServlet?id=${d.distanceID}">Update</a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>

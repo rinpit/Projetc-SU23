@@ -68,7 +68,7 @@ public class addDistance extends HttpServlet {
             response.sendRedirect("ListFlightServlet");
         }else {
             request.setAttribute("error", distance_ID + " exitsed!!");
-            request.getRequestDispatcher("addDistance.jsp").forward(request, response);
+            request.getRequestDispatcher("listDistance.jsp").forward(request, response);
         }
     } 
 

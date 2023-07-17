@@ -256,8 +256,8 @@ public class UserDAO {
         rs = ps.executeQuery();
         while (rs.next()) {
             customers.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    rs.getDate(5), rs.getString(1), rs.getString(6),
-                    rs.getString(7), rs.getString(8)));
+                    rs.getDate(5), rs.getString(6), rs.getString(7),
+                    rs.getString(8), rs.getString(9)));
         }
         return customers;
     }
@@ -274,8 +274,8 @@ public class UserDAO {
         rs = ps.executeQuery();
         while (rs.next()) {
             custs.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    rs.getDate(5), rs.getString(1), rs.getString(6),
-                    rs.getString(7), rs.getString(8)));
+                    rs.getDate(5), rs.getString(6), rs.getString(7),
+                    rs.getString(8), rs.getString(9)));
         }
         return custs;
     }

@@ -94,7 +94,7 @@
                                 <div class="table-content">	
                                     <div class="table-row">		
                                         <div class="table-data"><input type="text" name="distance_ID" readonly value="${d.distanceID}"/></div>
-                                        <div class="table-data"><input type="text" name="distance" readonly value="${d.distance}"/></div>
+                                        <div class="table-data"><input type="text" name="distance"  value="${d.distance}"/></div>
                                         <div class="table-data"><input type="text" name="price" value="${d.price}"/></div>
                                         <div class="table-data"><input type="submit" value="UPDATE"/>
                                     </div>
